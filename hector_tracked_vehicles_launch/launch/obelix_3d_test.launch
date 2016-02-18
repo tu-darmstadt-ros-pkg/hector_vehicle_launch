@@ -8,7 +8,7 @@
     <include file="$(find hector_launch)/launch/mission_name.launch" />
 
     <arg name="use_smach" default="true"/>
-    <arg name="use_ground_truth_for_tf" default="false"/>
+    <arg name="use_ground_truth_for_tf" default="true"/>
 
     <!--Below only started on real robot-->
     <group if="$(optenv REALROBOT 0)">
@@ -67,15 +67,16 @@
     
     <!--*******************Have to decide wether to publish tf*********************-->
     <group if="$(arg use_ground_truth_for_tf)">
-      <include file="$(find hector_launch)/launch/mapping.launch">
+      <include file="$(find hector_onboard_launch)/launch/mapping.launch">
         <arg name="pub_map_odom_transform" value="false"/>
         <arg name="use_tf_pose_start_estimate" value="true"/>        
-        <arg name="odom_frame" value="base_stabilized"/>       
+        <arg name="odom_frame" value="base_stabilized"/>
+        <arg name="map_topic" value="scanmatcher_map_remap_away"/>
       </include>     
     </group>  
   
     <group unless="$(arg use_ground_truth_for_tf)">
-      <include file="$(find hector_launch)/launch/mapping.launch">
+      <include file="$(find hector_onboard_launch)/launch/mapping.launch">
         <arg name="pub_map_odom_transform" value="true"/>
         <arg name="odom_frame" value="base_stabilized"/>       
       </include>
@@ -107,7 +108,9 @@
     
     <include file="$(find hector_octomap_server)/launch/octomap_server_hector_ugv.launch">
       <arg name="point_cloud" value="/scan_cloud_filtered" />
-    </include>  
+    </include>
+    
+    <node name="relay_mid_lvl_map" pkg="topic_tools" type="relay" args="/map_mid_level /map" />
     
     <include file="$(find hector_icp_mapping)/launch/multisensor_head_controller.launch" />
     

@@ -63,6 +63,13 @@
 
       <node name="relay_flipper_joint_states" pkg="topic_tools" type="relay" args="/obelix_robot/joint_states /joint_states" respawn="true"/>
       
+      <node name="gazebo_laser_intensity_modifier_node" pkg="vigir_lidar_intensity_modifier" type="laser_intensity_modifier_node" output="screen">
+        <remap from="scan" to="/head_lidar/scan"/>
+        <remap from="scan_out" to="/multi_sensor_scan"/>
+      </node>
+      
+      <include file="$(find hector_icp_mapping)/launch/multisensor_head_controller.launch" />  
+      
     </group>
     
     <!--*******************Have to decide wether to publish tf*********************-->
@@ -111,19 +118,14 @@
     </include>
     
     <node name="relay_mid_lvl_map" pkg="topic_tools" type="relay" args="/map_mid_level /map" />
-    
-    <include file="$(find hector_icp_mapping)/launch/multisensor_head_controller.launch" />
-    
+       
     <rosparam file="$(find hector_tracked_vehicles_self_filter)/config/self_filter_obelix_multisensor_experimental.yaml" command="load" ns="nav_lidar_self_filter_lidar" />
     <!--<rosparam command="load" file="$(find vigir_laserscan_to_pointcloud)/config/argo_scan_filter.yaml" ns="nav_lidar_scan_filter" />-->
     <include file="$(find hector_sensor_proc_launch)/launch/lidar_proc.launch">
       <arg name="scan_topic" value="/multi_sensor_scan"/>  
     </include>
     
-   <node name="gazebo_laser_intensity_modifier_node" pkg="vigir_lidar_intensity_modifier" type="laser_intensity_modifier_node" output="screen">
-    <remap from="scan" to="/head_lidar/scan"/>
-    <remap from="scan_out" to="/multi_sensor_scan"/>
-  </node>
+
     
 </launch>
 

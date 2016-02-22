@@ -30,7 +30,15 @@
       <!--<include file="$(find hector_jasmine_launch)/launch/urg_node.launch"/>-->
       
       <include file="$(find hector_jasmine_launch)/launch/base_control_obelix.launch"/>
-      <include file="$(find chr_6d_imu_cpp)/launch/publish_imu_quaternion.launch"/>
+      
+      <!--<include file="$(find chr_6d_imu_cpp)/launch/publish_imu_quaternion.launch"/>-->
+      
+      <include file="$(find hector_mpu6050_imu_driver)/launch/hector_mpu6050_imu_driver.launch">
+	<arg name="port" value="/dev/mpu6050_imu_0" />
+      </include>
+            
+
+      
       
       <include file="$(find hector_co2_processing)/launch/co2process.launch" />
       

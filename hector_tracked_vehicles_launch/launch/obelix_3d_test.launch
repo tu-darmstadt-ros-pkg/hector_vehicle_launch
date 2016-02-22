@@ -15,6 +15,8 @@
       <include file="$(find monstertruck_robot)/launch/bringup.launch">
         <arg name="robot_description" value="$(find xacro)/xacro.py $(find hector_tracked_vehicles_description)/urdf/obelix_ugv_vision_box.urdf.xacro" />
         <arg name="publish_odometry_to_tf" value="false" />
+	<arg name="start_thermaleye_camera" value="0" />
+	<arg name="start_openni2_camera" value="f0" />
       </include>
       
       <!--Split out laser driver as urg_node used on hector2 now-->

@@ -48,12 +48,9 @@
       
       <!--Moved here as not used when using ground truth in sim-->
       <include file="$(find hector_imu_tools)/launch/jasmine_robot.launch"/>
-
-      <!--<include file="$(find hector_jasmine_launch)/launch/bertl_bringup.launch"/>-->
-
       
-<!--      <node pkg="tf" type="static_transform_publisher" name="base_link_to_base_footprint_broadcaster" args="0 0 0 0 0 0 base_link base_footprint 100" />-->
-        
+      <node name="relay_real_robot_scan" pkg="topic_tools" type="relay" args="/thor_mang/last /multi_sensor_scan" />
+    
     </group>
 
     <!--Only started in sim-->
@@ -78,11 +75,20 @@
         <remap from="scan_out" to="/multi_sensor_scan"/>
       </node>
       
-      <include file="$(find hector_icp_mapping)/launch/multisensor_head_controller.launch" />  
+      <include file="$(find hector_icp_mapping)/launch/multisensor_head_controller.launch" />
+      
+      <group unless="$(arg use_ground_truth_for_tf)">
+	
+	<node name="relay_imu_from_gazebo" pkg="topic_tools" type="relay" args="/imu_quat /imu/data" respawn="true"/>
+      
+        <include file="$(find hector_sensor_proc_launch)/launch/obelix_odom_fusion.launch">      
+        </include>
+      </group>
       
     </group>
     
     <!--*******************Have to decide wether to publish tf*********************-->
+    <!--
     <group if="$(arg use_ground_truth_for_tf)">
       <include file="$(find hector_onboard_launch)/launch/mapping.launch">
         <arg name="pub_map_odom_transform" value="false"/>
@@ -98,9 +104,10 @@
         <arg name="odom_frame" value="base_stabilized"/>       
       </include>
     </group>
+    -->
     <!--*******************Have to decide wether to publish tf*********************-->
 
-    <include file="$(find hector_mapping_known_poses)/launch/mapping_filter_veil_wall.launch" />
+    <!--<include file="$(find hector_mapping_known_poses)/launch/mapping_filter_veil_wall.launch" />-->
     
     <include file="$(find hector_launch)/launch/3d_mapping.launch" />
     

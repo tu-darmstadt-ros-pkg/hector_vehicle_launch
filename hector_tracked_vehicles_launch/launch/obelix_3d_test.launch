@@ -32,6 +32,8 @@
       <!--<include file="$(find hector_jasmine_launch)/launch/urg_node.launch"/>-->
       
       <include file="$(find hector_jasmine_launch)/launch/base_control_obelix.launch"/>
+      <node pkg="hector_flipper_cmd_translator" type="element_flipper_translator.py" name="element_flipper_translator" output="screen">
+      
       
       <!--<include file="$(find chr_6d_imu_cpp)/launch/publish_imu_quaternion.launch"/>-->
       

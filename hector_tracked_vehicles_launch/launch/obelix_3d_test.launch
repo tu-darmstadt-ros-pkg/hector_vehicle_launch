@@ -146,7 +146,7 @@
     <include file="$(find hector_sensor_proc_launch)/launch/lidar_proc.launch">
       <arg name="scan_topic" value="/multi_sensor_scan"/>  
       <arg name="use_high_fidelity_projection" value="true"/>  
-      <arg name="target_frame" value="/head_lidar_mount_link"/>  
+      <arg name="lidar_filter_target_frame" value="/head_lidar_mount_link"/>  
     </include>
     
 

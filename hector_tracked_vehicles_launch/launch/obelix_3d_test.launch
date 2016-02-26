@@ -52,6 +52,7 @@
       <!--<include file="$(find hector_imu_tools)/launch/jasmine_robot.launch"/>-->
       
       <node name="relay_real_robot_scan" pkg="topic_tools" type="relay" args="/thor_mang/last /multi_sensor_scan" />
+      <node name="relay_odom_to_state" pkg="topic_tools" type="relay" args="/odom /state" respawn="true"/>
       
       <include file="$(find hector_sensor_proc_launch)/launch/obelix_odom_fusion.launch">      
       </include>

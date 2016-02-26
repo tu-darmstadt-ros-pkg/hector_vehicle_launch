@@ -49,7 +49,7 @@
       <include file="$(find gscam)/examples/logitech_c920_h264_full_hd.launch"/>
       
       <!--Moved here as not used when using ground truth in sim-->
-      <include file="$(find hector_imu_tools)/launch/jasmine_robot.launch"/>
+      <!--<include file="$(find hector_imu_tools)/launch/jasmine_robot.launch"/>-->
       
       <node name="relay_real_robot_scan" pkg="topic_tools" type="relay" args="/thor_mang/last /multi_sensor_scan" />
       

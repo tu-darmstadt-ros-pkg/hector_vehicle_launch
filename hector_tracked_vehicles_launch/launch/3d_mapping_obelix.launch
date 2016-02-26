@@ -46,7 +46,7 @@
   <arg name="scan_topic" default="/laser1/scan" />
   <arg name="assemble_full_swipe" default="false" />
   <arg name="min_point_count" default="20" />
-  <arg name="publish_tf_as_parent" default="false" />
+<!--  <arg name="publish_tf_as_parent" default="false" />-->
 
   <!--
   <include file="$(find hector_icp_mapping)/launch/lidar_proc.launch" >

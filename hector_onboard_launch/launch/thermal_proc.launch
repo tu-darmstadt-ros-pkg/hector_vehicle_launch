@@ -1,4 +1,11 @@
 <?xml version="1.0"?>
 
 <launch>
+  
+  <include file="$(find hector_thermal_image_conversion)/launch/heat_image_translation_nodelet.launch">
+     <arg name="camera_nodelet_manager_name" default="arm_thermal_cam_nodelet_manager" /> 
+  </include>
+  
+  <include file="$(find hector_heat_detection)/launch/argo_heat_detection_nodelet.launch"/>
 </launch>
+

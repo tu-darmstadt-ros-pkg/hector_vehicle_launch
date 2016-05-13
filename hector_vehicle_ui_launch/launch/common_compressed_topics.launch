@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+
+<launch>
+  
+  <include file="$(find hector_sar_communication)/launch/compressed_topics.launch" />  
+  
+</launch>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="dev" default="/dev/input/js1" />
+  <include file="$(find monstertruck_joystick)/launch/logitech_gamepad_sk.launch" >
+    <arg name="dev" value="$(arg dev)" />
+  </include>
+
+  <node pkg="rqt_gui" type="rqt_gui" name="rqt_gui" output="screen"/>
+
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find sar_gui)/rviz/3d_slam.rviz" output="screen"/>
+</launch>

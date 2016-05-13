@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+
+<launch>
+   <node pkg="image_view" type="image_view" name="start_check_img_view_kinect_rgb" output="screen" args="image:=/motion_detection/image_detected _image_transport:=raw"/> 
+</launch>

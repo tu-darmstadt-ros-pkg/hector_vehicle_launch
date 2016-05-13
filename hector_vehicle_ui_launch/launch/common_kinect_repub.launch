@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+
+<launch>
+  
+  <include file="$(find hector_vehicle_ui_launch)/launch/kinect_republish.launch" />        
+    
+</launch>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<launch>
+   <node pkg="image_view" type="image_view" name="img_view_kinect_rgb" output="screen" args="image:=/openni/rgb/image_raw _image_transport:=theora"/> 
+
+
+   <node pkg="image_view" type="image_view" name="img_view_heat_detection" output="screen" args="image:=/heat_detection/image _image_transport:=theora"/>
+
+</launch>

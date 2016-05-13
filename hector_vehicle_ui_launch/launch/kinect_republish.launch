@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+
+<launch>
+   <node pkg="image_transport" type="republish" name="kinect_rgb_republish" output="screen" args="compressed in:=/openni/rgb/image_color out:=/opstation/rgb/image_color"/>
+   <node pkg="topic_tools" type="relay" name="kinect_rgb_camera_info_relay" output="screen" args="/openni/rgb/camera_info /opstation/rgb/camera_info"/> 
+</launch>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<launch>
+  
+  <include file="$(find hector_vehicle_ui_launch)/launch/common_gui.launch" />
+  <include file="$(find hector_vehicle_ui_launch)/launch/common_compressed_topics.launch" />
+  
+  <include file="$(find hector_vehicle_ui_launch)/launch/common_kinect_repub.launch" />
+  <include file="$(find hector_vehicle_ui_launch)/launch/common_motion_detection.launch" />
+  
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find hector_vehicle_ui_launch)/rviz/opstation_auto_motion_detect.rviz"  output="screen"/>
+  
+  <include file="$(find hector_joy_teleop )/launch/logitech.launch" /> 
+  
+</launch>

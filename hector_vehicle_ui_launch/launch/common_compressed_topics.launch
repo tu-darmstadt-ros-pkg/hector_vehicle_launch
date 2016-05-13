@@ -3,6 +3,22 @@
 
 <launch>
   
-  <include file="$(find hector_sar_communication)/launch/compressed_topics.launch" />  
+  <!--We directly include this here to avoid dependency on the sar communication pkg-->
+  <!--<include file="$(find hector_sar_communication)/launch/compressed_topics.launch" /> --> 
   
+   <!-- compressed communication with topic_proxy server at robot -->
+  <node name="compressed_topic_client" pkg="topic_proxy" type="client" output="screen" ns="compressed">
+    <rosparam>
+      subscriptions:
+        - topic: map
+          interval: 10.0
+          compressed: true
+          latch: true
+        - topic: hector_octomap_server/octomap_point_cloud_centers
+          interval: 10.0
+          compressed: true
+          latch: true
+    </rosparam>
+  </node>
+
 </launch>

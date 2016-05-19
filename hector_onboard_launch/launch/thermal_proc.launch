@@ -6,6 +6,8 @@
      <arg name="camera_nodelet_manager_name" default="arm_thermal_cam_nodelet_manager" /> 
   </include>
   
-  <include file="$(find hector_heat_detection)/launch/argo_heat_detection_nodelet.launch"/>
+  <include file="$(find hector_heat_detection)/launch/argo_heat_detection_nodelet.launch">
+    <arg name="percept_class_id" value="victim" /> 
+  </include>
 </launch>
 

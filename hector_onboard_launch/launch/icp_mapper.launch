@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+
+<launch>
+  
+  <arg name="online_mapping" default="false"/>
+  
+  <node name="mapper" type="mapper" pkg="ethzasl_icp_mapper" output="screen">
+    <remap from="cloud_in" to="/scan_cloud_aggregated" />
+    <param name="subscribe_scan" value="false" />
+    <param name="icpConfig" value="$(find hector_onboard_launch)/config/icp.yaml" />
+    <param name="inputFiltersConfig" value="$(find hector_onboard_launch)/config/input_filters.yaml" />
+    <param name="mapPostFiltersConfig" value="$(find hector_onboard_launch)/config/map_post_filters.yaml" />
+    <param name="odom_frame" value="/odom" />
+    <param name="map_frame" value="/world" />
+    <param name="useROSLogger" value="true" />
+    <param name="minOverlap" value="0.2" /> 
+    <param name="maxOverlapToMerge" value="0.99" /> 
+    <param name="minReadingPointCount" value="1000" /> 
+    <param name="minMapPointCount" value="1000" /> 
+    <param name="localizing" value="true" /> 
+    <param name="mapping" value="$(arg online_mapping)" />
+  </node>
+  
+  <!--<node name="correct_icp_pose_node" type="correct_icp_mapper_pose_node" pkg="correct_icp_mapper_pose" output="screen" />-->
+  
+  
+  <!--
+  <node type="point_cloud2_assembler" pkg="laser_assembler" name="assembler" ns="/scan_cloud">
+    <remap from="cloud" to="/scan_cloud_filtered"/>
+    <param name="max_clouds" type="int" value="400" />
+    <param name="fixed_frame" type="string" value="odom" />
+  </node>
+  
+  <node type="pointcloud_assembler_trigger_node" pkg="pointcloud_assembler_trigger" name="trigger" ns="/scan_cloud">
+    <remap from="aggregated" to="/scan_cloud_aggregated"/>
+  </node>-->
+  <!--  
+  <node pkg="vigir_cloud_to_planar_scan" type="periodic_cloud_aggregator_node" name="laserscan_to_aggregated_cloud" output="screen" respawn="true">
+    <remap from="cloud" to="/scan_cloud_filtered" />
+    <remap from="cloud_out" to="/scan_cloud_aggregated" />    
+    <param name="publish_frequency_hz" value="1" />
+    <param name="target_frame" value="odom" />
+  </node>
+  -->
+</launch>

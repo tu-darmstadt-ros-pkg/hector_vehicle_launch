@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<launch>
+  
+  <include file="$(find hector_five_pipes_detection)/launch/hector_five_pipes_detection.launch">
+  </include>
+  
+</launch>    

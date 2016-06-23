@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
   <rosparam command="load" file="$(find hector_nav_launch)/config/odom_filter_tracker.yaml" />
-  <node pkg="robot_localization" type="ekf_localization_node" name="odom_filter" output="screen">
+  <node pkg="robot_localization" type="ekf_localization_node" name="odom_filter" output="screen" respawn="true">
     <remap from="odometry/filtered" to="odom" />
   </node>
   

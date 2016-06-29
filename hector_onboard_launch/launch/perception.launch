@@ -4,5 +4,6 @@
   
   <include file="$(find hector_five_pipes_detection)/launch/hector_five_pipes_detection.launch">
   </include>
-  
+  <include file="$(find hector_barrel_detection_nodelet)/launch/hector_barrel_detection_nodelet.launch"></include>
+
 </launch>    

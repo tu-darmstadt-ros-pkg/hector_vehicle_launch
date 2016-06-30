@@ -1,7 +1,9 @@
 <?xml version="1.0"?>
 
 <launch>
-  
-   <node pkg="rqt_plot" type="rqt_plot" name="start_check_rqt_plot_co2" output="screen" args="/co2/data"/>
 
+
+  <include file="$(find hector_co2_processing )/launch/co2process.launch" />
+  <node pkg="rqt_gui" type="rqt_gui" name="start_check_rqt_plot_co2" output="screen" args="-s hector_co2_detection_plugin"/>
+    <!--  <node pkg="rqt_plot" type="rqt_plot" name="start_check_rqt_plot_co2" output="screen" args="/co2/data"/>-->
 </launch>

@@ -11,7 +11,7 @@
 
 
   
-  <node pkg="hector_mapping" type="hector_mapping" name="hector_mapping" output="screen" respawn="$(optenv RESPAWN false)">
+  <node pkg="hector_mapping" type="hector_mapping" name="hector_mapping" output="screen" respawn="true">
     
     <remap from="scan" to="$(arg scan_topic)" />
     <remap from="poseupdate" to="$(arg poseupdate_topic_name)"/>

@@ -2,8 +2,6 @@
 
 <launch>
 
-  <include file="$(find hector_vehicle_ui_launch)/launch/co2_check.launch" />
-
   <include file="$(find hector_vehicle_ui_launch)/launch/common_gui.launch" />
   <include file="$(find hector_vehicle_ui_launch)/launch/common_compressed_topics.launch" />
 

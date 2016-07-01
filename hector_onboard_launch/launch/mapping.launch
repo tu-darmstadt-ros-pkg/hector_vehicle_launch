@@ -2,7 +2,7 @@
 
 <launch>
   
-  <arg name="odom_frame" default="nav" />
+  <arg name="odom_frame" default="odom" />
   <arg name="poseupdate_topic_name" default="poseupdate"/>
   <arg name="pub_map_odom_transform" default="true"/>
   <arg name="scan_topic" default="laser1/scan"/>
@@ -52,13 +52,13 @@
   <node pkg="hector_map_server" type="hector_map_server" name="hector_map_server" ns="cost_map" output="screen">
   </node>-->
   
-  <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="hector_trajectory_server" output="screen">
-  </node>
+<!--  <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="hector_trajectory_server" output="screen">
+  </node>-->
 
 <!--  <node pkg="map_to_image_tools" type="map_to_image_node" name="map_to_image_node" output="screen" launch-prefix="nice -n 15">
   </node>-->
 
-  <node pkg="hector_geotiff" type="geotiff_node" name="hector_geotiff_node" output="screen" launch-prefix="nice -n 15">
+<!--  <node pkg="hector_geotiff" type="geotiff_node" name="hector_geotiff_node" output="screen" launch-prefix="nice -n 15">
     <remap from="map" to="scanmatcher_map" />
     <param name="map_file_path" type="string" value="$(find hector_geotiff)/maps" />
     <param name="map_file_base_name" type="string" value="" />
@@ -76,7 +76,7 @@
     <param name="BarrelMapWriter/class_id" value="barrel" />
 
      
-  </node>
+  </node>-->
 
 <!--  <remap from="cost_map/map" to="cost_map" />
   <node pkg="hector_geotiff" type="geotiff_node" name="hector_geotiff_node" ns="cost_map" output="screen" launch-prefix="nice -n 15">
@@ -88,7 +88,7 @@
 <!--  <node pkg="topic_tools" type="mux" name="map_mux" args="map cost_map scanmatcher_map" output="screen">
     <remap from="mux" to="map/mux"/>
   </node>-->
-  <node pkg="topic_tools" type="throttle" name="map_throttle" args="messages map 0.1 throttled_map" />
+<!--  <node pkg="topic_tools" type="throttle" name="map_throttle" args="messages map 0.1 throttled_map" />-->
 
   <!--  
   <group if="$(optenv USE_HEIGHT_MAPPING false)">

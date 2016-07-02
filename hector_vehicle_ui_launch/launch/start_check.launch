@@ -1,13 +1,16 @@
 <?xml version="1.0"?>
 
 <launch>
-   <node pkg="image_view" type="image_view" name="start_check_img_view_kinect_rgb" output="screen" args="image:=/hector_detection_aggregator_node/image_aggregated_percepts _image_transport:=compressed"/> 
 
-   <node pkg="image_view" type="image_view" name="start_check_img_view_heat_detection" output="screen" args="image:=/arm_thermal_cam/image"/>
+   <node pkg="image_view" type="image_view" name="start_check_img_view_kinect_rgb" output="screen" args="image:=/hector_detection_aggregator_node/image_aggregated_percepts _image_transport:=compressed"/>
+
+   <node pkg="image_view" type="image_view" name="start_check_img_view_heat_detection" output="screen" args="image:=/arm_thermal_cam/image_raw"/>
 
 
    <!--<node pkg="rqt_plot" type="rqt_plot" name="start_check_rqt_plot_co2" output="screen" args="/co2/data"/>-->
-   
+
    <include file="$(find hector_vehicle_ui_launch)/launch/co2_check.launch" />
+
+     <include file="$(find hector_hazmat_detection_data)/launch/test_hazmat_detection.launch" />
 
 </launch>

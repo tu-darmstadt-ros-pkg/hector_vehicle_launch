@@ -1,7 +1,11 @@
 <?xml version="1.0"?>
 
 <launch>
-
+  
+   <!--Relay map as no mapping node is producing it here-->
+   <node pkg="topic_tools" type="relay" name="relay_map_topic" args="/worldmodel_main/grid_map_low_level /scanmatcher_map" />
+   
+   
    <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform_node" output="screen">
      <param name="wait_for_datum" value="false" />
      <param name="broadcast_utm_transform" value="true" />

@@ -2,9 +2,25 @@
 
 <launch>
   
-  
+   <!--
+   Unneeded after using frame id changers below
    <node pkg="tf" type="static_transform_publisher" name="base_link_to_imu_broadcaster" args="0 0 0 0 0 0 base_link imu 100" />
    <node pkg="tf" type="static_transform_publisher" name="navsat_link_to_gps_broadcaster" args="0 0 0 0 0 0 navsat_link gps 100" />
+   --> 
+  
+   <node pkg="topic_field_tools" type="navsat_frame_id_changer" name="navsat_frame_id_changer">
+     <remap from="topic_in" to="/phone1/android/fix" />
+     <remap from="topic_out" to="/android/fix" />
+     <param name="new_frame_id" value="navsat_link" />
+   </node>
+   
+   <node pkg="topic_field_tools" type="imu_frame_id_changer" name="imu_frame_id_changer">
+     <remap from="topic_in" to="/phone1/android/imu" />
+     <remap from="topic_out" to="/android/imu" />
+     <param name="new_frame_id" value="base_link" />
+   </node>
+   
+   
   
    <!--Relay map as no mapping node is producing it here-->
    <node pkg="topic_tools" type="relay" name="relay_map_topic" args="/worldmodel_main/grid_map_low_level /scanmatcher_map" />
@@ -26,7 +42,7 @@
       <!--<param name="wait_for_datum" value="false"/>-->
 
       <remap from="/odometry/filtered" to="/odometry/global"/>
-      <remap from="/gps/fix" to="/phone1/android/fix"/>
+      <remap from="/gps/fix" to="/android/fix"/>
      
    </node>
    
@@ -45,7 +61,7 @@
 
       <param name="odom0" value="/odom"/>
       <param name="odom1" value="/odometry/gps"/>
-      <param name="imu0" value="/phone1/android/imu"/>
+      <param name="imu0" value="/android/imu"/>
 
       <rosparam param="odom0_config">[false, false, false,
                                       false, false, false,

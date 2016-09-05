@@ -8,6 +8,7 @@
   <arg name="scan_topic" default="laser1/scan"/>
   <arg name="use_tf_pose_start_estimate" default="false"/>
   <arg name="map_topic" default="scanmatcher_map" />
+  <arg name="map_with_known_poses" default="false"/>
 
 
   
@@ -19,6 +20,9 @@
     
     <param name="base_frame" value="base_stabilized" />
     <param name="odom_frame" value="$(arg odom_frame)"/>
+    <param name="map_with_known_poses" value="$(arg map_with_known_poses)"/>
+    
+    
 
     <param name="output_timing" value="false"/>
     
@@ -52,13 +56,13 @@
   <node pkg="hector_map_server" type="hector_map_server" name="hector_map_server" ns="cost_map" output="screen">
   </node>-->
   
-<!--  <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="hector_trajectory_server" output="screen">
-  </node>-->
+  <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="hector_trajectory_server" output="screen">
+  </node>
 
 <!--  <node pkg="map_to_image_tools" type="map_to_image_node" name="map_to_image_node" output="screen" launch-prefix="nice -n 15">
   </node>-->
 
-<!--  <node pkg="hector_geotiff" type="geotiff_node" name="hector_geotiff_node" output="screen" launch-prefix="nice -n 15">
+  <node pkg="hector_geotiff" type="geotiff_node" name="hector_geotiff_node" output="screen" launch-prefix="nice -n 15">
     <remap from="map" to="scanmatcher_map" />
     <param name="map_file_path" type="string" value="$(find hector_geotiff)/maps" />
     <param name="map_file_base_name" type="string" value="" />
@@ -76,7 +80,7 @@
     <param name="BarrelMapWriter/class_id" value="barrel" />
 
      
-  </node>-->
+  </node>
 
 <!--  <remap from="cost_map/map" to="cost_map" />
   <node pkg="hector_geotiff" type="geotiff_node" name="hector_geotiff_node" ns="cost_map" output="screen" launch-prefix="nice -n 15">

@@ -56,12 +56,15 @@
   <node pkg="hector_map_server" type="hector_map_server" name="hector_map_server" ns="cost_map" output="screen">
   </node>-->
   
+  <!--  
   <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="hector_trajectory_server" output="screen">
   </node>
+  -->
 
 <!--  <node pkg="map_to_image_tools" type="map_to_image_node" name="map_to_image_node" output="screen" launch-prefix="nice -n 15">
   </node>-->
 
+  <!--
   <node pkg="hector_geotiff" type="geotiff_node" name="hector_geotiff_node" output="screen" launch-prefix="nice -n 15">
     <remap from="map" to="scanmatcher_map" />
     <param name="map_file_path" type="string" value="$(find hector_geotiff)/maps" />
@@ -81,6 +84,7 @@
 
      
   </node>
+  -->
 
 <!--  <remap from="cost_map/map" to="cost_map" />
   <node pkg="hector_geotiff" type="geotiff_node" name="hector_geotiff_node" ns="cost_map" output="screen" launch-prefix="nice -n 15">

@@ -9,7 +9,8 @@
     <param name="geotiff_save_period" type="double" value="45" />
     <param name="robot_default_name" type="string" value="Hector" />
 
-    <param name="plugins" type="string" value="hector_barrel_geotiff_plugin/BarrelMapWriter hector_geotiff_plugins/TrajectoryMapWriter hector_worldmodel_geotiff_plugins/QRCodeMapWriter hector_worldmodel_geotiff_plugins/VictimMapWriter" />
+    <!--<param name="plugins" type="string" value="hector_barrel_geotiff_plugin/BarrelMapWriter hector_geotiff_plugins/TrajectoryMapWriter hector_worldmodel_geotiff_plugins/QRCodeMapWriter hector_worldmodel_geotiff_plugins/VictimMapWriter" />-->
+    <param name="plugins" type="string" value="hector_geotiff_plugins/TrajectoryMapWriter hector_worldmodel_geotiff_plugins/QRCodeMapWriter hector_worldmodel_geotiff_plugins/VictimMapWriter" />
     <param name="VictimMapWriter/draw_all_objects" value="false" />
     <param name="VictimMapWriter/class_id" value="victim" />
     <param name="QRCodeMapWriter/draw_all_objects" value="true" />
@@ -18,6 +19,8 @@
     <param name="BarrelMapWriter/barrel_threshold" value="0.8" /> 
     <param name="BarrelMapWriter/draw_all_objects" value="true" />
     <param name="BarrelMapWriter/class_id" value="barrel" />
+    
+    
 
   </node>
 </launch>

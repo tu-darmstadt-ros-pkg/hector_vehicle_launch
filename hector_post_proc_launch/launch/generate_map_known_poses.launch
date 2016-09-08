@@ -9,6 +9,10 @@
     <arg name="odom_frame" value="odom" />    
     <arg name="map_with_known_poses" value="true" />    
     <arg name="use_tf_pose_start_estimate" value="true"/>
-    
   </include>  
+  
+  <include file="$(find hector_onboard_launch)/launch/trajectory_server.launch"/>
+  
+  <include file="$(find hector_onboard_launch)/launch/geotiff_worldmodel.launch"/>
+  
 </launch>    

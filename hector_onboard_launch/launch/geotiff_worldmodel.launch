@@ -15,11 +15,12 @@
     <param name="VictimMapWriter/class_id" value="victim" />
     <param name="QRCodeMapWriter/draw_all_objects" value="true" />
     <param name="QRCodeMapWriter/class_id" value="qrcode" />
+    <!--
     <param name="BarrelMapWriter/pkg_path" value="$(find hector_barrel_geotiff_plugin)" />
     <param name="BarrelMapWriter/barrel_threshold" value="0.8" /> 
     <param name="BarrelMapWriter/draw_all_objects" value="true" />
     <param name="BarrelMapWriter/class_id" value="barrel" />
-    
+    -->
     
 
   </node>

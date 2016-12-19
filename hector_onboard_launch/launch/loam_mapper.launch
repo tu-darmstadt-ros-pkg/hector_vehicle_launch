@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+
+<launch>
+  <node pkg="loam_continuous" type="scanRegistration_ct" name="scanRegistration_ct" output="screen">
+    <remap from="/microstrain/imu" to="/imu/data" />
+    <remap from="/sync_scan_cloud_filtered" to="/scan_cloud_filtered" />    
+  </node>
+  <node pkg="loam_continuous" type="laserOdometry_ct" name="laserOdometry_ct" output="screen">
+  </node>
+  <node pkg="loam_continuous" type="laserMapping_ct" name="laserMapping_ct" output="screen">
+  </node>
+  <node pkg="loam_continuous" type="transformMaintenance_ct" name="transformMaintenance_ct" output="screen">
+  </node>
+</launch>
+
+<!-- 
+    <remap from="/microstrain/imu" to="/imu/data" />
+    <remap from="/sync_scan_cloud_filtered" to="/scan_cloud_filtered" /> -->

@@ -80,6 +80,7 @@
 <!--  <node name="robot_state_publisher" pkg="robot_state_publisher"
     type="robot_state_publisher" />-->
 
+<!-- 
   <node name="cartographer" pkg="cartographer_ros"
       type="cartographer_node" output="screen" >
     <rosparam subst_value="true">
@@ -97,6 +98,18 @@
       laser_max_range_m: 30.
       laser_missing_echo_ray_length_m: 5.
     </rosparam>
+  </node>-->
+
+  <node name="cartographer" pkg="cartographer_ros"
+      type="cartographer_node" args="
+          -configuration_directory $(find cartographer_hector_tracker)/configuration_files
+          -configuration_basename hector_tracker_spin_lidar.lua"
+      output="screen" >
+    <remap from="points2" to="scan_cloud_filtered" />
+    <remap from="imu" to="/imu/data" />
   </node>
+ 
+  <node name="rviz" pkg="rviz" type="rviz" required="true"
+      args="-d $(find cartographer_ros)/configuration_files/demo_3d.rviz" />
 
 </launch>

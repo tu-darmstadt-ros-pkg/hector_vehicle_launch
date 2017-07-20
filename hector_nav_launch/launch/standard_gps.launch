@@ -1,15 +1,12 @@
 <?xml version="1.0"?>
 
 <launch>
-  
-   <!--Relay map as no mapping node is producing it here-->
-   <node pkg="topic_tools" type="relay" name="relay_map_topic" args="/worldmodel_main/grid_map_low_level /scanmatcher_map" />
-   
+     
    
    <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform_node" output="screen">
      <param name="wait_for_datum" value="false" />
      <param name="broadcast_utm_transform" value="true" />
-     <rosparam param="datum">[50.396144, 8.546144, 0.0, map, base_link]</rosparam>
+     <rosparam param="datum">[50.396144, 8.546144, 0.0, world, base_link]</rosparam>
      
       <param name="frequency" value="30"/>
       <param name="delay" value="3"/>
@@ -32,10 +29,10 @@
       <param name="sensor_timeout" value="0.1"/>
       <param name="two_d_mode" value="false"/>
 
-      <param name="map_frame" value="map"/>
+      <param name="map_frame" value="world"/>
       <param name="odom_frame" value="odom"/>
       <param name="base_link_frame" value="base_link"/>
-      <param name="world_frame" value="map"/>
+      <param name="world_frame" value="world"/>
 
       <param name="transform_time_offset" value="0.0"/>
 

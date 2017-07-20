@@ -6,7 +6,7 @@
    <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform_node" output="screen">
      <param name="wait_for_datum" value="false" />
      <param name="broadcast_utm_transform" value="true" />
-     <rosparam param="datum">[50.396144, 8.546144, 0.0, world, base_link]</rosparam>
+     <rosparam param="datum">[51.399435435533036, 12.403014600276947, 0.0, world, base_link]</rosparam>
      
       <param name="frequency" value="30"/>
       <param name="delay" value="3"/>

@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <arg name="scenario_name" default="umad_default" />
+  <arg name="robot_type" default="argo_tracker" />
+  <arg name="lidar_filter_target_frame" default="odom"/>
+  
+  <!--Needed to make move_group not wait for controllers when postprocessing-->
+  <arg name="move_group_fake_execution" default="false"/>    
+
+  <!--
+  This launch file starts the default onboard setup for the robot that is independent of the scenario.
+  No drivers or scenario specific nodes should be started here, as this launch file is used both in
+  simulation and on real robot!
+  -->
+  
+  <!--LIDAR processing and navigation-->
+  <!--<include file="$(find hector_camera_joint_controller)/launch/argo_tracker_sensor_head.launch" />-->
+  
+  <include file="$(find argo_nav_launch)/launch/navigation.launch"/>
+  
+  <include file="$(find hector_argo_tracker_onboard_launch)/launch/lidar_proc/lidar_proc_$(arg robot_type).launch">
+    <arg name="lidar_filter_target_frame" value="$(arg lidar_filter_target_frame)"/>
+  </include>
+   
+  <!--TODO: Update-->
+  <!--<include file="$(find hector_thermal_self_filter)/launch/thermal_self_filter_argo_tracker.launch"/>  -->
+
+  <include file="$(find argo_onboard_launch)/launch/teleop.launch">
+    <arg name="joy_config" value="logitechF310fast" />
+  </include>
+  
+  <include file="$(find argo_onboard_launch)/launch/worldmodel.launch"/>
+  
+  <!-- Hazard mode map_combiner, path collision checker  -->
+  <include file="$(find elevation_mapping)/launch/argo_setup.launch"/>
+
+  <include file="$(find navigation_collision_checker)/launch/default.launch"/>
+
+  <include file="$(find flexbe_launch)/launch/behavior_onboard.launch"/>
+
+  
+  <!--<include file="$(find vigir_simple_joint_pan)/launch/joint_pan_sub.launch"/>-->
+
+  <!-- Standard heat detection (not used for ARGOS -->
+  <!--<include file="$(find hector_heat_detection)/launch/heat_detection.launch" />-->
+
+
+
+
+  <!--ETA for plan, should be able to remove-->
+  <include file="$(find argo_path_annotator)/launch/path_annotator.launch" />
+  
+  <!--Object Tracker-->
+  <include file="$(find hector_object_tracker)/launch/object_tracker_argos.launch"/>  
+
+  <!-- Topo Planner -->
+  <include file="$(find argo_toponav_launch)/launch/toponav_$(arg scenario_name).launch"/>
+  
+  <!--Mason-->
+  <!--@TODO: Insert correct Mason setup here-->
+
+  <!--@TODO: Generate occupancy grid map from Mason-->
+  <node pkg="topic_tools" type="relay" respawn="true" name="relay_worldmodel_map" args="/worldmodel_main/grid_map_low_level /map" output="screen" />
+  
+  <!--<node pkg="topic_tools" type="relay" respawn="true" name="relay_worldmodel_map" args="/mason/lidar_occ_grid /map" output="screen" />-->
+  
+  <!--
+  <include file="$(find argo_onboard_launch)/launch/mason.launch">
+    <arg name="scenario_name" value="$(arg scenario_name)"/>
+  </include>
+  <include file="$(find argo_onboard_launch)/launch/mason_human_detection.launch">
+    <arg name="scenario_name" value="$(arg scenario_name)"/>
+  </include>
+  -->
+  
+</launch>

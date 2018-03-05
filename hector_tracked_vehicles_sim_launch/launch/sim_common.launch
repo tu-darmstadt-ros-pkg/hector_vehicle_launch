@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+
+<launch>
+  
+  <!--Arguments used below-->
+  <arg name="arena" default="rc_2016_man1"/>
+  <arg name="gazebo_args" default=""/>
+  <arg name="lidar_filter_target_frame" default="odom"/>
+  <arg name="scenario_name" default="exploration"/>
+  <arg name="robot_type" default="hector_tracker" />
+  <!--  <arg name="robot_type" default="argo_tracker" />-->
+  <!--arg name="robot_type" default="argonaut_experimental" /-->
+
+  <arg name="spawn_x_pos" default="0.0" />
+  <arg name="spawn_y_pos" default="0.0" />
+  <arg name="spawn_z_pos" default="0.0" />
+  <arg name="spawn_roll"  default="0.0" />
+  <arg name="spawn_pitch" default="0.0" />    
+  <arg name="spawn_yaw"   default="3.14" />
+  
+  <!--
+  <arg name="spawn_arm_joint_0"   default="-0.0766" />
+  <arg name="spawn_arm_joint_1"   default="0.16" />
+  <arg name="spawn_arm_joint_2"   default="1.53" />
+  <arg name="spawn_sensor_head_pitch_joint"   default="1.6065" />
+  <arg name="spawn_sensor_head_yaw_joint"   default="0.0" />
+  <arg name="spawn_gripper_finger_servo_joint"   default="0.0" />
+  <arg name="spawn_gripper_roll_joint"   default="0.0" />
+  -->
+  <!--<include file="$(find hector_argo_tracker_sim_launch)/launch/relay_gazebo_gps.launch"/>-->
+
+  
+  <!--++++++++++++++++ Common setup between sim and real robot ++++++++++++++++-->
+  
+  
+  <include file="$(find hector_tracked_vehicles_launch)/launch/jasmine_2018_onboard.launch">
+    <arg name="scenario_name" value="$(arg scenario_name)"/>
+    <arg name="lidar_filter_target_frame" value="$(arg lidar_filter_target_frame)"/>
+    <arg name="robot_type" value="$(arg robot_type)"/>
+  </include>
+  
+  
+  <!--++++++++++++++++ Spawn world (gazebo specific) ++++++++++++++++-->
+  
+  
+  <!--Spawn robot into simulation-->
+    <include file="$(find hector_tracked_vehicles_description)/launch/spawn_jasmine_ugv_2018.launch">
+    <arg name="spawn_x_pos" value="$(arg spawn_x_pos)" />
+    <arg name="spawn_y_pos" value="$(arg spawn_y_pos)" />
+    <arg name="spawn_z_pos" value="$(arg spawn_z_pos)" />
+    <arg name="spawn_roll"  value="$(arg spawn_roll)" />
+    <arg name="spawn_pitch" value="$(arg spawn_pitch)" />
+    <arg name="spawn_yaw"   value="$(arg spawn_yaw)" />
+    
+    <!--
+    <arg name="spawn_arm_joint_0"   value="$(arg spawn_arm_joint_0)" />
+    <arg name="spawn_arm_joint_1"   value="$(arg spawn_arm_joint_1)" />
+    <arg name="spawn_arm_joint_2"   value="$(arg spawn_arm_joint_2)" />
+    <arg name="spawn_sensor_head_pitch_joint"   value="$(arg spawn_sensor_head_pitch_joint)" />
+    <arg name="spawn_sensor_head_yaw_joint"   value="$(arg spawn_sensor_head_yaw_joint)" />
+    <arg name="spawn_gripper_finger_servo_joint"   value="$(arg spawn_gripper_finger_servo_joint)" />
+    <arg name="spawn_gripper_roll_joint"   value="$(arg spawn_gripper_roll_joint)" />
+    -->
+  </include>
+  
+  <!--Load scenario-->
+  <include file="$(find hector_nist_arena_worlds)/launch/$(arg arena).launch">
+    <arg name="gazebo_args" value="$(arg gazebo_args)"/>
+  </include>
+ 
+  <!--++++++++++++++++ Additional sim related stuff ++++++++++++++++-->
+
+  <!-- Fake Docking Publisher -->
+  <node name="fake_docking_publisher"  pkg="argo_sim_scenario_scripts" type="fake_docking_publisher.py" output="screen"/>
+ 
+</launch>

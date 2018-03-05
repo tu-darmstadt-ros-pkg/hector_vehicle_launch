@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>hector_tracked_vehicles_sim_launch</name>
+  <version>0.0.0</version>
+  <description>The hector_tracked_vehicles_sim_launch package</description>
+
+  <maintainer email="kohlbrecher@sim.tu-darmstadt.de">Stefan Kohlbrecher</maintainer>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+  </export>
+</package>

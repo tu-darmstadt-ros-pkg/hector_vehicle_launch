@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<launch>
+  
+  <arg name ="arena" default="rc_2016_exp1"/>
+
+  <include file="$(find hector_tracked_vehicles_sim_launch)/launch/start_robocup_with_ground_truth.launch">
+    <arg name="arena" value="$(arg arena)"/>
+  </include>
+  
+</launch>

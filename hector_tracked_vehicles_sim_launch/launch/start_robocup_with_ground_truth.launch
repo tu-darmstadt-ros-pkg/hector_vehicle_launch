@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+
+<launch>
+  
+  <arg name="robot_type" default="argo_tracker" />
+  <arg name ="arena" default="rc_2016_man1"/>
+  <arg name="gazebo_args" default=""/>
+  
+  <arg name="spawn_x_pos" default="0.1" />
+  <arg name="spawn_y_pos" default="0.0" />
+  <arg name="spawn_z_pos" default="0.4" />
+  <arg name="spawn_roll"  default="0.0" />
+  <arg name="spawn_pitch" default="0.0" />    
+  <arg name="spawn_yaw"   default="3.14" />
+  
+  <!-- 
+  <arg name="spawn_arm_joint_0"   default="-0.0766" />
+  <arg name="spawn_arm_joint_1"   default="0.16" />
+  <arg name="spawn_arm_joint_2"   default="1.53" />
+  <arg name="spawn_sensor_head_pitch_joint"   default="1.6065" />
+  <arg name="spawn_sensor_head_yaw_joint"   default="0.0" />
+  <arg name="spawn_gripper_finger_servo_joint"   default="0.0" />
+  <arg name="spawn_gripper_roll_joint"   default="0.0" />
+  -->
+
+  <include file="$(find hector_tracked_vehicles_sim_launch)/launch/sim_common.launch">
+    <arg name="robot_type" value="$(arg robot_type)"/>
+    <arg name="arena" value="$(arg arena)"/>
+    <arg name="gazebo_args" value="$(arg gazebo_args)"/>
+    
+    <arg name="spawn_x_pos" default="$(arg spawn_x_pos)" />
+    <arg name="spawn_y_pos" default="$(arg spawn_y_pos)" />
+    <arg name="spawn_z_pos" default="$(arg spawn_z_pos)" />
+    <arg name="spawn_roll"  default="$(arg spawn_roll)" />
+    <arg name="spawn_pitch" default="$(arg spawn_pitch)" />    
+    <arg name="spawn_yaw"   default="$(arg spawn_yaw)" />
+    
+    <!--
+    <arg name="spawn_arm_joint_0"   value="$(arg spawn_arm_joint_0)" />
+    <arg name="spawn_arm_joint_1"   value="$(arg spawn_arm_joint_1)" />
+    <arg name="spawn_arm_joint_2"   value="$(arg spawn_arm_joint_2)" />
+    <arg name="spawn_sensor_head_pitch_joint"   value="$(arg spawn_sensor_head_pitch_joint)" />
+    <arg name="spawn_sensor_head_yaw_joint"   value="$(arg spawn_sensor_head_yaw_joint)" />
+    <arg name="spawn_gripper_finger_servo_joint"   value="$(arg spawn_gripper_finger_servo_joint)" />
+    <arg name="spawn_gripper_roll_joint"   value="$(arg spawn_gripper_roll_joint)" />
+    -->
+  </include>
+    
+  <node pkg="topic_tools" type="relay" respawn="true" name="relay_fake_cartographer_cloud" args="/scan_cloud_filtered /scan_matched_points2" output="screen" />
+    
+  <include file="$(find argo_robot_gazebo_description)/launch/publish_ground_truth_state.launch"/>   
+  
+</launch>

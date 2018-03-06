@@ -2,7 +2,7 @@
 
 <launch>
   
-  <arg name="robot_type" default="argo_tracker" />
+  <arg name="robot_type" default="jasmine_2018" />
   <arg name ="arena" default="rc_2016_man1"/>
   <arg name="gazebo_args" default=""/>
   

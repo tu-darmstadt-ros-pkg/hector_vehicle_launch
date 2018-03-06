@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+
+<launch>
+  
+ <!--
+  <arg name="lidar_filter_target_frame"   default="odom"/> 
+      
+  <include file="$(find hector_tracker_onboard_launch)/launch/lidar_proc_spin_lidar.launch">
+    <arg name="lidar_filter_target_frame"   value="$(arg lidar_filter_target_frame)"/>
+  </include>
+  -->
+  <!--  
+  <arg name="robot_description_lidar_filter" default="$(find xacro)/xacro -inorder $(find argo_tracker_description)/urdf/argo_tracker_default.urdf.xacro add_self_filter_geom:=true"/>  
+  <param name="robot_description_lidar_filter" command="$(arg robot_description_lidar_filter)" />  
+  -->  
+    
+  <arg name="lidar_filter_target_frame"   default="odom"/> 
+    
+  <arg name="scan_cloud_topic" default="/spin_laser/vlp16" />
+  <arg name="scan_cloud_filtered_topic" default="/scan_cloud_filtered" />
+  <arg name="robot_description_name" default="robot_description"/>
+  
+  <rosparam file="$(find hector_tracked_vehicles_self_filter)/config/self_filter_jasmine_2018.yaml" command="load" ns="default_self_filter_lidar" />   
+  
+  <!--  
+  <include file="$(find vigir_lidar_proc_launch)/launch/self_filter_lidar.launch">
+    <arg name="cloud_in_topic" value="$(arg scan_cloud_topic)"/>
+    <arg name="cloud_out_topic" value="scan_cloud_containment_filtered"/>
+    <arg name="robot_description_name" value="$(arg robot_description_name)"/>
+    <arg name="node_name_prefix" value="default_"/>
+  </include>  -->
+  
+  
+  <node pkg="nodelet" type="nodelet" name="default_self_filter_lidar"
+        args="load robot_self_filter/robot_self_filter_nodelet velodyne_nodelet_manager" output="screen"
+        respawn="true" >
+    <remap from="cloud_in" to="$(arg scan_cloud_topic)" />
+    <remap from="cloud_out" to="$(arg scan_cloud_filtered_topic)" />
+    <remap from="robot_description" to="$(arg robot_description_name)" />-->
+    <param name="sensor_frame" value=""/> <!--Do not set to only mask containment-->
+  </node>  
+  
+  
+  <!--
+  <rosparam file="$(find hector_tracked_vehicles_self_filter)/config/raycast_self_filter_argo_tracker.yaml" command="load" ns="raycast_self_filter_lidar" />   
+  
+  <node pkg="nodelet" type="nodelet" name="raycast_self_filter_lidar"
+        args="load robot_self_filter/robot_self_filter_nodelet velodyne_nodelet_manager" output="screen"
+        respawn="true">
+    <remap from="cloud_in" to="scan_cloud_containment_filtered" />
+    <remap from="cloud_out" to="$(arg scan_cloud_filtered_topic)" />
+    <param name="sensor_frame" value="spin_lidar_lidar_mount_link_fixed"/>
+  </node>
+  -->  
+  <!--
+    <arg name="cloud_in_topic" default="/scan_cloud"/>
+  <arg name="cloud_out_topic" default="/scan_cloud_filtered"/>
+  <arg name="robot_description_name" default="robot_description"/>
+  <arg name="node_name_prefix" default="" />
+  -->
+<!--
+  <node pkg="robot_self_filter" type="self_filter" name="raycast_self_filter_lidar" output="screen" respawn="true">
+    <remap from="cloud_in" to="scan_cloud_containment_filtered" />
+    <remap from="cloud_out" to="$(arg scan_cloud_filtered_topic)" />
+    <param name="sensor_frame" value="spin_lidar_lidar_mount_link_fixed"/>
+  </node>
+  -->
+  
+  
+  
+<!--  <node pkg="vigir_cloud_to_planar_scan" type="periodic_cloud_aggregator_node" name="laserscan_to_aggregated_cloud" output="screen" respawn="true">
+    <remap from="cloud" to="/scan_cloud_filtered" />
+    <remap from="cloud_out" to="/scan_cloud_aggregated" />    
+    <param name="publish_frequency_hz" value="0.5" />
+    <param name="target_frame" value="odom" />
+    <param name="publish_frame" value="spin_lidar_lidar_mount_link_fixed" />
+    <param name="actuated_joint_name" value="spin_lidar_spin_joint" />
+    <param name="actuated_joint_min_velocity" value="0.3" />
+  </node> --> 
+      
+</launch>

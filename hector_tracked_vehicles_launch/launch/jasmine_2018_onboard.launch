@@ -15,6 +15,19 @@
   simulation and on real robot!
   -->
   
+  <!--MoveIt!-->
+  <!--
+  <include file="$(find argo_planning_launch)/launch/move_group_$(arg robot_type).launch">
+    <arg name="fake_execution" value="$(arg move_group_fake_execution)"/>    
+  </include>
+  -->
+  <include file="$(find hector_jasmine_moveit_config)/launch/planning_context.launch">
+  </include>   
+  
+  
+  
+  
+  
   <!--LIDAR processing and navigation-->
   <!--<include file="$(find hector_camera_joint_controller)/launch/argo_tracker_sensor_head.launch" />-->
   

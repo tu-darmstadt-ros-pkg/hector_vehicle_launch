@@ -2,7 +2,7 @@
 
 <launch>
 
-  <arg name="scenario_name" default="umad_default" />
+  <arg name="scenario_name" default="exploration" />
   <arg name="robot_type" default="argo_tracker" />
   <arg name="lidar_filter_target_frame" default="odom"/>
   

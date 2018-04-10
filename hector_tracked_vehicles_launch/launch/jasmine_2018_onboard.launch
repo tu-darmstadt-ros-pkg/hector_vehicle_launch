@@ -31,11 +31,7 @@
   <!--LIDAR processing and navigation-->
   <!--<include file="$(find hector_camera_joint_controller)/launch/argo_tracker_sensor_head.launch" />-->
   
-  <include file="$(find argo_nav_launch)/launch/navigation.launch"/>
-  
-  <include file="$(find hector_sensor_proc_launch)/launch/jasmine_2018_vlp16_lidar_proc.launch">
-    <arg name="lidar_filter_target_frame" value="$(arg lidar_filter_target_frame)"/>
-  </include>
+ 
    
   <!--TODO: Update-->
   <!--<include file="$(find hector_thermal_self_filter)/launch/thermal_self_filter_argo_tracker.launch"/>  -->
@@ -47,30 +43,9 @@
   <!--<include file="$(find argo_onboard_launch)/launch/worldmodel.launch"/>-->
   <!--  <node pkg="vigir_worldmodel_main" type="worldmodel_main" name="worldmodel_main" output="screen" launch-prefix="gdb -ex run iiargs">-->
 
-  <node pkg="vigir_worldmodel_server" type="worldmodel_server_node" name="worldmodel_main" output="screen" respawn="true">
-    <!--<remap from="scan_cloud" to="scan_cloud_filtered"/>-->
-    <param name="aggregator_frames" value="world odom base_link " />
-    <param name="root_frame" value="world" />
-    
-    <!--Will only start worldmodel when tf transforms between these and root are available-->
-    <param name="required_frames" value="base_link" />
-    
-    <param name="octomap_save_folder" value="$(find vigir_worldmodel_server)/maps" />
-    <param name="use_external_octomap" value="false" />
-    <remap from="~/octomap_external_update" to="/move_group/octomap"/>
-    <!--<remap from="syscommand" to="/flor/worldmodel/syscommand" /> -->
-    
-    <param name="publish_frames_as_poses" value="true" />
-  </node>
 
 
-  
-  <!-- Hazard mode map_combiner, path collision checker  -->
-  <include file="$(find elevation_mapping)/launch/argo_setup.launch"/>
 
-  <include file="$(find navigation_collision_checker)/launch/default.launch"/>
-
-  <include file="$(find flexbe_launch)/launch/behavior_onboard.launch"/>
 
   
   <!--<include file="$(find vigir_simple_joint_pan)/launch/joint_pan_sub.launch"/>-->
@@ -81,20 +56,11 @@
 
 
 
-  <!--ETA for plan, should be able to remove-->
-  <include file="$(find argo_path_annotator)/launch/path_annotator.launch" />
-  
-  <!--Object Tracker-->
-  <include file="$(find hector_object_tracker)/launch/object_tracker_argos.launch"/>  
-
-  <!-- Topo Planner -->
-  <include file="$(find argo_toponav_launch)/launch/toponav_$(arg scenario_name).launch"/>
   
   <!--Mason-->
   <!--@TODO: Insert correct Mason setup here-->
 
-  <!--@TODO: Generate occupancy grid map from Mason-->
-  <node pkg="topic_tools" type="relay" respawn="true" name="relay_worldmodel_map" args="/worldmodel_main/grid_map_low_level /map" output="screen" />
+  <!--@TODO: Generate occupancy grid map from Mason-->c
   
   <!--<node pkg="topic_tools" type="relay" respawn="true" name="relay_worldmodel_map" args="/mason/lidar_occ_grid /map" output="screen" />-->
   

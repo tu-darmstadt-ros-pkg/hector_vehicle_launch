@@ -37,16 +37,23 @@
     <arg name="lidar_filter_target_frame" value="$(arg lidar_filter_target_frame)"/>
   </include>
    
-  <!--TODO: Update-->
+  <!--Thermal self filter, not required for RoboCup task scenarios-->
   <!--<include file="$(find hector_thermal_self_filter)/launch/thermal_self_filter_argo_tracker.launch"/>  -->
 
+  <!--Teleop-->
+  <!--
   <include file="$(find argo_onboard_launch)/launch/teleop.launch">
     <arg name="joy_config" value="logitechF310fast" />
   </include>
+  -->
+  <include file="$(find hector_joy_teleop)/launch/logitech_f310_wired.launch"/>
   
-  <!--<include file="$(find argo_onboard_launch)/launch/worldmodel.launch"/>-->
-  <!--  <node pkg="vigir_worldmodel_main" type="worldmodel_main" name="worldmodel_main" output="screen" launch-prefix="gdb -ex run iiargs">-->
-
+  
+  
+  
+  <!--Sensor head control-->
+  <include file="$(find hector_camera_joint_controller)/launch/hector_pan_tilt_sensor_head_jasmine2018.launch"/>
+  
   <node pkg="vigir_worldmodel_server" type="worldmodel_server_node" name="worldmodel_main" output="screen" respawn="true">
     <!--<remap from="scan_cloud" to="scan_cloud_filtered"/>-->
     <param name="aggregator_frames" value="world odom base_link " />

@@ -13,19 +13,19 @@
   -->
   
   
-  <arg name="rgbd_camera_nodelet_manager_name" default="arm_rgbd_cam_nodelet_manager" />
+  <arg name="rgbd_camera_nodelet_manager_name" default="/arm_rgbd_cam/arm_rgbd_cam_nodelet_manager" />
   
   <arg name="rgbd_camera_ns" default="arm_rgbd_cam" />
   <arg name="rgbd_image_topic" default="rgb/image_rect_color" /> 
   
-    
-  <node name="qrcode_detection_rgbd_camera" pkg="nodelet" type="nodelet" args="load hector_qrcode_detection/qrcode_detection $(arg rgbd_camera_nodelet_manager_name)">
-    <remap from="/image" to="$(arg rgbd_camera_ns)/$(arg rgbd_image_topic)" />
-    <remap from="/camera_info" to="$(arg rgbd_camera_ns)/rgb/camera_info" />
-    <remap from="/image_percept" to="worldmodel/image_percept" />
-    <remap from="/perception/image_percept" to="/detection/visual_detection" />
+  
+  <!-- R200 nodelet setup launches everything in the rgbd cam namespace, hence the complicated remapping -->  
+  <node name="qrcode_detection_rgbd_camera" pkg="nodelet" type="nodelet" args="load hector_qrcode_detection/qrcode_detection $(arg rgbd_camera_nodelet_manager_name)" respawn="true">
+    <remap from="$(arg rgbd_camera_ns)/image" to="$(arg rgbd_camera_ns)/$(arg rgbd_image_topic)" />
+    <remap from="$(arg rgbd_camera_ns)/image_percept" to="worldmodel/image_percept" />
+    <remap from="/$(arg rgbd_camera_ns)/perception/image_percept" to="/detection/visual_detection" />
   </node>
-
+  
   <include file="$(find hector_argo_tracker_onboard_launch)/launch/start_check_rc17.launch">
     <arg name="camera_ns" default="$(arg rgbd_camera_ns)" />
     <arg name="image_topic" default="$(arg rgbd_image_topic)" />    

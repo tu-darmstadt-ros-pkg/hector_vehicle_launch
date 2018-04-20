@@ -39,6 +39,9 @@
     <arg name="robot_type" value="$(arg robot_type)"/>
   </include>
   
+  <include file="$(find hector_tracked_vehicles_launch)/launch/$(arg robot_type)_vision.launch">
+  </include>
+  
   
   <!--++++++++++++++++ Spawn world (gazebo specific) ++++++++++++++++-->
   

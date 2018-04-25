@@ -24,6 +24,10 @@
     <remap from="$(arg rgbd_camera_ns)/image" to="$(arg rgbd_camera_ns)/$(arg rgbd_image_topic)" />
     <remap from="$(arg rgbd_camera_ns)/image_percept" to="worldmodel/image_percept" />
     <remap from="/$(arg rgbd_camera_ns)/perception/image_percept" to="/detection/visual_detection" />
+    
+    <param name="enabled" value="false" />
+    <remap from="/$(arg rgbd_camera_ns)/enabled_status" to="/startup_check/qrcode_detection/enabled_status" />
+    <remap from="/$(arg rgbd_camera_ns)/enabled" to="/startup_check/enabled" />
   </node>
   
   <include file="$(find hector_argo_tracker_onboard_launch)/launch/start_check_rc17.launch">

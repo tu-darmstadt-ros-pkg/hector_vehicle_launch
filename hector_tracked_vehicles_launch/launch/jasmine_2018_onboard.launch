@@ -34,7 +34,6 @@
   <include file="$(find argo_nav_launch)/launch/navigation.launch"/>
   
   <include file="$(find hector_sensor_proc_launch)/launch/jasmine_2018_vlp16_lidar_proc.launch">
-    <arg name="lidar_filter_target_frame" value="$(arg lidar_filter_target_frame)"/>
   </include>
    
   <!--Thermal self filter, not required for RoboCup task scenarios-->

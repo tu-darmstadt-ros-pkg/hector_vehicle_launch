@@ -31,7 +31,16 @@
   <!--LIDAR processing and navigation-->
   <!--<include file="$(find hector_camera_joint_controller)/launch/argo_tracker_sensor_head.launch" />-->
   
-  <include file="$(find argo_nav_launch)/launch/navigation.launch"/>
+  <!--<include file="$(find argo_nav_launch)/launch/navigation.launch"/>-->
+  
+  <node pkg="move_base_lite_server" type="move_base_lite_node" name="move_base_lite_node" output="screen" respawn="true">   
+  </node>
+  
+
+  <include file="$(find vehicle_controller)/launch/jasmine_controller.launch"/>  
+  
+  
+  
   
   <include file="$(find hector_sensor_proc_launch)/launch/jasmine_2018_vlp16_lidar_proc.launch">
   </include>

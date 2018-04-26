@@ -53,22 +53,26 @@
   <!--Sensor head control-->
   <include file="$(find hector_camera_joint_controller)/launch/hector_pan_tilt_sensor_head_jasmine2018.launch"/>
   
+  
   <node pkg="vigir_worldmodel_server" type="worldmodel_server_node" name="worldmodel_main" output="screen" respawn="true">
-    <!--<remap from="scan_cloud" to="scan_cloud_filtered"/>-->
+      
+    <remap from="scan_cloud" to="scan_cloud_trash" />
+    <remap from="scan_cloud_filtered" to="scan_cloud_filtered_trash" />    
+    
     <param name="aggregator_frames" value="world odom base_link " />
     <param name="root_frame" value="world" />
     
-    <!--Will only start worldmodel when tf transforms between these and root are available-->
     <param name="required_frames" value="base_link" />
     
     <param name="octomap_save_folder" value="$(find vigir_worldmodel_server)/maps" />
     <param name="use_external_octomap" value="false" />
     <remap from="~/octomap_external_update" to="/move_group/octomap"/>
-    <!--<remap from="syscommand" to="/flor/worldmodel/syscommand" /> -->
     
     <param name="publish_frames_as_poses" value="true" />
   </node>
 
+  
+  <include file="$(find grid_map_2d_mapper)/launch/jasmine_2018.launch"/>
 
   
   <!-- Hazard mode map_combiner, path collision checker  -->
@@ -100,7 +104,7 @@
   <!--@TODO: Insert correct Mason setup here-->
 
   <!--@TODO: Generate occupancy grid map from Mason-->
-  <node pkg="topic_tools" type="relay" respawn="true" name="relay_worldmodel_map" args="/worldmodel_main/grid_map_low_level /map" output="screen" />
+  <!--<node pkg="topic_tools" type="relay" respawn="true" name="relay_worldmodel_map" args="/worldmodel_main/grid_map_low_level /map" output="screen" />-->
   
   <!--<node pkg="topic_tools" type="relay" respawn="true" name="relay_worldmodel_map" args="/mason/lidar_occ_grid /map" output="screen" />-->
   

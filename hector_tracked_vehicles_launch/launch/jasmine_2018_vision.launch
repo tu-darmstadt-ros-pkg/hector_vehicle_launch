@@ -31,6 +31,7 @@
   </node>
   
   <include file="$(find hector_argo_tracker_onboard_launch)/launch/start_check_rc17.launch">
+    <arg name="manager" default="$(arg rgbd_camera_nodelet_manager_name)"/>
     <arg name="camera_ns" default="$(arg rgbd_camera_ns)" />
     <arg name="image_topic" default="$(arg rgbd_image_topic)" />    
   </include>

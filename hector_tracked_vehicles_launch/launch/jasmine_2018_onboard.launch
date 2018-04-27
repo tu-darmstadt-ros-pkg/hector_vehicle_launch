@@ -21,8 +21,11 @@
     <arg name="fake_execution" value="$(arg move_group_fake_execution)"/>    
   </include>
   -->
-  <include file="$(find hector_jasmine_moveit_config)/launch/planning_context.launch">
-  </include>   
+  <!--<include file="$(find hector_jasmine_moveit_config)/launch/planning_context.launch">
+  </include>  --> 
+  <include file="$(find hector_jasmine_moveit_config)/launch/move_group.launch">
+    <arg name="fake_execution" value="$(arg move_group_fake_execution)"/>
+  </include>
   
   
   

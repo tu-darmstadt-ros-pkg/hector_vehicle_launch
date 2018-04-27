@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<launch>
+  <!-- exp detectors -->
+  <include file="$(find hector_barrels_detection)/launch/barrels_detection_theta.launch">
+  </include>
+</launch>

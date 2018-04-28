@@ -2,10 +2,14 @@
 
 <launch>
   
-  <arg name ="arena" default="rc_2016_exp5"/>
+  <arg name ="arena" default="rcgo_2018_arena_exp5"/>
 
   <include file="$(find hector_tracked_vehicles_sim_launch)/launch/start_robocup_with_ground_truth.launch">
     <arg name="arena" value="$(arg arena)"/>
+    
+    <arg name="spawn_x_pos" value="4.4" />
+    <arg name="spawn_y_pos" value="1.0" />
+    <arg name="spawn_z_pos" value="0.05" />
   </include>
   
 </launch>

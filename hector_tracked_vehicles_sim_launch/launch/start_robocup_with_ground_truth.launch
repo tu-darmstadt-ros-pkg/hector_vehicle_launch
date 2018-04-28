@@ -5,6 +5,7 @@
   <arg name="robot_type" default="jasmine_2018" />
   <arg name ="arena" default="rc_2016_man1"/>
   <arg name="gazebo_args" default=""/>
+  <arg name="traversability_mapping" default="false"/>
   
   <arg name="spawn_x_pos" default="0.1" />
   <arg name="spawn_y_pos" default="0.0" />
@@ -24,6 +25,7 @@
   -->
 
   <include file="$(find hector_tracked_vehicles_sim_launch)/launch/sim_common.launch">
+    <arg name="traversability_mapping" default="$(arg traversability_mapping)"/>  
     <arg name="robot_type" value="$(arg robot_type)"/>
     <arg name="arena" value="$(arg arena)"/>
     <arg name="gazebo_args" value="$(arg gazebo_args)"/>

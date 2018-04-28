@@ -5,6 +5,7 @@
   <arg name ="arena" default="rcgo_2018_arena_exp5"/>
 
   <include file="$(find hector_tracked_vehicles_sim_launch)/launch/start_robocup_with_ground_truth.launch">
+    <arg name="traversability_mapping" value="true"/>
     <arg name="arena" value="$(arg arena)"/>
     
     <arg name="spawn_x_pos" value="4.4" />

@@ -14,4 +14,13 @@
   
   <node pkg="ethz_grid_map_proc" type="ethz_grid_map_proc_node" name="ethz_grid_map_proc" output="screen"/>
   
+  <node name="grid_map_2d_mapper" type="grid_map_2d_mapper_node" pkg="grid_map_2d_mapper" output="screen" respawn="true">
+      <param name="min_height" value="0.25"/>    
+      <param name="max_height" value="1.0"/>
+      <param name="range_min" value="0.2"/>
+      <param name="target_frame" value="base_stabilized"/>
+      <remap from="/map" to="/obstacle_map" />
+      <remap from="/map_throttled" to="/obstacle_map_throttled" />
+  </node>
+  
 </launch>

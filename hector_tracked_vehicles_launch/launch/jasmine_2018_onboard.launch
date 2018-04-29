@@ -90,7 +90,7 @@
   </group>
   
   <group if="$(arg traversability_mapping)">
-    <include file="$(find hector_tracked_vehicles_launch)/launch/jasmine_2018_traversibility_estimation.launch"/>
+    <!--<include file="$(find hector_tracked_vehicles_launch)/launch/jasmine_2018_traversibility_estimation.launch"/>-->
   </group>
   
 

@@ -96,9 +96,12 @@
 
   
   <!-- Hazard mode map_combiner, path collision checker  -->
-  <include file="$(find elevation_mapping)/launch/argo_setup.launch"/>
+<!--  <include file="$(find elevation_mapping)/launch/argo_setup.launch"/>
+  
+      <node pkg="navigation_collision_checker" type="path_collision_checker_node" name="path_collision_checker_node" output="screen" respawn="true">
+    </node>  -->
 
-  <include file="$(find navigation_collision_checker)/launch/default.launch"/>
+<!--  <include file="$(find navigation_collision_checker)/launch/default.launch"/>-->
 
   <include file="$(find flexbe_launch)/launch/behavior_onboard.launch"/>
 

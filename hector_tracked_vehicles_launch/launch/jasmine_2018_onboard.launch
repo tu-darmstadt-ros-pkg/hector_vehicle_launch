@@ -115,13 +115,13 @@
 
 
   <!--ETA for plan, should be able to remove-->
-  <include file="$(find argo_path_annotator)/launch/path_annotator.launch" />
+  <!--<include file="$(find argo_path_annotator)/launch/path_annotator.launch" />-->
   
   <!--Object Tracker-->
   <include file="$(find hector_object_tracker)/launch/object_tracker_argos.launch"/>  
 
   <!-- Topo Planner -->
-  <include file="$(find argo_toponav_launch)/launch/toponav_$(arg scenario_name).launch"/>
+  <!--<include file="$(find argo_toponav_launch)/launch/toponav_$(arg scenario_name).launch"/>-->
   
   <!--Mason-->
   <!--@TODO: Insert correct Mason setup here-->

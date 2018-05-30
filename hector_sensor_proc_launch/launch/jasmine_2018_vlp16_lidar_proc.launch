@@ -2,9 +2,11 @@
 
 <launch>
   
-  <arg name="robot_description_raycast_filter" default="$(find xacro)/xacro --inorder $(find hector_tracked_vehicles_description)/urdf/jasmine_2018_ugv.urdf.xacro add_self_filter_geom:=true"/>  
+  <arg name="robot_description_containment_filter" default="$(find xacro)/xacro --inorder $(find hector_tracked_vehicles_description)/urdf/jasmine_2018_ugv.urdf.xacro add_containment_self_filter_geom:=true add_default_geom:=false"/>  
+  <param name="robot_description_containment_filter" command="$(arg robot_description_containment_filter)" />  
+  
+  <arg name="robot_description_raycast_filter" default="$(find xacro)/xacro --inorder $(find hector_tracked_vehicles_description)/urdf/jasmine_2018_ugv.urdf.xacro add_raycast_self_filter_geom:=true add_default_geom:=false"/>  
   <param name="robot_description_raycast_filter" command="$(arg robot_description_raycast_filter)" />  
-       
     
   <arg name="scan_cloud_topic" default="/spin_laser/vlp16" />
   <arg name="scan_cloud_filtered_topic" default="/scan_cloud_filtered" />
@@ -17,7 +19,7 @@
         respawn="true" >
     <remap from="cloud_in" to="$(arg scan_cloud_topic)" />
     <remap from="cloud_out" to="scan_cloud_containment_filtered" />
-    <!--<remap from="robot_description" to="$(arg robot_description_name)" />-->
+    <remap from="/robot_description" to="robot_description_containment_filter"/>
     <param name="sensor_frame" value=""/> <!--Do not set to only mask containment-->
   </node>  
   

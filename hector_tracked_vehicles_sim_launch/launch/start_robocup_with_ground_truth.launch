@@ -4,7 +4,7 @@
   
   <arg name="robot_type" default="jasmine_2018" />
   <arg name ="arena" default="rc_2016_man1"/>
-  <arg name="gazebo_args" default=""/>
+  <arg name="gazebo_args" default="-u"/>
   <arg name="traversability_mapping" default="false"/>
   
   <arg name="spawn_x_pos" default="0.1" />

@@ -4,7 +4,7 @@
   
   <!--Arguments used below-->
   <arg name="arena" default="rc_2016_man1"/>
-  <arg name="gazebo_args" default=""/>
+  <arg name="gazebo_args" default="-u"/>
   <arg name="lidar_filter_target_frame" default="odom"/>
   <arg name="scenario_name" default="exploration"/>
   <arg name="robot_type" default="hector_tracker" />

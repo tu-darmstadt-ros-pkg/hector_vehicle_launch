@@ -8,7 +8,7 @@
   <arg name="lidar_filter_target_frame" default="odom"/>
   <arg name="scenario_name" default="exploration"/>
   <arg name="robot_type" default="hector_tracker" />
-  <arg name="traversability_mapping" default="false"/>
+  <arg name="traversability_mapping" default="true"/>
   <!--  <arg name="robot_type" default="argo_tracker" />-->
   <!--arg name="robot_type" default="argonaut_experimental" /-->
 
@@ -39,6 +39,9 @@
     <arg name="scenario_name" value="$(arg scenario_name)"/>
     <arg name="lidar_filter_target_frame" value="$(arg lidar_filter_target_frame)"/>
     <arg name="robot_type" value="$(arg robot_type)"/>
+  </include>
+  
+  <include file="$(find hector_tracked_vehicles_launch)/launch/$(arg robot_type)_traversibility_estimation.launch">
   </include>
   
   <include file="$(find hector_tracked_vehicles_launch)/launch/$(arg robot_type)_vision.launch">

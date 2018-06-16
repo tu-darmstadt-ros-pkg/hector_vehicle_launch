@@ -61,6 +61,8 @@
   -->
   <include file="$(find hector_joy_teleop)/launch/logitech_f310_wired.launch"/>
   
+  <include file="$(find moveit_joystick_control)/launch/jasmine_joystick.launch"/>
+  
   
   
   

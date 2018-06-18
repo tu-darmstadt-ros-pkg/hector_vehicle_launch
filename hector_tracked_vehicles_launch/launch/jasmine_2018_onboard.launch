@@ -41,6 +41,10 @@
   <node pkg="move_base_lite_server" type="move_base_lite_node" name="move_base_lite_node" output="screen" respawn="true">   
   </node>
   
+  <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="hector_trajectory_server" output="screen" respawn="true">
+    <param name="target_frame_name" value="world" />
+  </node>
+  
 
   <include file="$(find vehicle_controller)/launch/jasmine_controller.launch"/>  
   

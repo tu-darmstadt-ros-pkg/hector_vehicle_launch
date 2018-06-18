@@ -73,7 +73,7 @@
   <node pkg="vigir_worldmodel_server" type="worldmodel_server_node" name="worldmodel_main" output="screen" respawn="true">
       
     <remap from="scan_cloud" to="scan_cloud_trash" />
-    <remap from="scan_cloud_filtered" to="scan_cloud_filtered_trash" />    
+    <remap from="scan_cloud_filtered" to="scan_matched_points2" />    
     
     <param name="aggregator_frames" value="world odom base_link " />
     <param name="root_frame" value="world" />
@@ -85,6 +85,11 @@
     <remap from="~/octomap_external_update" to="/move_group/octomap"/>
     
     <param name="publish_frames_as_poses" value="true" />
+    
+    <!--
+    <remap from="get_distance_to_obstacle" to="/move_group/get_distance_to_obstacle" />
+    <remap from="visualization_marker_array" to="worldmodel/visualization_marker_array" />
+    -->
   </node>
 
   <group unless="$(arg traversability_mapping)">
@@ -122,7 +127,7 @@
   <!--<include file="$(find argo_path_annotator)/launch/path_annotator.launch" />-->
   
   <!--Object Tracker-->
-  <include file="$(find hector_object_tracker)/launch/object_tracker_argos.launch"/>  
+  <include file="$(find hector_object_tracker)/launch/object_tracker_rc2018.launch"/>  
 
   <!-- Topo Planner -->
   <!--<include file="$(find argo_toponav_launch)/launch/toponav_$(arg scenario_name).launch"/>-->

@@ -2,8 +2,8 @@
 
 <launch>
   <!-- exp detectors -->
-<!--  <include file="$(find hector_barrels_detection)/launch/barrels_detection_camera360.launch">
-  </include>-->
+  <include file="$(find hector_barrels_detection)/launch/barrels_detection_camera360.launch">
+  </include>
   
   <!-- hazmat -->
   <include file="$(find hector_fast_hazmat_detection)/launch/hazmat_detection_360.launch">

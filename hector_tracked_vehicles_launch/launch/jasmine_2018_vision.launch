@@ -5,12 +5,13 @@
   
   <!--  
   <arg name="rgb_camera_ns" default="arm_zoom_cam" /> 
-  <arg name="rgb_image_topic" default="image_raw" /> 
+  <arg name="rgb_image_topic" default="image_raw" />
+  <arg name="rgb_camera_nodelet_manager_name" default="arm_zoom_cam_nodelet_manager" />
+  -->
   <arg name="thermal_camera_ns" default="arm_thermal_cam" /> 
   <arg name="thermal_image_topic" default="image_raw" /> 
   
-  <arg name="rgb_camera_nodelet_manager_name" default="arm_zoom_cam_nodelet_manager" />
-  -->
+
   
   
   <arg name="rgbd_camera_nodelet_manager_name" default="/arm_rgbd_cam/arm_rgbd_cam_nodelet_manager" />
@@ -76,18 +77,17 @@
     <arg name="thermal_image_topic" value="$(arg thermal_image_topic)" /> 
   </include>-->
   
-  <!--Continuous monitoring-->
-  <!--  
+  <!--Continuous monitoring-->  
   <include file="$(find argo_heat_image_translation)/launch/heat_image_translation_nodelet.launch">
     <arg name="thermal_camera_ns" value="$(arg thermal_camera_ns)" /> 
-    <arg name="thermal_image_topic" value="$(arg thermal_image_topic)" /> 
-  </include>-->
+    <arg name="thermal_image_topic" value="$(arg thermal_image_topic)" />
+    <arg name="rotate_mapped_image" value="false" />   
+  </include>
   
-  <!--  
+  
   <include file="$(find hector_heat_detection)/launch/argo_heat_detection_nodelet.launch">
     <arg name="thermal_camera_ns" value="$(arg thermal_camera_ns)" />   
   </include>
-  -->
   
   <!--Valve proc-->
 <!--  <include file="$(find argo_vision_detect_valve)/launch/valve_detector.launch">

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<launch>
+  
+  <arg name ="arena" default="tuda_maschinenhaus_scenario"/>
+
+  <include file="$(find hector_tracked_vehicles_sim_launch)/launch/start_robocup_with_ground_truth.launch">
+    <arg name="arena" value="$(arg arena)"/>
+    <arg name="spawn_x_pos" value="0.65" />
+    <arg name="spawn_y_pos" value="-6.4" />
+    <arg name="spawn_z_pos" value="0.95" />
+    <arg name="spawn_yaw"   value="-1.57" />
+  </include>
+  
+</launch>

@@ -47,6 +47,11 @@
   <include file="$(find hector_tracked_vehicles_launch)/launch/$(arg robot_type)_vision.launch">
   </include>
   
+  <!--
+  <include file="$(find jasmine_robot_bringup)/launch/insta360/insta360_projections.launch">
+    <arg name="calibration_name" default="insta360_gazebo"/>
+  </include>
+  -->
   
   <!--++++++++++++++++ Spawn world (gazebo specific) ++++++++++++++++-->
   

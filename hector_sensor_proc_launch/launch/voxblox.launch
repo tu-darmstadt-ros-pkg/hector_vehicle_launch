@@ -10,6 +10,7 @@
     <param name="verbose" value="false" />
     <param name="color_mode" value="color" /> <!-- normals, color -->
     <param name="method" value="simple" /> <!-- simple, fast, merged -->
+    <param name="use_const_weight" value="true" />
     
     <param name="tsdf_voxel_size" value="0.025" />
     <param name="tsdf_voxels_per_side" value="16" />

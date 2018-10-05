@@ -20,6 +20,13 @@ traversability_map_filters:
       first_window_radius: 0.1
       second_window_radius: 0.1
       critical_cell_number: 4
+  - name: negativeStepFilter
+    type: traversabilityFilters/NegativeStepFilter
+    params:
+      map_type: traversability_negative_step
+      max_allowed_step_depth: 0.15
+      sample_distance_cells: 10
+      critical_cell_number: 3      
   - name: roughnessFilter
     type: traversabilityFilters/RoughnessFilter
     params:
@@ -30,7 +37,7 @@ traversability_map_filters:
     type: gridMapFilters/MathExpressionFilter
     params:
       output_layer: traversability
-      expression: (1.0 / 3.0) * (traversability_slope + traversability_step + traversability_roughness)
+      expression:  (1.0/2.0) * (((1.0 / 3.0) * (traversability_slope + traversability_step + traversability_roughness)) + traversability_negative_step * 0.25)
   - name: deletionFilter
     type: gridMapFilters/DeletionFilter
     params:

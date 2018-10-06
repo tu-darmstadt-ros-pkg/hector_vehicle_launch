@@ -39,7 +39,7 @@
   <!--<include file="$(find argo_nav_launch)/launch/navigation.launch"/>-->
   
   <node pkg="move_base_lite_server" type="move_base_lite_node" name="move_base_lite_node" output="screen" respawn="true">   
-    <param name="lethal_dist" value="0.2"/>
+    <param name="lethal_dist" value="2.0"/>
     <param name="penalty_weight" value="0.1"/>
   </node>
   

@@ -24,7 +24,7 @@ traversability_map_filters:
     type: traversabilityFilters/NegativeStepFilter
     params:
       map_type: traversability_negative_step
-      max_allowed_step_depth: 0.15
+      max_allowed_step_depth: 0.11
       sample_distance_cells: 10
       critical_cell_number: 3      
   - name: roughnessFilter

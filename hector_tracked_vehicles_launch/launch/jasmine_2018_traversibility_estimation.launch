@@ -12,7 +12,9 @@
 <!--    <param name="elevation_map/path_to_bag" value="$(find traversability_estimation)/data/map.bag"/>-->
   </node>
   
-  <node pkg="ethz_grid_map_proc" type="ethz_grid_map_proc_node" name="ethz_grid_map_proc" output="screen"/>
+  <node pkg="ethz_grid_map_proc" type="ethz_grid_map_proc_node" name="ethz_grid_map_proc" output="screen">
+   <param name="unknown_space_to_free" value="true"/>
+  </node>
   
   <node name="grid_map_2d_mapper" type="grid_map_2d_mapper_node" pkg="grid_map_2d_mapper" output="screen" respawn="true">
       <param name="min_height" value="0.25"/>    

@@ -11,7 +11,7 @@ traversability_map_filters:
     type: traversabilityFilters/SlopeFilter
     params:
       map_type: traversability_slope
-      critical_value: 1.0
+      critical_value: 0.85
   - name: stepFilter
     type: traversabilityFilters/StepFilter
     params:

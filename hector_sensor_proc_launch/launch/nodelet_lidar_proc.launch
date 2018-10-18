@@ -21,13 +21,13 @@
         args="load robot_self_filter/robot_self_filter_nodelet velodyne_nodelet_manager" output="screen"
         respawn="true" >
     <remap from="cloud_in" to="$(arg scan_cloud_topic)" />
-    <remap from="cloud_out" to="scan_cloud_containment_filtered" />
+    <remap from="cloud_out" to="$(arg scan_cloud_filtered_topic)" />
     <remap from="/robot_description" to="robot_description_containment_filter"/>
     <param name="sensor_frame" value=""/> <!--Do not set to only mask containment-->
   </node>  
   
   <rosparam file="$(arg raycast_self_filter_config)" command="load" ns="raycast_self_filter_lidar" />   
-  
+<!--  
   <node pkg="nodelet" type="nodelet" name="raycast_self_filter_lidar"
         args="load robot_self_filter/robot_self_filter_nodelet velodyne_nodelet_manager" output="screen"
         respawn="true">
@@ -36,5 +36,5 @@
     <remap from="/robot_description" to="robot_description_raycast_filter"/>
     <param name="sensor_frame" value="spin_lidar_lidar_mount_link_fixed"/>
   </node>
-  
+  -->
 </launch>

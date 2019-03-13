@@ -1,0 +1,11 @@
+camera_name: cam_right
+resolution: [1504, 1504]
+#frame_id: camera360_right_optical_frame
+#camera_ns: /camera360/right
+#rostopic: /camera360/right/image_raw # currently not used
+camera_model: omni
+intrinsics: [0.9988124858426092, 750.5699663850542, 750.4892684439347, 750.8716341303509,
+  751.3886104607985]
+distortion_model: radtan
+distortion_coeffs: [0, 0, 0, 0]
+mask_path: $(find argo_tracker_gazebo_launch)/config/kalibr_calibrations/camera360_right_mask.png

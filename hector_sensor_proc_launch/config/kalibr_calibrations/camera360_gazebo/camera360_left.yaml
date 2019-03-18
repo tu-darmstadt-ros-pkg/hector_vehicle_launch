@@ -7,4 +7,4 @@ intrinsics: [0.9997242362229155, 751.6106968589281, 751.5034043879458, 752.18811
   751.5421786621118]
 distortion_model: radtan
 distortion_coeffs: [0, 0, 0, 0]
-mask_path: $(find argo_tracker_gazebo_launch)/config/kalibr_calibrations/camera360_left_mask.png
+mask_path: $(find hector_sensor_proc_launch)/config/kalibr_calibrations/camera360_gazebo/camera360_left_mask.png

@@ -13,7 +13,8 @@
   </node>
   
   <node pkg="ethz_grid_map_proc" type="ethz_grid_map_proc_node" name="ethz_grid_map_proc" output="screen">
-   <param name="unknown_space_to_free" value="true"/>
+   <param name="unknown_space_to_free" value="false"/>
+   <param name="fusing_enabled" value="false"/>
   </node>
   
   <node name="grid_map_2d_mapper" type="grid_map_2d_mapper_node" pkg="grid_map_2d_mapper" output="screen" respawn="true">

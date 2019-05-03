@@ -4,7 +4,7 @@ odom_filter:
   odom0_config: [false, false, false,  # x, y, z
                  false, false, false,  # roll, pitch, yaw
                  true, true, true,     # vx, vy, vz
-                 false, false, true,   # vroll, vpitch, vyaw
+                 false, false, false,   # vroll, vpitch, vyaw
                  false, false, false]  # ax, ay, az
   odom0_differential: false
 

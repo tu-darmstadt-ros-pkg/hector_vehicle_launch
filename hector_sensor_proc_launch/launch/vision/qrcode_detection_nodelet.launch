@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<launch> 
+  <!-- Vision -->
+  <arg name="manager" default="/arm_rgbd_cam/arm_rgbd_cam_nodelet_manager" />
+  <arg name="camera_ns" default="arm_rgbd_cam" />
+  <arg name="image_topic" default="color/image_rect_color" /> 
+  
+  <!-- QR Code Detection -->
+  <!-- R200 nodelet setup launches everything in the rgbd cam namespace, hence the complicated remapping -->  
+  <node name="qrcode_detection_$(arg camera_ns)" pkg="nodelet" type="nodelet" args="load hector_qrcode_detection/qrcode_detection $(arg manager)" respawn="true">
+    <remap from="$(arg camera_ns)/image" to="$(arg camera_ns)/$(arg image_topic)" />
+    <remap from="$(arg camera_ns)/image_percept" to="worldmodel/image_percept" />
+    <remap from="/$(arg camera_ns)/perception/image_percept" to="/detection/visual_detection" />
+    
+    <param name="enabled" value="false" />
+    <param name="always_enabled" value="true" />
+    <remap from="/$(arg camera_ns)/enabled_status" to="/startup_check/qrcode_detection/enabled_status" />
+    <remap from="/$(arg camera_ns)/enabled" to="/startup_check/enabled" />
+  </node>
+</launch>

@@ -1,6 +1,30 @@
 <?xml version="1.0"?>
 <launch> 
-  <node name="tsdf_server" pkg="voxblox_ros" type="tsdf_server" respawn="true" output="screen">
+  <!--<node name="tsdf_server" pkg="voxblox_ros" type="tsdf_server" respawn="true" output="screen">
+    <param name="world_frame" value="world"/>
+    <param name="publish_tsdf_map" value="true"/>
+    <param name="update_mesh_every_n_sec" value="1.0" />
+    
+    <param name="publish_tsdf_info" value="false" />
+    <param name="min_time_between_msgs_sec" value="0.0" />
+    <param name="verbose" value="false" />
+    <param name="color_mode" value="color" /> --><!-- normals, color --><!--
+    <param name="method" value="simple" /> --><!-- simple, fast, merged --><!--
+    <param name="use_const_weight" value="true" />
+    <param name="max_ray_length_m" value="5.0" />
+    <param name="min_ray_length_m" value="1.5" />
+    <param name="tsdf_voxel_size" value="0.1" />
+    <param name="tsdf_voxels_per_side" value="16" />
+    <param name="voxel_carving_enabled" value="false" />
+    <param name="truncation_distance" value="0.4" />
+    
+    <param name="publish_slices" value="false" />
+
+    <remap from="pointcloud" to="/spin_laser/vlp16"/>-->
+<!--     <remap from="pointcloud" to="/scan_cloud_filtered"/> --><!--
+  </node>-->
+
+  <node name="intensity_server" pkg="voxblox_ros" type="intensity_server" respawn="true" output="screen">
     <param name="world_frame" value="world"/>
     <param name="publish_tsdf_map" value="true"/>
     <param name="update_mesh_every_n_sec" value="1.0" />
@@ -21,10 +45,9 @@
     <param name="publish_slices" value="false" />
 
     <remap from="pointcloud" to="/spin_laser/vlp16"/>
-<!--     <remap from="pointcloud" to="/scan_cloud_filtered"/> -->
-  </node>
 
-  <node name="intensity_server" pkg="voxblox_ros" type="intensity_server" respawn="true" output="screen">
-    
+
+    <param name="intensity_max_value" value="255" />
+    <param name="intensity_colormap" value="rainbow" />
   </node>
 </launch>

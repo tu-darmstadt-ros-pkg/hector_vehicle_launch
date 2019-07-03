@@ -28,11 +28,11 @@
     <param name="output_mesh_as_pcl_mesh" value="true"/>-->
 
 
-    <param name="intensity_focal_length" value="100.0" />
+    <param name="intensity_focal_length" value="3.0" /> <!--100.0-->
     <param name="subsample_factor" value="4" />
     <param name="intensity_min_value" value="0.0" />
     <param name="intensity_max_value" value="1.0" /> <!--1.0-->
-    <param name="intensity_max_distance" value="5.0" />
+    <param name="intensity_max_distance" value="2.0" />
     <param name="intensity_colormap" value="rainbow" /> <!--ironbow-->
 
     <param name="radiation_sensor_topic" value="/ssm1plus_raw" />

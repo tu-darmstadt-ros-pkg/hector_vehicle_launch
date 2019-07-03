@@ -32,11 +32,11 @@
     <param name="publish_tsdf_info" value="false" />
     <param name="min_time_between_msgs_sec" value="0.0" />
     <param name="verbose" value="false" />
-    <param name="color_mode" value="lambert" /> <!-- normals, color -->
+    <param name="color_mode" value="color" /> <!-- normals, color, lambert, gray -->
     <param name="method" value="simple" /> <!-- simple, fast, merged -->
     <param name="use_const_weight" value="true" />
-    <param name="max_ray_length_m" value="5.0" />
-    <param name="min_ray_length_m" value="1.5" />
+    <param name="max_ray_length_m" value="20.0" />
+    <param name="min_ray_length_m" value="1.0" />
     <param name="tsdf_voxel_size" value="0.1" />
     <param name="tsdf_voxels_per_side" value="16" />
     <param name="voxel_carving_enabled" value="false" />
@@ -46,8 +46,25 @@
 
     <remap from="pointcloud" to="/spin_laser/vlp16"/>
 
+    <param name="publish_pointclouds" value="true" />
+    <!--<param name="publish_esdf_map" value="true"/>
+    <param name="output_mesh_as_pcl_mesh" value="true"/>-->
 
-    <param name="intensity_max_value" value="255" />
-    <param name="intensity_colormap" value="rainbow" />
+
+    <param name="intensity_focal_length" value="100.0" />
+    <param name="subsample_factor" value="12" />
+    <param name="intensity_min_value" value="0.0" />
+    <param name="intensity_max_value" value="1.0" /> <!--1.0-->
+    <param name="intensity_max_distance" value="5.0" />
+    <param name="intensity_colormap" value="rainbow" /> <!--ironbow-->
+
+    <param name="radiation_sensor_topic" value="/ssm1plus_raw" />
+    <param name="radiation_sensor_frame_id" value="nrs_link" /> <!--arm_wide_cam_link-->
+    <param name="radiation_msg_val_min" value="0.0" />
+    <param name="radiation_msg_val_max" value="30000.0" />
+    <param name="radiation_msg_use_log" value="false" />
+    <param name="radiation_image_width" value="100" />
+    <param name="radiation_image_height" value="100" />
+    <param name="radiation_image_dispersion" value="0.4" />
   </node>
 </launch>

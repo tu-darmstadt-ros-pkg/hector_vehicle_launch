@@ -29,7 +29,7 @@
 
 
     <param name="intensity_focal_length" value="100.0" />
-    <param name="subsample_factor" value="12" />
+    <param name="subsample_factor" value="4" />
     <param name="intensity_min_value" value="0.0" />
     <param name="intensity_max_value" value="1.0" /> <!--1.0-->
     <param name="intensity_max_distance" value="5.0" />

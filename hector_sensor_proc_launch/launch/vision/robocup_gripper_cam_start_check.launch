@@ -30,10 +30,10 @@
     <remap from="~enabled_status" to="/startup_check_gripper/hazmat_detection/enabled_status" />
     <param name="detection_frequency" value="1.0" />
     <param name="periodic_detection" value="false" />
-    <param name="min_match_count" value="5" />
+    <param name="min_match_count" value="60" />
     <param name="image_projection_raycast" value="false" />
     
-    <param name="model_folder" value="$(find hector_hazmat_detection_py)/templates/rgb_d435" />
+    <param name="model_folder" value="$(find hector_hazmat_detection_py)/templates/website_templates" />
   </node>
   
   <!-- QR code detection -->

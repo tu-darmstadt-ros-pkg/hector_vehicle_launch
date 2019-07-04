@@ -20,7 +20,7 @@ Geotiff for it.
   <arg name="max_height" default="2.3"/>
   
   <arg name="map_file_path" default="$(find robot_onboard_logging)/maps"/>
-  <arg name="map_file_base_name" default="RoboCup2019HectorDarmstadtPrelim1UpperLevel" />
+  <arg name="map_file_base_name" default="RoboCup2019-HectorDarmstadt-Prelim1-UpperLevel-" />
   <arg name="robot_default_name" default="Jasmine" />
  
   
@@ -39,7 +39,7 @@ Geotiff for it.
 
   <node pkg="hector_geotiff" type="geotiff_node" name="hector_geotiff_$(arg map_name)" output="screen" launch-prefix="nice -n 15" respawn="true">
     <remap from="map" to="$(arg map_name)" />
-    <param name="map_file_path" type="string" value="$(arg map_file_path" />
+    <param name="map_file_path" type="string" value="$(arg map_file_path)" />
     <param name="map_file_base_name" type="string" value="$(arg map_file_base_name)" />
     <param name="robot_default_name" type="string" value="$(arg robot_default_name)" />
     <param name="geotiff_save_period" type="double" value="45" />

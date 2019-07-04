@@ -20,7 +20,7 @@ Geotiff for it.
   <arg name="max_height" default="2.3"/>
   
   <arg name="map_file_path" default="$(find robot_onboard_logging)/maps"/>
-  <arg name="map_file_base_name" default="" />
+  <arg name="map_file_base_name" default="RoboCup2019HectorDarmstadtPrelim1UpperLevel" />
   <arg name="robot_default_name" default="Jasmine" />
  
   

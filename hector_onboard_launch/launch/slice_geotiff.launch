@@ -30,6 +30,10 @@ Geotiff for it.
     <param name="range_min" value="0.2"/>
     <param name="target_frame" value="$(arg cloud_target_frame)"/>
     <remap from="~/map" to="$(arg map_name)"/>
+    <remap from="/map" to="$(arg map_name)" />
+    <remap from="/map_throttled" to="$(arg map_name)_throttled" />
+    <remap from="/debug_map" to="$(arg map_name)_debug_map" />
+    <remap from="scan" to="$(arg map_name)_scan" />
   </node>
 
 
@@ -39,7 +43,6 @@ Geotiff for it.
     <param name="map_file_base_name" type="string" value="$(arg map_file_base_name)" />
     <param name="robot_default_name" type="string" value="$(arg robot_default_name)" />
     <param name="geotiff_save_period" type="double" value="45" />
-
     <param name="plugins" type="string" value="hector_geotiff_plugins/TrajectoryMapWriter" />
   </node>
 </launch>

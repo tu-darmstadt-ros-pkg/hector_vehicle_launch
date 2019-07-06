@@ -17,7 +17,7 @@ Geotiff for it.
   <arg name="cloud_target_frame" default="base_stabilized" />
   <arg name="cloud_topic" default="/scan_matched_points2" />
   <arg name="min_height" default="1.4"/>    
-  <arg name="max_height" default="2.3"/>
+  <arg name="max_height" default="1.6"/>
   
   <arg name="map_file_path" default="$(find robot_onboard_logging)/maps"/>
   <arg name="map_file_base_name" default="RoboCup2019-HectorDarmstadt-Prelim1-UpperLevel" />

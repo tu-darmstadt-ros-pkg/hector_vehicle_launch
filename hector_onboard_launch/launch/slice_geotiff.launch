@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+
+<!--
+Generates a 2D map from a point cloud height slice and saves
+Geotiff for it.
+-->
+
+<launch> 
+  
+  <!--
+  Sets map topic and service names as well as both node names.
+  Can be used to instantiate multiple writers with differents
+  settings in parallel
+  -->
+  <arg name="map_name" default="map_upper_level" />
+    
+  <arg name="cloud_target_frame" default="base_stabilized" />
+  <arg name="cloud_topic" default="/scan_matched_points2" />
+  <arg name="min_height" default="1.4"/>    
+  <arg name="max_height" default="1.6"/>
+  
+  <arg name="map_file_path" default="$(find robot_onboard_logging)/maps"/>
+  <arg name="map_file_base_name" default="RoboCup2019-HectorDarmstadt-Prelim1-UpperLevel" />
+  <arg name="robot_default_name" default="Jasmine" />
+ 
+  
+  <node name="grid_map_2d_$(arg map_name)" type="grid_map_2d_mapper_node" pkg="grid_map_2d_mapper" output="screen" launch-prefix="nice -n 15" respawn="true">
+    <param name="min_height" value="$(arg min_height)"/>    
+    <param name="max_height" value="$(arg max_height)"/>
+    <param name="range_min" value="0.2"/>
+    <param name="target_frame" value="$(arg cloud_target_frame)"/>
+    <remap from="~/map" to="$(arg map_name)"/>
+    <remap from="/map" to="$(arg map_name)" />
+    <remap from="/map_throttled" to="$(arg map_name)_throttled" />
+    <remap from="/debug_map" to="$(arg map_name)_debug_map" />
+    <remap from="scan" to="$(arg map_name)_scan" />
+  </node>
+
+
+  <node pkg="hector_geotiff" type="geotiff_node" name="hector_geotiff_$(arg map_name)" output="screen" launch-prefix="nice -n 15" respawn="true">
+    <remap from="map" to="$(arg map_name)" />
+    <param name="map_file_path" type="string" value="$(arg map_file_path)" />
+    <param name="map_file_base_name" type="string" value="$(arg map_file_base_name)" />
+    <param name="robot_default_name" type="string" value="$(arg robot_default_name)" />
+    <param name="geotiff_save_period" type="double" value="45" />
+    <param name="plugins" type="string" value="hector_geotiff_plugins/TrajectoryMapWriter" />
+  </node>
+</launch>
+

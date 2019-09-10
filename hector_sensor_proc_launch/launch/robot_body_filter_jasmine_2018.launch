@@ -10,7 +10,8 @@
   
   <node pkg="nodelet" type="nodelet" name="robot_body_filter_nodelet"
         args="load hector_filter_nodelets/CloudFilterChainNodelet velodyne_nodelet_manager" 
-        output="screen" respawn="true" >
+        output="screen" respawn="true"
+        clear_params="true">
 
     <remap from="cloud_in" to="$(arg scan_cloud_topic)" />
     <remap from="cloud_out" to="$(arg scan_cloud_filtered_topic)" />

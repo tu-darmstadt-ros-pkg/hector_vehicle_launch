@@ -3,7 +3,7 @@
 <launch>
   
   <!-- Load robot descriptions -->
-  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find hector_tracked_vehicles_description)/urdf/jasmine_2018_ugv.urdf.xacro"/>  
+  <param name="robot_description" command="$(find xacro)/xacro $(find hector_tracked_vehicles_description)/urdf/jasmine_2018_ugv.urdf.xacro"/>  
 
   <arg name="scan_cloud_topic" default="/spin_laser/vlp16" />
   <arg name="scan_cloud_filtered_topic" default="/scan_cloud_filtered" />

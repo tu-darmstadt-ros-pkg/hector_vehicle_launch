@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+
+<launch>
+   <node pkg="elevation_mapping" type="elevation_mapping" name="elevation_mapping" output="screen" respawn="false">
+    	 <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/elevation_mapping/jasmine_robot.yaml" />
+    	 <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/elevation_mapping/map_range_global.yaml" />
+    	 <rosparam command="load" file="$(find elevation_mapping)/config/sensor_processors/velodyne_HDL-32E.yaml" />
+    </node>
+    
+    <!--
+    <node pkg="elevation_mapping" type="odometry_to_pose_with_covariance" name="odometry_to_pose_with_covariance" output="screen">
+    </node>
+    -->
+    
+    <node pkg="nodelet" type="nodelet" name="scan_z_filter" output="screen" respawn="false" args="standalone pcl/PassThrough">
+        <param name="filter_field_name" value="z"/>
+        <param name="filter_limit_min" value="-1"/>
+        <param name="filter_limit_max" value="1.5"/>
+        <param name="input_frame" value="base_stabilized"/>
+        <remap from="~input" to="/scan_matched_points2"/>
+        <remap from="~output" to="/scan_matched_points2_cropped"/>
+    </node>
+
+    <node pkg="elevation_mapping" type="pose_to_pose_with_covariance" name="pose_to_pose_with_covariance" output="screen" respawn="false">
+    </node>
+
+    
+<!--    <node pkg="vigir_laserscan_to_pointcloud" type="laserscan_to_pointcloud_node" name="front_repub" respawn="true" output="screen">
+      <param name="min_range" value="0" />
+      <param name="use_high_fidelity_projection" value="true" />
+      <param name="target_frame" value="base_link" />
+      <remap from="scan" to="/move_group/scan_self_filtered" />
+      <remap from="scan_cloud" to="/move_group_scan_cloud" />
+      <rosparam command="load" file="$(find vigir_laserscan_to_pointcloud)/config/argo_scan_filter.yaml" />
+    </node>-->
+    
+    <!--Fused map visualization-->
+<!--    <node pkg="grid_map_visualization" type="grid_map_visualization" name="elevation_map_fused_visualization" output="screen" respawn="true">
+      <param name="grid_map_topic" value="/elevation_mapping/elevation_map_global" />
+      <rosparam command="load" file="$(find elevation_mapping)/config/visualization/fused_global.yaml" />
+    </node>-->
+    
+<!--    <node pkg="map_combiner" type="map_combiner_node" name="map_combiner_node" output="screen" respawn="true">
+      <param name="fuse_elevation_map" value="false"/>
+    </node>
+
+    <node pkg="navigation_collision_checker" type="path_collision_checker_node" name="path_collision_checker_node" output="screen" respawn="true">
+    </node>  -->  
+</launch>

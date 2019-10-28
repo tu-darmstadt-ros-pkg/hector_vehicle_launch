@@ -45,6 +45,7 @@
   <run_depend>traversability_estimation</run_depend> 
   <run_depend>elevation_mapping</run_depend> 
   <run_depend>hector_geotiff</run_depend> 
+  <run_depend>pose_to_pose_with_covariance</run_depend> 
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

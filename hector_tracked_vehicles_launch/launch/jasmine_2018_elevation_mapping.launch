@@ -21,7 +21,7 @@
         <remap from="~output" to="/scan_matched_points2_cropped"/>
     </node>
 
-    <node pkg="elevation_mapping" type="pose_to_pose_with_covariance" name="pose_to_pose_with_covariance" output="screen" respawn="false">
+    <node pkg="pose_to_pose_with_covariance" type="pose_to_pose_with_covariance" name="pose_to_pose_with_covariance" output="screen" respawn="false">
     </node>
 
     

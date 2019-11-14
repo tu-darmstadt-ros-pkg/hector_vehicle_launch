@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 <launch> 
-
   <node name="radio_nuclear_mapper_server" pkg="voxblox_ros" type="radio_nuclear_mapper_server" respawn="true" output="screen">
     <param name="world_frame" value="world"/>
     <param name="publish_tsdf_map" value="true"/>

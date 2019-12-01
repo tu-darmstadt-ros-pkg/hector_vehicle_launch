@@ -40,8 +40,11 @@
   <!-- Use test_depend for packages you need only for testing: -->
   <!--   <test_depend>gtest</test_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
-  <run_depend>ethz_grid_map_proc</run_depend> 
-  <run_depend>grid_map_2d_mapper</run_depend> 
+  <run_depend>ethz_grid_map_proc</run_depend>
+  <run_depend>grid_map_2d_mapper</run_depend>
+  <run_depend>hector_hazmat_detection_py</run_depend>
+  <run_depend>hector_heat_detection</run_depend>
+  <run_depend>hector_motion_detection</run_depend>
   <run_depend>traversability_estimation</run_depend> 
   <run_depend>elevation_mapping</run_depend> 
   <run_depend>hector_geotiff</run_depend> 

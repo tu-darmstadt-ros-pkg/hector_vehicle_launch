@@ -41,6 +41,7 @@
   <!--   <test_depend>gtest</test_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
   <run_depend>voxblox_ros</run_depend>
+  <run_depend>hector_filter_nodelets</run_depend>
   <run_depend>kalibr_extended_camera_info_publisher</run_depend>
 
   <!-- The export tag contains other, unspecified, tags -->

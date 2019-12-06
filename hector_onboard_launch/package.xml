@@ -41,6 +41,15 @@
   <!--   <test_depend>gtest</test_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
 
+  <run_depend>grid_map_2d_mapper</run_depend>
+  <run_depend>hector_detection_aggregator</run_depend>
+  <run_depend>hector_geotiff</run_depend>
+  <run_depend>hector_map_server</run_depend>
+  <run_depend>hector_mapping</run_depend>
+  <run_depend>hector_trajectory_server</run_depend>
+  <run_depend>laser_assembler</run_depend>
+  <run_depend>nodelet</run_depend>
+  <run_depend>vigir_cloud_to_planar_scan</run_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

@@ -15,7 +15,7 @@
     <node pkg="nodelet" type="nodelet" name="scan_z_filter" output="screen" respawn="false" args="standalone pcl/PassThrough">
         <param name="filter_field_name" value="z"/>
         <param name="filter_limit_min" value="-1"/>
-        <param name="filter_limit_max" value="0.8"/>
+        <param name="filter_limit_max" value="1.8"/>
         <param name="input_frame" value="base_stabilized"/>
         <remap from="~input" to="/scan_matched_points2"/>
         <remap from="~output" to="/scan_matched_points2_cropped"/>

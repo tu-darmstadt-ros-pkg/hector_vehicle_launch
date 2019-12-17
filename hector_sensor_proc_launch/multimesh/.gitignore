@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+*.pyc
+
+# JetBrain
+.idea/
+
+# macOS
+*.DS_Store
+

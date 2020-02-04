@@ -2,40 +2,42 @@
 <launch> 
   <node name="radio_nuclear_mapper_server" pkg="voxblox_ros" type="radio_nuclear_mapper_server" respawn="true" output="screen">
     <param name="world_frame" value="world"/>
-    <param name="publish_tsdf_map" value="true"/>
     <param name="update_mesh_every_n_sec" value="1.0" />
     
-    <param name="publish_tsdf_info" value="false" />
     <param name="min_time_between_msgs_sec" value="0.0" />
     <param name="verbose" value="false" />
     <param name="color_mode" value="color" /> <!-- normals, color, lambert, gray -->
-    <param name="method" value="simple" /> <!-- simple, fast, merged -->
+    <param name="method" value="fast" /> <!-- simple, fast, merged -->
     <param name="use_const_weight" value="true" />
-    <param name="max_ray_length_m" value="20.0" />
-    <param name="min_ray_length_m" value="1.0" />
-    <param name="tsdf_voxel_size" value="0.1" />
+
+    <param name="max_ray_length_m" value="7.0" />
+    <param name="min_ray_length_m" value="0.1" /> <!-- 1.0 -->
+
+    <param name="tsdf_voxel_size" value="0.1" /> <!-- 0.05 -->
     <param name="tsdf_voxels_per_side" value="16" />
     <param name="voxel_carving_enabled" value="false" />
-    <param name="truncation_distance" value="0.4" />
+    <param name="truncation_distance" value="2.0" /> <!-- 0.4 -->
     
-    <param name="publish_slices" value="false" />
     <remap from="pointcloud" to="/spin_laser/vlp16"/>
-    <param name="publish_pointclouds" value="true" />
+    <param name="publish_pointclouds_on_update" value="false" />
+    <param name="publish_pointclouds" value="false" />
+    <param name="publish_slices" value="false" />
+    <param name="publish_tsdf_map" value="false" />
+    <param name="publish_tsdf_info" value="false" />
     <!--<param name="publish_esdf_map" value="true"/>
     <param name="output_mesh_as_pcl_mesh" value="true"/>-->
 
-    <param name="mesh_filename" value="~/ply/nolog_constant.ply" />
-
     <!-- Radionuclear Mapper Specific Parameters -->
     <param name="radiation_sensor_topic" value="/ssm1plus_raw" />
-    <param name="radiation_sensor_frame_id" value="nrs_link" /> <!--arm_wide_cam_link-->
-    <param name="radiation_max_distance" value="5.0" />
-    <param name="radiation_distance_function" value="decreasing" /> <!-- increasing, decreasing or constant -->
+    <param name="radiation_sensor_frame_id" value="nrs_link" />
+    <param name="radiation_max_distance" value="10.0" />
+    <param name="radiation_distance_function" value="increasing" /> <!-- increasing, decreasing or constant -->
+    <param name="radiation_use_logarithm" value="true" />
     <param name="radiation_msg_val_min" value="96.0" />
     <param name="radiation_msg_val_max" value="26986.0" />
-    <param name="radiation_msg_use_log" value="false" />
-    <param name="radiation_ang_res_y_" value="100" />
-    <param name="radiation_ang_res_z_" value="100" />
-    <param name="radiation_colormap" value="ironbow" />
+    <param name="radiation_bearing_vector_num" value="40000" />
+    <param name="radiation_colormap" value="traffic-light" />
+
+    <param name="save_mesh_trigger_topic" value="/radio_nuclear_mapper_server/save_mesh" />
   </node>
 </launch>

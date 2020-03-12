@@ -36,7 +36,7 @@
     <remap from="cloud_in" to="scan_cloud_containment_filtered" />
     <remap from="cloud_out" to="$(arg scan_cloud_filtered_topic)" />
     <remap from="/robot_description" to="robot_description_raycast_filter"/>
-    <param name="sensor_frame" value="spin_lidar_lidar_mount_link_fixed"/>
+    <param name="sensor_frame" value="spin_lidar_mount_link_fixed"/>
   </node>
   
 </launch>

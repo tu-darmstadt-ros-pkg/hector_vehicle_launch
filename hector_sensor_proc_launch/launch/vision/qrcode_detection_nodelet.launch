@@ -2,8 +2,8 @@
 
 <launch> 
   <!-- Vision -->
-  <arg name="manager" default="/arm_rgbd_cam/arm_rgbd_cam_nodelet_manager" />
-  <arg name="camera_ns" default="arm_rgbd_cam" />
+  <arg name="manager" default="/sensor_head_rgbd_cam/sensor_head_rgbd_cam_nodelet_manager" />
+  <arg name="camera_ns" default="sensor_head_rgbd_cam" />
   <arg name="image_topic" default="color/image_rect_color" /> 
   
   <!-- QR Code Detection -->

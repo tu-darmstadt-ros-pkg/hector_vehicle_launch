@@ -7,7 +7,7 @@
   
   <!-- Aggregator -->
   <node pkg="nodelet" type="nodelet" name="gripper_cam_detection_aggregator_nodelet" args="load hector_detection_aggregator/DetectionAggregatorNodelet $(arg manager)" output="screen" respawn="true">
-    <remap from="/arm_rgbd_cam/rgb/image_raw" to="$(arg camera_ns)/$(arg image_topic)"/>
+    <remap from="/sensor_head_rgbd_cam/rgb/image_raw" to="$(arg camera_ns)/$(arg image_topic)"/>
     <remap from="/detection/aggregated_detections_image" to="/detection_gripper/aggregated_detections_image" />
   </node>
   

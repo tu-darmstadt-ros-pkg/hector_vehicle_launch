@@ -1,0 +1,3 @@
+cameras:
+  - '/camera360/right'
+  - '/camera360/left'

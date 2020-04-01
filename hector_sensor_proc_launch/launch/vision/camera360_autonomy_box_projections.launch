@@ -8,6 +8,7 @@
     <rosparam file="$(find hector_sensor_proc_launch)/config/vision/$(arg camera_name)_cameras.yaml" command="load"/>
     
     <param name="update_rate" value="10" />
+    <param name="always_recompute_mapping" value="false"/>
     
     <param name="base_frame" value="$(arg camera_name)_center_link" />
     <rosparam param="pose">[0, 0, 0, 0, 0.4, 0]</rosparam>
@@ -16,8 +17,7 @@
     <rosparam param="projection_parameters">
       image_width: 512
       image_height: 256
-      pixels_per_m_x: 128
-      pixels_per_m_y: 128
+      horizontal_fov: 130
       focal_length: 1
     </rosparam>
     
@@ -25,22 +25,22 @@
   </node>
   
     <!-- Front view high res-->
-<!--  <node pkg="nodelet" type="nodelet" name="$(arg camera_name)_pinhole_front_high_res" args="load fisheye_image_proc/ImageProjectionNodelet $(arg camera_name)_nodelet_manager" output="screen" respawn="true">
+<!--  <node pkg="nodelet" type="nodelet" name="$(arg camera_name)_pinhole_front_high_res" args="load image_projection/PeriodicImageProjectionNodelet $(arg camera_name)_nodelet_manager" output="screen" respawn="true">
     <rosparam file="$(find hector_sensor_proc_launch)/config/vision/$(arg camera_name)_cameras.yaml" command="load"/>
     
     <param name="update_rate" value="10" />
-    <param name="use_opencl" value="false"/>
+    <param name="always_recompute_mapping" value="false"/>
     
-    <param name="image_width" value="4096" />
-    <param name="image_height" value="2048" />
-    <param name="pixels_per_m_x" value="1024" />
-    <param name="pixels_per_m_y" value="1024" />
     <param name="base_frame" value="$(arg camera_name)_center_link" />
-    
-    <param name="projection_type" value="pinhole" />
-    <param name="focal_length" value="1.0" />
     <rosparam param="pose">[0, 0, 0, 0, 0.4, 0]</rosparam>
-    <param name="save_folder" value="" />
+
+    <param name="projection_type" value="image_projection_plugins::PinholeProjection" />
+    <rosparam param="projection_parameters">
+      image_width: 1280
+      image_height: 720
+      horizontal_fov: 130
+      focal_length: 1
+    </rosparam>
     
     <remap from="~projection" to="/$(arg camera_name)/pinhole_front_high_res" />
   </node>-->
@@ -58,8 +58,7 @@
     <rosparam param="projection_parameters">
       image_width: 512
       image_height: 256
-      pixels_per_m_x: 128
-      pixels_per_m_y: 128
+      horizontal_fov: 130
       focal_length: 1
     </rosparam>
     

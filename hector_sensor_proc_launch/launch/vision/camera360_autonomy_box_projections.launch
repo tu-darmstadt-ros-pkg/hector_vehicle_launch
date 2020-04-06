@@ -72,14 +72,14 @@
     <param name="update_rate" value="5" />
     
     <param name="base_frame" value="$(arg camera_name)_center_link" />
-    <rosparam param="pose">[0, 0, -2.5, 0, 0, 3.141592]</rosparam>
+    <rosparam param="pose">[0, 0, 0, 0, 0, 3.141592]</rosparam>
     
     <param name="projection_type" value="image_projection_plugins::MercatorProjection" />
     <rosparam param="projection_parameters">
       image_width: 643
       image_height: 512
       cylinder_radius: 1.0
-      cylinder_height: 5.0
+      vertical_fov: 136
     </rosparam>
     
     <remap from="~projection" to="/$(arg camera_name)/equirectangular" />
@@ -92,14 +92,14 @@
     <param name="update_rate" value="1" />
     
     <param name="base_frame" value="$(arg camera_name)_center_link" />
-    <rosparam param="pose">[0, 0, -1, 0, 0, 3.141592]</rosparam>
+    <rosparam param="pose">[0, 0, 0, 0, 0, 3.141592]</rosparam>
     
     <param name="projection_type" value="image_projection_plugins::MercatorProjection" />
     <rosparam param="projection_parameters">
       image_width: 3210
       image_height: 768
       cylinder_radius: 1.0
-      cylinder_height: 1.5
+      vertical_fov: 73
     </rosparam>
         
     <remap from="~projection" to="/$(arg camera_name)/equirectangular_low_fov" />

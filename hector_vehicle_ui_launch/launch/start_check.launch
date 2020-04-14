@@ -4,7 +4,7 @@
 
    <node pkg="image_view" type="image_view" name="start_check_img_view_kinect_rgb" output="screen" args="image:=/hector_detection_aggregator_node/image_aggregated_percepts _image_transport:=compressed"/>
 
-   <node pkg="image_view" type="image_view" name="start_check_img_view_heat_detection" output="screen" args="image:=/arm_thermal_cam/image_raw"/>
+   <node pkg="image_view" type="image_view" name="start_check_img_view_heat_detection" output="screen" args="image:=/sensor_head_thermal_cam/image_raw"/>
 
 
    <!--<node pkg="rqt_plot" type="rqt_plot" name="start_check_rqt_plot_co2" output="screen" args="/co2/data"/>-->

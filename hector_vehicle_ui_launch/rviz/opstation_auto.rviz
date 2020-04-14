@@ -94,17 +94,17 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        arm_rgbd_cam_link:
+        sensor_head_rgbd_cam_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        arm_thermal_cam_frame:
+        sensor_head_thermal_cam_frame:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        arm_thermal_cam_optical_frame:
+        sensor_head_thermal_cam_optical_frame:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -387,7 +387,7 @@ Visualization Manager:
       Value: false
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /arm_thermal_cam/image_raw
+      Image Topic: /sensor_head_thermal_cam/image_raw
       Max Value: 1
       Median window: 5
       Min Value: 0

@@ -8,15 +8,15 @@
   <arg name="rgb_image_topic" default="image_raw" />
   <arg name="rgb_camera_nodelet_manager_name" default="arm_zoom_cam_nodelet_manager" />
   -->
-  <arg name="thermal_camera_ns" default="arm_thermal_cam" /> 
+  <arg name="thermal_camera_ns" default="sensor_head_thermal_cam" /> 
   <arg name="thermal_image_topic" default="image_raw" /> 
   
 
   
   
-  <arg name="rgbd_camera_nodelet_manager_name" default="/arm_rgbd_cam/arm_rgbd_cam_nodelet_manager" />
+  <arg name="rgbd_camera_nodelet_manager_name" default="/sensor_head_rgbd_cam/sensor_head_rgbd_cam_nodelet_manager" />
   
-  <arg name="rgbd_camera_ns" default="arm_rgbd_cam" />
+  <arg name="rgbd_camera_ns" default="sensor_head_rgbd_cam" />
   <arg name="rgbd_image_topic" default="rgb/image_rect_color" /> 
   
   
@@ -70,7 +70,7 @@
 
   <!--Heat proc-->
   <!--Checkpoint-->
-<!--  <include file="$(find argo_hotspot_proc)/launch/arm_thermal_cam.launch">
+<!--  <include file="$(find argo_hotspot_proc)/launch/sensor_head_thermal_cam.launch">
     <arg name="rgb_camera_ns" value="$(arg rgb_camera_ns)" /> 
     <arg name="rgb_image_topic" value="$(arg rgb_image_topic)" /> 
     <arg name="thermal_camera_ns" value="$(arg thermal_camera_ns)" /> 
@@ -98,7 +98,7 @@
   <!-- realsense message_cacher -->
     <!-- rgb -->
     <!-- 
-    <node pkg="nodelet" type="nodelet" name="arm_rgbd_cam_rgb_message_cacher" args="load message_cacher_proc/CameraRelayerNodelet $(arg rgbd_camera_nodelet_manager_name)"
+    <node pkg="nodelet" type="nodelet" name="sensor_head_rgbd_cam_rgb_message_cacher" args="load message_cacher_proc/CameraRelayerNodelet $(arg rgbd_camera_nodelet_manager_name)"
        output="screen" respawn="true">
       <param name="topic" type="str" value="$(arg rgbd_camera_ns)/$(arg rgbd_image_topic)" />
       <param name="suffix" type="str" value="_combined" />
@@ -106,16 +106,16 @@
     -->
     <!-- depth registered -->
     <!--    
-    <node pkg="nodelet" type="nodelet" name="arm_rgbd_cam_depth_registered_message_cacher" args="load message_cacher_proc/CameraRelayerNodelet $(arg rgbd_camera_nodelet_manager_name)"
+    <node pkg="nodelet" type="nodelet" name="sensor_head_rgbd_cam_depth_registered_message_cacher" args="load message_cacher_proc/CameraRelayerNodelet $(arg rgbd_camera_nodelet_manager_name)"
        output="screen" respawn="true">
-      <param name="topic" type="str" value="/arm_rgbd_cam/depth_registered/sw_registered/image_rect_raw" />
+      <param name="topic" type="str" value="/sensor_head_rgbd_cam/depth_registered/sw_registered/image_rect_raw" />
       <param name="suffix" type="str" value="_combined" />
     </node>-->
     <!-- depth (raw) -->
     <!--
-    <node pkg="nodelet" type="nodelet" name="arm_rgbd_cam_depth_message_cacher" args="load message_cacher_proc/CameraRelayerNodelet $(arg rgbd_camera_nodelet_manager_name)"
+    <node pkg="nodelet" type="nodelet" name="sensor_head_rgbd_cam_depth_message_cacher" args="load message_cacher_proc/CameraRelayerNodelet $(arg rgbd_camera_nodelet_manager_name)"
        output="screen" respawn="true">      
-      <param name="topic" type="str" value="/arm_rgbd_cam/depth/image_raw" />
+      <param name="topic" type="str" value="/sensor_head_rgbd_cam/depth/image_raw" />
       <param name="suffix" type="str" value="_combined" />
     </node>-->
 

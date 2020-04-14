@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <launch>
     
-  <arg name="manager" default="/arm_rgbd_cam/arm_rgbd_cam_nodelet_manager"/>
-  <arg name="camera_ns" default="arm_rgbd_cam" />
+  <arg name="manager" default="/sensor_head_rgbd_cam/sensor_head_rgbd_cam_nodelet_manager"/>
+  <arg name="camera_ns" default="sensor_head_rgbd_cam" />
   <arg name="image_topic" default="rgb/image_raw" />   
   
   <!-- Detection aggregator -->
   <node pkg="nodelet" type="nodelet" name="detection_aggregator_nodelet" args="load hector_detection_aggregator/DetectionAggregatorNodelet $(arg manager)" output="screen" respawn="true">
-    <remap from="/arm_rgbd_cam/rgb/image_raw" to="$(arg camera_ns)/$(arg image_topic)"/>
+    <remap from="/sensor_head_rgbd_cam/rgb/image_raw" to="$(arg camera_ns)/$(arg image_topic)"/>
   </node>
   
   <!-- Motion detection -->

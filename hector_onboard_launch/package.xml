@@ -44,6 +44,7 @@
   <run_depend>grid_map_2d_mapper</run_depend>
   <run_depend>hector_detection_aggregator</run_depend>
   <run_depend>hector_geotiff</run_depend>
+  <run_depend>hector_geotiff_plugins</run_depend>
   <run_depend>hector_map_server</run_depend>
   <run_depend>hector_mapping</run_depend>
   <run_depend>hector_trajectory_server</run_depend>

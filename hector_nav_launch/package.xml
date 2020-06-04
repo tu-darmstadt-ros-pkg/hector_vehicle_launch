@@ -43,6 +43,7 @@
 
   <run_depend>robot_localization</run_depend>
   <run_depend>topic_tools</run_depend>
+  <run_depend>message_to_tf</run_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

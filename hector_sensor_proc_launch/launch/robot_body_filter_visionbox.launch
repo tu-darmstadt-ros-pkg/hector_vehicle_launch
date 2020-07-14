@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<launch>
+  
+  <!-- Load robot descriptions -->
+  <param name="robot_description" command="$(find xacro)/xacro $(find hector_components_description)/urdf/autonomy_box_standalone.urdf.xacro"/>  
+
+  <arg name="scan_cloud_topic" default="/spin_lidar/vlp16" />
+  <arg name="scan_cloud_filtered_topic" default="/scan_cloud_filtered" />
+  
+  <node pkg="nodelet" type="nodelet" name="robot_body_filter_nodelet"
+        args="load hector_filter_nodelets/CloudFilterChainNodelet velodyne_nodelet_manager" 
+        output="screen" respawn="true"
+        clear_params="true">
+
+    <remap from="cloud_in" to="$(arg scan_cloud_topic)" />
+    <remap from="cloud_out" to="$(arg scan_cloud_filtered_topic)" />
+    
+    <rosparam file="$(find hector_tracked_vehicles_self_filter)/config/robot_body_filter_visionbox.yaml" command="load"/>   
+    
+  </node>
+  
+</launch>

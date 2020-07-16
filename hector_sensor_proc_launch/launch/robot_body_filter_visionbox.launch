@@ -3,7 +3,7 @@
 <launch>
   
   <!-- Load robot descriptions -->
-  <param name="robot_description" command="$(find xacro)/xacro $(find hector_components_description)/urdf/autonomy_box_standalone.urdf.xacro"/>  
+  <param name="robot_description" command="$(find xacro)/xacro $(find hector_components_description)/urdf/autonomy_box_on_table.urdf.xacro"/>  
 
   <arg name="scan_cloud_topic" default="/spin_lidar/vlp16" />
   <arg name="scan_cloud_filtered_topic" default="/scan_cloud_filtered" />

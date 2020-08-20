@@ -12,6 +12,8 @@
     
     <param name="base_frame" value="$(arg camera_name)_center_link" />
     <rosparam param="pose">[0, 0, 0, 0, 0.4, 0]</rosparam>
+    <param name="virtual_sensor_frame" value="pinhole_front_camera_frame"/>
+    <param name="virtual_sensor_optical_frame" value="pinhole_front_optical_frame"/>
     
     <param name="projection_type" value="image_projection_plugins::PinholeProjection" />
     <rosparam param="projection_parameters">
@@ -21,29 +23,9 @@
       focal_length: 1
     </rosparam>
     
-    <remap from="~projection" to="/$(arg camera_name)/pinhole_front" />
+    <remap from="~projection" to="/$(arg camera_name)/pinhole_front/image_rect_color" />
+    <remap from="~camera_info" to="/$(arg camera_name)/pinhole_front/camera_info" />
   </node>
-  
-    <!-- Front view high res-->
-<!--  <node pkg="nodelet" type="nodelet" name="$(arg camera_name)_pinhole_front_high_res" args="load image_projection/PeriodicImageProjectionNodelet $(arg camera_name)_nodelet_manager" output="screen" respawn="true">
-    <rosparam file="$(find hector_sensor_proc_launch)/config/vision/$(arg camera_name)_cameras.yaml" command="load"/>
-    
-    <param name="update_rate" value="10" />
-    <param name="always_recompute_mapping" value="false"/>
-    
-    <param name="base_frame" value="$(arg camera_name)_center_link" />
-    <rosparam param="pose">[0, 0, 0, 0, 0.4, 0]</rosparam>
-
-    <param name="projection_type" value="image_projection_plugins::PinholeProjection" />
-    <rosparam param="projection_parameters">
-      image_width: 1280
-      image_height: 720
-      horizontal_fov: 130
-      focal_length: 1
-    </rosparam>
-    
-    <remap from="~projection" to="/$(arg camera_name)/pinhole_front_high_res" />
-  </node>-->
   
   <!-- Back view -->
   <node pkg="nodelet" type="nodelet" name="$(arg camera_name)_pinhole_back" args="load image_projection/PeriodicImageProjectionNodelet $(arg camera_name)_nodelet_manager" output="screen" respawn="true">
@@ -53,6 +35,8 @@
     
     <param name="base_frame" value="$(arg camera_name)_center_link" />
     <rosparam param="pose">[0, 0, 0, 0, 0.4, 3.141592]</rosparam>
+    <param name="virtual_sensor_frame" value="pinhole_back_camera_frame"/>
+    <param name="virtual_sensor_optical_frame" value="pinhole_back_optical_frame"/>
     
     <param name="projection_type" value="image_projection_plugins::PinholeProjection" />
     <rosparam param="projection_parameters">
@@ -62,7 +46,8 @@
       focal_length: 1
     </rosparam>
     
-    <remap from="~projection" to="/$(arg camera_name)/pinhole_back" />
+    <remap from="~projection" to="/$(arg camera_name)/pinhole_back/image_rect_color" />
+    <remap from="~camera_info" to="/$(arg camera_name)/pinhole_back/camera_info" />
   </node>
   
   <!-- Navigation equirectangular (low res) -->

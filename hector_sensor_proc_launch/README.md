@@ -2,7 +2,7 @@
 
 ## `launch/`
 
-See [here](#) for more information.
+See [here](launch/README.md) for more information.
 
 ## `*.rviz`
 

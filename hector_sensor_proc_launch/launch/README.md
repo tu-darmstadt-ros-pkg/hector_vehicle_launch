@@ -71,6 +71,7 @@ Defines the color map to display the radiation intensity. The following color ma
 
 
 #### `save_mesh_trigger_topic`
-**Type:** String
+**Type:** String.
+Defines the ROS topic to receive the command that triggers the export of one or more meshes. See [here](https://git.sim.informatik.tu-darmstadt.de/hector/hector_voxblox/-/blob/radio_nuclear_mapper/README.md#3-how-to-export-3d-radiation-mesh) how to use it.
 
 ### Radiation Sensor Extreme Values

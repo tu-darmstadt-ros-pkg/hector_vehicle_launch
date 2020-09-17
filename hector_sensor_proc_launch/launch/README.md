@@ -40,11 +40,15 @@ Defines the ID of the frame, which describes the position at the robot arm where
 **Default:** `false`
 
 #### `radiation_msg_val_min`
+Defines the smallest value that the radiation sensor measures during the run. More information about the radiation sensor extreme values see [here](#).
+
 **Data Type:** Float
 
 **Default:** `0.0`
 
 #### `radiation_msg_val_max`
+Defines the largest value that the radiation sensor measures during the run. More information about the radiation sensor extreme values see [here](#).
+
 **Data Type:** Float
 
 **Default:** `100000.0`
@@ -61,3 +65,5 @@ Defines the ID of the frame, which describes the position at the robot arm where
 
 #### `save_mesh_trigger_topic`
 **Data Type:** String
+
+### Radiation Sensor Extreme Values

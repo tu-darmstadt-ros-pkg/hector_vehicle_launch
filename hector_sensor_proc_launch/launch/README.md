@@ -32,9 +32,9 @@ Defines the maximum distance up to which the measured radiation intensity should
 #### `radiation_distance_function`
 Defines the function which describes the change of intensity with increasing distance to the sensor during projection on surrounding surfaces. These functions are available
 
-- `increasing`: [eq](https://latex.codecogs.com/png.latex?f%20%5Cleft%28d%5Cright%29%20%3D%20%5Cfrac1%7B%5Cleft%28d&plus;1%5Cright%29%5E2%7D)
-- `decreasing`: 
-- `constant`: 
+- `increasing`: ![`f \left(d\right) = \frac1{\left(d+1\right)^2}`](https://latex.codecogs.com/png.latex?f%20%5Cleft%28d%5Cright%29%20%3D%20%5Cfrac1%7B%5Cleft%28d&plus;1%5Cright%29%5E2%7D)
+- `decreasing`: ![`f \left(d\right) = {\left(d+1\right)^2}`](https://latex.codecogs.com/png.latex?f%20%5Cleft%28d%5Cright%29%20%3D%20%7B%5Cleft%28d&plus;1%5Cright%29%5E2%7D)
+- `constant`: ![`f \left(d\right) = {1}`](https://latex.codecogs.com/png.latex?f%20%5Cleft%28d%5Cright%29%20%3D%20%7B1%7D)
 
 **Type:** String
 

@@ -77,4 +77,6 @@ Defines the ROS topic to receive the command that triggers the export of one or 
 
 ### Radiation Sensor Extreme Values
 
-(work in progress)
+The parameters `radiation_msg_val_min` and `radiation_msg_val_max` are used to determine the color gradient for displaying the radiation intensity. This only affects the 3D map, which is gradually sent to rviz and displayed there. For this application, the minimum and maximum must obviously be known before the start. If the map is created by playback ros bag files, the extreme values of intensity stored in the bag files can be read out using the [Radiation Sensor Extreme Values Extractor](#) before starting the 3D radiation mapper. The values that can be displayed in the color gradient as the lowest and highest intensity value are calculated by the specifications for the extreme values of the sensor (`radiation_msg_val_min` and `radiation_msg_val_max`) and the maximum mapping distance (`radiation_max_distance`).
+
+These parameters do not affect the map that is exported. Here minimum and maximum are redefined according to the extreme values in the generated mesh. This ensures that the whole range of the color map is used.

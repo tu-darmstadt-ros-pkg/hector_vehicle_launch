@@ -15,55 +15,61 @@ Choose one of these files to start the [3D Radiation Mapper](https://git.sim.inf
 #### `radiation_sensor_topic`
 Defines the ROS topic which is used to receive the intensity values from the radiation sensor. 
 
-**Data Type:** String
+**Type:** String
 
 #### `radiation_sensor_frame_id`
 Defines the ID of the frame, which describes the position at the robot arm where the sensor is mounted. 
 
-**Data Type:** String
+**Type:** String
 
 #### `radiation_max_distance`
+Defines the maximum distance up to which the measured radiation intensity should be projected onto surrounding surfaces.
 
-
-**Data Type:** Float
+**Type:** Float
 
 **Default:** max. distance value of TSDF integrator
 
 #### `radiation_distance_function`
-**Data Type:** String
+Defines the function which describes the change of intensity with increasing distance to the sensor during projection on surrounding surfaces. These functions are available
+
+- `increasing`: [eq](https://latex.codecogs.com/png.latex?f%20%5Cleft%28d%5Cright%29%20%3D%20%5Cfrac1%7B%5Cleft%28d&plus;1%5Cright%29%5E2%7D)
+- `decreasing`: 
+- `constant`: 
+
+**Type:** String
 
 **Default:** `"constant"`
 
 #### `radiation_use_logarithm`
-**Data Type:** Boolean
+**Type:** Boolean
 
 **Default:** `false`
 
 #### `radiation_msg_val_min`
-Defines the smallest value that the radiation sensor measures during the run. More information about the radiation sensor extreme values see [here](#).
+Defines the smallest value that the radiation sensor measures during the run. More information about the radiation sensor extreme values see [here](#radiation-sensor-extreme-values).
 
-**Data Type:** Float
+**Type:** Float
 
 **Default:** `0.0`
 
 #### `radiation_msg_val_max`
-Defines the largest value that the radiation sensor measures during the run. More information about the radiation sensor extreme values see [here](#).
+Defines the largest value that the radiation sensor measures during the run. More information about the radiation sensor extreme values see [here](#radiation-sensor-extreme-values).
 
-**Data Type:** Float
+**Type:** Float
 
 **Default:** `100000.0`
 
 #### `radiation_bearing_vector_num`
-**Data Type:** Integer
+**Type:** Integer
 
 **Default:** `10000`
 
 #### `radiation_colormap`
-**Data Type:** String
+**Type:** String
 
 **Default:** `"ironbow"`
 
 #### `save_mesh_trigger_topic`
-**Data Type:** String
+**Type:** String
 
 ### Radiation Sensor Extreme Values

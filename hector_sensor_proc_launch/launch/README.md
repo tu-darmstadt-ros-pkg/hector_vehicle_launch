@@ -13,32 +13,21 @@ Choose one of these files to start the [3D Radiation Mapper](https://git.sim.inf
 ### Radionuclear Mapper Specific Parameters
 
 #### `radiation_sensor_topic`
-Defines the ROS topic which is used to receive the intensity values from the radiation sensor. 
-
-**Type:** String
+**Type:** String. Defines the ROS topic which is used to receive the intensity values from the radiation sensor. 
 
 #### `radiation_sensor_frame_id`
-Defines the ID of the frame, which describes the position at the robot arm where the sensor is mounted. 
-
-**Type:** String
+**Type:** String. Defines the ID of the frame, which describes the position at the robot arm where the sensor is mounted. 
 
 #### `radiation_max_distance`
-Defines the maximum distance up to which the measured radiation intensity should be projected onto surrounding surfaces.
-
-**Type:** Float
-
-**Default:** max. distance value of TSDF integrator
+**Type:** Float. **Default:** max. distance value of TSDF integrator. Defines the maximum distance up to which the measured radiation intensity should be projected onto surrounding surfaces.
 
 #### `radiation_distance_function`
-Defines the function which describes the change of intensity with increasing distance to the sensor during projection on surrounding surfaces. These functions are available
-
-- `increasing`: ![`f \left(d\right) = \frac1{\left(d+1\right)^2}`](https://latex.codecogs.com/png.latex?f%20%5Cleft%28d%5Cright%29%20%3D%20%5Cfrac1%7B%5Cleft%28d&plus;1%5Cright%29%5E2%7D)
-- `decreasing`: ![`f \left(d\right) = {\left(d+1\right)^2}`](https://latex.codecogs.com/png.latex?f%20%5Cleft%28d%5Cright%29%20%3D%20%7B%5Cleft%28d&plus;1%5Cright%29%5E2%7D)
-- `constant`: ![`f \left(d\right) = {1}`](https://latex.codecogs.com/png.latex?f%20%5Cleft%28d%5Cright%29%20%3D%20%7B1%7D)
-
-**Type:** String
-
-**Default:** `"constant"`
+**Type:** String. **Default:** `"constant"`. Defines the function which describes the change of intensity with increasing distance to the sensor during projection on surrounding surfaces. These functions are available
+| Name | String | Function |
+|:-:|:-:|:-:|
+| Decreasing Radiation Distance Function | `decreasing` | ![`f \left(d\right) = \frac1{\left(d+1\right)^2}`](https://latex.codecogs.com/png.latex?f%20%5Cleft%28d%5Cright%29%20%3D%20%5Cfrac1%7B%5Cleft%28d&plus;1%5Cright%29%5E2%7D) |
+| Increasing Radiation Distance Function | `increasing` | ![`f \left(d\right) = {\left(d+1\right)^2}`](https://latex.codecogs.com/png.latex?f%20%5Cleft%28d%5Cright%29%20%3D%20%7B%5Cleft%28d&plus;1%5Cright%29%5E2%7D) |
+| Constant Radiation Distance Function | `constant` | ![`f \left(d\right) = {1}`](https://latex.codecogs.com/png.latex?f%20%5Cleft%28d%5Cright%29%20%3D%20%7B1%7D) |
 
 #### `radiation_use_logarithm`
 **Type:** Boolean

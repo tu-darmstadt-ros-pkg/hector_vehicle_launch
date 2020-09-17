@@ -6,9 +6,9 @@ Choose one of these files to start the [3D Radiation Mapper](https://git.sim.inf
 
 | Repository | Branch |
 |:-:|:-:|
-| **voxblox** | [`radio_nuclear_mapper`](https://git.sim.informatik.tu-darmstadt.de/hector/hector_voxblox/-/tree/radio_nuclear_mapper) |
-| **radiological_nuclear_mapper** | [`voxblox`](https://git.sim.informatik.tu-darmstadt.de/hector/hector_enrich/-/tree/voxblox/radiological_nuclear_mapper) |
-| **hector_vehicle_launch**<br>(this repository) | [`radiological_nuclear_mapper`](https://github.com/tu-darmstadt-ros-pkg/hector_vehicle_launch/tree/radiological_nuclear_mapper)<br>(this branch) |
+| **voxblox** | [radio_nuclear_mapper](https://git.sim.informatik.tu-darmstadt.de/hector/hector_voxblox/-/tree/radio_nuclear_mapper) |
+| **radiological_nuclear_mapper** | [voxblox](https://git.sim.informatik.tu-darmstadt.de/hector/hector_enrich/-/tree/voxblox/radiological_nuclear_mapper) |
+| **hector_vehicle_launch**<br>(this repository) | [radiological_nuclear_mapper](https://github.com/tu-darmstadt-ros-pkg/hector_vehicle_launch/tree/radiological_nuclear_mapper)<br>(this branch) |
 
 ### Radionuclear Mapper Specific Parameters
 
@@ -67,8 +67,9 @@ Defines the color map to display the radiation intensity. The following color ma
 | `"grayscale"` | ![Grayscale](readme_files/grayscale.png) |
 | `"inverse_grayscale"` | ![Reversed Grayscale](readme_files/inverse_grayscale.png) |
 | `"ironbow"` | ![Ironbow](readme_files/ironbow.png) |
-| `"traffic-light"` | ![Traffic Light](readme_files/traffic_light.png) |
+| `"traffic-light"`*  | ![Traffic Light](readme_files/traffic_light.png) |
 
+\* The traffic light colormap is added to the *radiological_nuclear_mapper* branch of *hector_vehicle_launch* repository for the purpose of displaying radiation intensities. It is recommended to use.
 
 #### `save_mesh_trigger_topic`
 **Type:** String.

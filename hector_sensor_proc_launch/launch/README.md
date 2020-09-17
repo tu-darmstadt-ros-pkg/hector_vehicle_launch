@@ -62,12 +62,12 @@ Defines the color map to display the radiation intensity. The following color ma
 
 | Parameter Value | Description |
 |:-:|:-:|
-| `"rainbow"` | ![Rainbow](rainbow.png) |
-| `"inverse_rainbow"` | ![Reversed Rainbow](inverse_rainbow.png) |
-| `"grayscale"` | ![Grayscale](grayscale.png) |
-| `"inverse_grayscale"` | ![Reversed Grayscale](inverse_grayscale.png) |
-| `"ironbow"` | ![Ironbow](ironbow.png) |
-| `"traffic-light"` | ![Traffic Light](traffic_light.png) |
+| `"rainbow"` | ![Rainbow](readme_files/rainbow.png) |
+| `"inverse_rainbow"` | ![Reversed Rainbow](readme_files/inverse_rainbow.png) |
+| `"grayscale"` | ![Grayscale](readme_files/grayscale.png) |
+| `"inverse_grayscale"` | ![Reversed Grayscale](readme_files/inverse_grayscale.png) |
+| `"ironbow"` | ![Ironbow](readme_files/ironbow.png) |
+| `"traffic-light"` | ![Traffic Light](readme_files/traffic_light.png) |
 
 
 #### `save_mesh_trigger_topic`

@@ -28,7 +28,7 @@ Defines the maximum distance up to which the measured radiation intensity should
 #### `radiation_distance_function`
 **Type:** String.
 **Default:** `"constant"`.
-Defines the function which describes the change of intensity with increasing distance to the sensor during projection on surrounding surfaces. These functions are available:
+Defines the function which describes the change of intensity with increasing distance to the sensor during projection on surrounding surfaces. The following functions are available.
 | Function Name | Parameter Value | Mathematical Description |
 |:-:|:-:|:-:|
 | Decreasing Radiation Distance Function | `"decreasing"` | ![`f \left(d\right) = \frac1{\left(d+1\right)^2}`](https://latex.codecogs.com/png.latex?f%20%5Cleft%28d%5Cright%29%20%3D%20%5Cfrac1%7B%5Cleft%28d&plus;1%5Cright%29%5E2%7D) |
@@ -38,31 +38,37 @@ Defines the function which describes the change of intensity with increasing dis
 #### `radiation_use_logarithm`
 **Type:** Boolean.
 **Default:** `false`.
-Defines whether the intensity represented as a gradient should be displayed logarithmically (`true`) or linear (`false`).
+Defines whether the intensity represented as a colour gradient should be displayed logarithmically (`true`) or linear (`false`).
 
 #### `radiation_msg_val_min`
 **Type:** Float.
 **Default:** `0.0`.
 Defines the smallest value that the radiation sensor measures during the run. More information about the radiation sensor extreme values see [here](#radiation-sensor-extreme-values).
 
-
-
 #### `radiation_msg_val_max`
+**Type:** Float.
+**Default:** `100000.0`.
 Defines the largest value that the radiation sensor measures during the run. More information about the radiation sensor extreme values see [here](#radiation-sensor-extreme-values).
 
-**Type:** Float
-
-**Default:** `100000.0`
-
 #### `radiation_bearing_vector_num`
-**Type:** Integer
-
-**Default:** `10000`
+**Type:** Integer.
+**Default:** `10000`.
+Defines the number of vectors starting at the position of the sensor along which the intensity is to be projected onto the surfaces.
 
 #### `radiation_colormap`
-**Type:** String
+**Type:** String.
+**Default:** `"ironbow"`.
+Defines the color map to display the radiation intensity. The following color maps are available.
 
-**Default:** `"ironbow"`
+| Parameter Value | Description |
+|:-:|:-:|
+| `"rainbow"` | ![Rainbow](rainbow.png) |
+| `"inverse_rainbow"` | ![Reversed Rainbow](inverse_rainbow.png) |
+| `"grayscale"` | ![Grayscale](grayscale.png) |
+| `"inverse_grayscale"` | ![Reversed Grayscale](inverse_grayscale.png) |
+| `"ironbow"` | ![Ironbow](ironbow.png) |
+| `"traffic-light"` | ![Traffic Light](traffic_light.png) |
+
 
 #### `save_mesh_trigger_topic`
 **Type:** String

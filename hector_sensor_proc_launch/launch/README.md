@@ -43,12 +43,12 @@ Defines whether the intensity represented as a colour gradient should be display
 #### `radiation_msg_val_min`
 **Type:** Float.
 **Default:** `0.0`.
-Defines the smallest value that the radiation sensor measures during the run. More information about the radiation sensor extreme values see [here](#radiation-sensor-extreme-values).
+Defines the smallest value that the radiation sensor measures during the run. More information about the radiation sensor extreme values see [bellow](#radiation-sensor-extreme-values).
 
 #### `radiation_msg_val_max`
 **Type:** Float.
 **Default:** `100000.0`.
-Defines the largest value that the radiation sensor measures during the run. More information about the radiation sensor extreme values see [here](#radiation-sensor-extreme-values).
+Defines the largest value that the radiation sensor measures during the run. More information about the radiation sensor extreme values see [bellow](#radiation-sensor-extreme-values).
 
 #### `radiation_bearing_vector_num`
 **Type:** Integer.
@@ -76,3 +76,5 @@ Defines the color map to display the radiation intensity. The following color ma
 Defines the ROS topic to receive the command that triggers the export of one or more meshes. See [here](https://git.sim.informatik.tu-darmstadt.de/hector/hector_voxblox/-/blob/radio_nuclear_mapper/README.md#3-how-to-export-3d-radiation-mesh) how to use it.
 
 ### Radiation Sensor Extreme Values
+
+(work in progress)

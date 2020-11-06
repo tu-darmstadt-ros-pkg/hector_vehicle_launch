@@ -7,3 +7,5 @@ min_variance: 0.001
 max_variance: 100.0
 mahalanobis_distance_threshold: 2.5
 multi_height_noise: 0.02
+time_tolerance: 2.0
+

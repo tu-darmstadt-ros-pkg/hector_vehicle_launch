@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<launch>
+  <arg name="nodelet_manager" default="velodyne_nodelet_manager"/>
+  <arg name="input_topic" default="/colored_cloud"/>
+  <arg name="output_topic" default="/colored_cloud_world"/>
+  <arg name="target_frame" default="world"/>
+  
+    <node pkg="nodelet" type="nodelet" name="cloud_to_$(arg target_frame)_transformer" output="screen" respawn="true" args="load pcl/PassThrough $(arg nodelet_manager)">
+        <param name="output_frame" value="$(arg target_frame)"/>
+        <remap from="~input" to="$(arg input_topic)"/>
+        <remap from="~output" to="$(arg output_topic)"/>
+        
+        <!-- Disable filtering -->
+        <param name="filter_limit_max" value="0"/>
+        <param name="filter_limit_negative" value="true"/>
+    </node>
+</launch>

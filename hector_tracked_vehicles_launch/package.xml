@@ -50,6 +50,7 @@
   <run_depend>hector_worldmodel_geotiff_plugins</run_depend>
   <run_depend>traversability_estimation</run_depend> 
   <run_depend>elevation_mapping</run_depend> 
+  <run_depend>grid_map_visualization</run_depend>
   <run_depend>hector_geotiff</run_depend> 
   <run_depend>pose_to_pose_with_covariance</run_depend> 
   <run_depend>topic_tools</run_depend> 

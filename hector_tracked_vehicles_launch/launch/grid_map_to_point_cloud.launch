@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<launch>
+  
+  <node pkg="grid_map_visualization" type="grid_map_visualization" name="grid_map_visualization" output="screen">
+    <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/grid_map_to_point_cloud.yaml" />
+  </node>
+      
+</launch>

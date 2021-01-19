@@ -4,6 +4,7 @@
   <arg name="camera_name" default="camera360" />
   
   <!-- Front view -->
+<!--   <node pkg="image_projection" type="periodic_image_projection_node" name="$(arg camera_name)_pinhole_front" output="screen"> -->
   <node pkg="nodelet" type="nodelet" name="$(arg camera_name)_pinhole_front" args="load image_projection/PeriodicImageProjectionNodelet $(arg camera_name)_nodelet_manager" output="screen" respawn="true">
     <rosparam file="$(find hector_sensor_proc_launch)/config/vision/$(arg camera_name)_cameras.yaml" command="load"/>
     
@@ -28,6 +29,7 @@
   </node>
   
   <!-- Back view -->
+<!--   <node pkg="image_projection" type="periodic_image_projection_node" name="$(arg camera_name)_pinhole_back" output="screen"> -->
   <node pkg="nodelet" type="nodelet" name="$(arg camera_name)_pinhole_back" args="load image_projection/PeriodicImageProjectionNodelet $(arg camera_name)_nodelet_manager" output="screen" respawn="true">
     <rosparam file="$(find hector_sensor_proc_launch)/config/vision/$(arg camera_name)_cameras.yaml" command="load"/>
     
@@ -51,6 +53,7 @@
   </node>
   
   <!-- Navigation equirectangular (low res) -->
+<!--   <node pkg="image_projection" type="periodic_image_projection_node" name="$(arg camera_name)_equirectangular_projection" output="screen"> -->
   <node pkg="nodelet" type="nodelet" name="$(arg camera_name)_equirectangular_projection" args="load image_projection/PeriodicImageProjectionNodelet $(arg camera_name)_nodelet_manager" output="screen" respawn="true">
     <rosparam file="$(find hector_sensor_proc_launch)/config/vision/$(arg camera_name)_cameras.yaml" command="load"/>
     

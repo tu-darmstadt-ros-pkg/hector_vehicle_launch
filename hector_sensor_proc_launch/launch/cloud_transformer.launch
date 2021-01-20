@@ -6,7 +6,7 @@
   <arg name="output_topic" default="/colored_cloud_world"/>
   <arg name="target_frame" default="world"/>
   
-    <node pkg="nodelet" type="nodelet" name="cloud_to_$(arg target_frame)_transformer" output="screen" respawn="true" args="load pcl/PassThrough $(arg nodelet_manager)">
+    <node pkg="nodelet" type="nodelet" name="$(anon cloud_transformer)" output="screen" respawn="true" args="load pcl/PassThrough $(arg nodelet_manager)">
         <param name="output_frame" value="$(arg target_frame)"/>
         <remap from="~input" to="$(arg input_topic)"/>
         <remap from="~output" to="$(arg output_topic)"/>

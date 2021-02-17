@@ -1,16 +1,11 @@
 <?xml version="1.0"?>
 
 <launch>
-   <node pkg="elevation_mapping" type="elevation_mapping" name="elevation_mapping" output="screen" respawn="false">
-    	 <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/elevation_mapping/jasmine_robot.yaml" />
-    	 <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/elevation_mapping/map_range_global.yaml" />
-    	 <rosparam command="load" file="$(find elevation_mapping)/config/sensor_processors/velodyne_HDL-32E.yaml" />
-    </node>
-
-    <!--
-    <node pkg="elevation_mapping" type="odometry_to_pose_with_covariance" name="odometry_to_pose_with_covariance" output="screen">
-    </node>
-    -->
+  <node pkg="elevation_mapping" type="elevation_mapping" name="elevation_mapping" output="screen" respawn="false">
+    <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/elevation_mapping/jasmine_robot.yaml" />
+    <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/elevation_mapping/map_range_global.yaml" />
+    <rosparam command="load" file="$(find elevation_mapping)/config/sensor_processors/velodyne_HDL-32E.yaml" ns="input_sources/lidar"/>
+  </node>
 
     <node pkg="nodelet" type="nodelet" name="scan_z_filter" output="screen" respawn="false" args="standalone pcl/PassThrough">
         <param name="filter_field_name" value="z"/>

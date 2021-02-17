@@ -11,8 +11,8 @@ track_point_z: 0.0
 scanning_duration: 2.1 # lidar rotates with 1.5 rad/s. Time needed for half rotation = one full scan
 
 input_sources:
-- name: lidar # A name to identify the input source
-  type: pointcloud # Supported types: pointcloud
-  topic: /scan_matched_points2_cropped
-  queue_size: 1
-  publish_on_update: true # Wether to publish the elevation map after a callback from this source.
+  lidar: # A name to identify the input source
+    type: pointcloud # Supported types: pointcloud
+    topic: /scan_matched_points2_cropped
+    queue_size: 1
+    publish_on_update: true # Wether to publish the elevation map after a callback from this source.

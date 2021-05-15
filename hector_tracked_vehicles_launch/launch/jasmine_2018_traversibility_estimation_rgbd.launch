@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<launch>
+  <arg name="static_obstacle_map" default="$(optenv STATIC_OBSTACLE_MAP false)"/>
+  <include file="$(find hector_tracked_vehicles_launch)/launch/jasmine_2018_elevation_mapping_rgbd.launch"/>
+    
+  <env name="ROSCONSOLE_CONFIG_FILE" value="$(find traversability_estimation)/config/rosconsole.conf"/>
+  
+  <node pkg="traversability_estimation" type="traversability_estimation_node" name="traversability_estimation_rgbd" output="screen">
+    <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/jasmine_robot_rgbd.yaml"/>
+    <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/jasmine_robot_footprint_parameter.yaml"/>
+    <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/jasmine_robot_filter_parameter.yaml"/>
+<!--    <param name="elevation_map/path_to_bag" value="$(find traversability_estimation)/data/map.bag"/>-->
+  </node>
+  
+  <!--
+  <node pkg="ethz_grid_map_proc" type="ethz_grid_map_proc_node" name="ethz_grid_map_proc" output="screen">
+   <param name="unknown_space_to_free" value="false"/>
+   <param name="enable_obstacle_map" value="true"/>
+   <param name="enable_traversability_map" value="false"/>
+  </node>
+
+  <group unless="$(arg static_obstacle_map)">
+    <node name="grid_map_2d_mapper" type="grid_map_2d_mapper_node" pkg="grid_map_2d_mapper" output="screen" respawn="true">
+      <param name="min_height" value="0.25"/>
+      <param name="max_height" value="1.0"/>
+      <param name="range_min" value="0.2"/>
+      <param name="target_frame" value="base_stabilized"/>
+      <param name="map_publish_period" value="1"/>
+      <remap from="/map" to="/obstacle_map" />
+      <remap from="/map_throttled" to="/obstacle_map_throttled" />
+    </node>
+  </group>
+  -->
+</launch>

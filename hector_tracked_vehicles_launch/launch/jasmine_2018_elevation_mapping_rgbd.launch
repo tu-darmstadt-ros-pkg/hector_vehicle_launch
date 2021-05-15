@@ -4,7 +4,7 @@
   <node pkg="elevation_mapping" type="elevation_mapping" name="elevation_mapping_rgbd" output="screen" respawn="false" clear_params="true">
     <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/elevation_mapping_rgbd/jasmine_robot.yaml" />
     <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/elevation_mapping_rgbd/map_range_global.yaml" />
-    <rosparam command="load" file="$(find elevation_mapping)/config/sensor_processors/realsense_d435.yaml" ns="input_sources/front_rgbd"/>
-    <rosparam command="load" file="$(find elevation_mapping)/config/sensor_processors/realsense_d435.yaml" ns="input_sources/back_rgbd"/>
+    <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/sensor_processors/realsense_d435.yaml" ns="input_sources/front_rgbd"/>
+    <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/sensor_processors/realsense_d435.yaml" ns="input_sources/back_rgbd"/>
   </node>
 </launch>

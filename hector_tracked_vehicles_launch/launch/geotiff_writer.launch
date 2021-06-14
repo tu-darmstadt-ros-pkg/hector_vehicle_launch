@@ -6,9 +6,9 @@
   <node pkg="hector_geotiff" type="geotiff_node" name="hector_geotiff_node" output="screen" respawn="true" launch-prefix="nice -n 15">
     <remap from="map" to="/grid_map_2d_mapper/map" />
     <param name="map_file_path" type="string" value="$(find robot_onboard_logging)/maps" />
-    <param name="map_file_base_name" type="string" value="RoboCup2019-HectorDarmstadt-Prelim1" />
+    <param name="map_file_base_name" type="string" value="RoboCup2021-HectorDarmstadt-Prelim" />
     <param name="geotiff_save_period" type="double" value="45" />
-    <param name="robot_default_name" type="string" value="Jasmine" />
+    <param name="robot_default_name" type="string" value="Asterix" />
 
     <param name="plugins" type="string" value="hector_geotiff_plugins/TrajectoryMapWriter hector_worldmodel_geotiff_plugins/GenericMapWriter" />
 <!--    <param name="VictimMapWriter/draw_all_objects" value="false" />

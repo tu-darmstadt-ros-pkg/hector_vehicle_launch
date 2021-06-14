@@ -16,12 +16,12 @@ Geotiff for it.
     
   <arg name="cloud_target_frame" default="base_stabilized" />
   <arg name="cloud_topic" default="/scan_matched_points2" />
-  <arg name="min_height" default="1.4"/>    
-  <arg name="max_height" default="1.6"/>
+  <arg name="min_height" default="2.1"/>    
+  <arg name="max_height" default="2.5"/>
   
   <arg name="map_file_path" default="$(find robot_onboard_logging)/maps"/>
-  <arg name="map_file_base_name" default="RoboCup2019-HectorDarmstadt-Prelim1-UpperLevel" />
-  <arg name="robot_default_name" default="Jasmine" />
+  <arg name="map_file_base_name" default="RoboCup2021-HectorDarmstadt-Prelim-UpperLevel" />
+  <arg name="robot_default_name" default="Asterix" />
  
   
   <node name="grid_map_2d_$(arg map_name)" type="grid_map_2d_mapper_node" pkg="grid_map_2d_mapper" output="screen" launch-prefix="nice -n 15" respawn="true">

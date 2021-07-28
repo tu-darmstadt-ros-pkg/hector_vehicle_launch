@@ -1,0 +1,17 @@
+cameras:
+  - '/camera360/right'
+  - '/camera360/left'
+
+/camera360:
+    right:
+      image_topic: image_raw
+      camera_info_topic: camera_info_not_used
+      extended_camera_info_topic: extended_camera_info
+      full_mask: $(find hector_sensor_proc_launch)/config/kalibr_calibrations/insta360_3_omni_radtan/right_robot_mask.png
+
+    left:
+      image_topic: image_raw
+      camera_info_topic: camera_info_not_used
+      extended_camera_info_topic: extended_camera_info
+      full_mask: $(find hector_sensor_proc_launch)/config/kalibr_calibrations/insta360_3_omni_radtan/left_robot_mask.png
+

@@ -1,10 +1,16 @@
 <?xml version="1.0"?>
 
 <launch>
-  <node pkg="elevation_mapping" type="elevation_mapping" name="elevation_mapping" output="screen" respawn="false">
+  <arg name="fuse_rgbd" default="false"/>
+  
+  <node pkg="elevation_mapping" type="elevation_mapping" name="elevation_mapping" output="screen" respawn="false" clear_params="true">
     <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/elevation_mapping/jasmine_robot.yaml" />
     <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/elevation_mapping/map_range_global.yaml" />
     <rosparam command="load" file="$(find elevation_mapping)/config/sensor_processors/velodyne_HDL-32E.yaml" ns="input_sources/lidar"/>
+    
+    <rosparam if="$(arg fuse_rgbd)" command="load" file="$(find hector_tracked_vehicles_launch)/config/elevation_mapping/jasmine_robot_rgbd.yaml" />
+    <rosparam if="$(arg fuse_rgbd)" command="load" file="$(find hector_tracked_vehicles_launch)/config/sensor_processors/realsense_d435.yaml" ns="input_sources/front_rgbd"/>
+    <rosparam if="$(arg fuse_rgbd)" command="load" file="$(find hector_tracked_vehicles_launch)/config/sensor_processors/realsense_d435.yaml" ns="input_sources/back_rgbd"/>
   </node>
     
     <node pkg="nodelet" type="nodelet" name="scan_z_filter" output="screen" respawn="false" args="standalone pcl/PassThrough">

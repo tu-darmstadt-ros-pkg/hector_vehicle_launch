@@ -1,20 +1,9 @@
-map_frame_id: "world"
-robot_base_frame_id: "base_link"
-robot_pose_with_covariance_topic: "/pose_cov"
-robot_pose_cache_size: 500
-track_point_frame_id: "base_link"
-track_point_x: 0.0
-track_point_y: 0.0
-track_point_z: 0.0
-scanning_duration: 0.05 # 20 hz RGBD cam
-#enable_continuous_cleanup: true
-
 input_sources:
   front_rgbd: # A name to identify the input source
     type: pointcloud # Supported types: pointcloud
     topic: /front_rgbd_cam/depth/color/points
     queue_size: 1
-    publish_on_update: true # Wether to publish the elevation map after a callback from this source.
+    publish_on_update: false # Wether to publish the elevation map after a callback from this source.
     sensor_processor/cutoff_min_depth: 0.8
   back_rgbd: # A name to identify the input source
     type: pointcloud # Supported types: pointcloud

@@ -3,6 +3,19 @@
 <launch>
   <arg name="fuse_rgbd" default="false"/>
   
+  <!-- Throttle RGBD for elevation mapping (lazy) -->
+  <node pkg="nodelet" type="nodelet" name="front_rgbd_cam_depth_throttle" output="screen" respawn="false" args="load hector_nodelet_topic_tools/NodeletThrottlePointcloud /front_rgbd_cam/front_rgbd_cam_nodelet_manager">
+    <param name="update_rate" value="6"/> <!-- we want 5 Hz, but throttle implementation is bad -->
+    <remap from="/front_rgbd_cam/topic_in" to="/front_rgbd_cam/depth/color/points"/>
+    <remap from="/front_rgbd_cam/topic_out" to="/front_rgbd_cam/depth/color/points_throttle"/>
+  </node>
+  
+  <node pkg="nodelet" type="nodelet" name="back_rgbd_cam_depth_throttle" output="screen" respawn="false" args="load hector_nodelet_topic_tools/NodeletThrottlePointcloud /back_rgbd_cam/back_rgbd_cam_nodelet_manager">
+    <param name="update_rate" value="6"/>
+    <remap from="/back_rgbd_cam/topic_in" to="/back_rgbd_cam/depth/color/points"/>
+    <remap from="/back_rgbd_cam/topic_out" to="/back_rgbd_cam/depth/color/points_throttle"/>
+  </node>
+  
   <node pkg="elevation_mapping" type="elevation_mapping" name="elevation_mapping" output="screen" respawn="false" clear_params="true">
     <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/elevation_mapping/jasmine_robot.yaml" />
     <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/elevation_mapping/map_range_global.yaml" />

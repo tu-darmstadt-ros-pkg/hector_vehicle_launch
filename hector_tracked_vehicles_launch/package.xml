@@ -61,6 +61,7 @@
   <run_depend>controller_manager</run_depend> 
   <run_depend>hector_trajectory_server</run_depend> 
   <run_depend>laser_assembler</run_depend> 
+  <run_depend>hector_nodelet_topic_tools</run_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

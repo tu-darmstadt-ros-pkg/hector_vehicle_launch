@@ -2,7 +2,7 @@
 
 <launch>
   <arg name="fuse_rgbd" default="$(optenv HECTOR_ELEVATION_MAPPING_FUSE_RGBD false)"/>
-  <arg name="filter_limit_max" default=1.0>
+  <arg name="filter_limit_max" default="1.0"/>
   
   <!-- Throttle RGBD for elevation mapping (lazy) -->
   <node pkg="nodelet" type="nodelet" name="front_rgbd_cam_depth_throttle" output="screen" respawn="false" args="load hector_nodelet_topic_tools/NodeletThrottlePointcloud /front_rgbd_cam/front_rgbd_cam_nodelet_manager">

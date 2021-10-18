@@ -9,7 +9,7 @@
   <node pkg="traversability_estimation" type="traversability_estimation_node" name="traversability_estimation" output="screen">
     <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/jasmine_robot.yaml"/>
     <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/drz_telemax_footprint_parameter.yaml"/>
-    <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/jasmine_robot_filter_parameter.yaml"/>
+    <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/drz_telemax_filter_parameter.yaml"/>
 <!--    <param name="elevation_map/path_to_bag" value="$(find traversability_estimation)/data/map.bag"/>-->
   </node>
   
@@ -31,3 +31,5 @@
     </node>
   </group>
 </launch>
+
+

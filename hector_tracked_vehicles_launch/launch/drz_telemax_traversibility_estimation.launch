@@ -14,9 +14,9 @@
   </node>
   
   <node pkg="ethz_grid_map_proc" type="ethz_grid_map_proc_node" name="ethz_grid_map_proc" output="screen">
-   <param name="unknown_space_to_free" value="false"/>
+   <param name="unknown_space_to_free" value="true"/>
    <param name="enable_obstacle_map" value="true"/>
-   <param name="enable_traversability_map" value="false"/>
+   <param name="enable_traversability_map" value="true"/>
   </node>
   
   <group unless="$(arg static_obstacle_map)">

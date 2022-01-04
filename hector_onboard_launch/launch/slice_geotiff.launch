@@ -19,9 +19,10 @@ Geotiff for it.
   <arg name="min_height" default="1.9"/>    
   <arg name="max_height" default="2.3"/>
   
-  <arg name="map_file_path" default="$(find robot_onboard_logging)/maps"/>
+  <arg name="log_folder" default="$(eval optenv('HECTOR_LOG_FOLDER', find('robot_onboard_logging')))"/>
+  <arg name="map_file_path" default="$(arg log_folder)/maps"/>
   <arg name="map_file_base_name" default="RoboCup2021-HectorDarmstadt-Prelim-UpperLevel" />
-  <arg name="robot_default_name" default="Asterix" />
+  <arg name="robot_default_name" default="$(optenv DEFAULT_ROBOT_TYPE asterix)" />
 
 
   <node pkg="nodelet" type="nodelet" name="scan_z_filter_$(arg map_name)" output="screen" respawn="false" args="standalone pcl/PassThrough">

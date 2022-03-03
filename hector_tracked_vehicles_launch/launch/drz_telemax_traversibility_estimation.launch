@@ -21,8 +21,8 @@
   
   <group unless="$(arg static_obstacle_map)">
     <node name="grid_map_2d_mapper" type="grid_map_2d_mapper_node" pkg="grid_map_2d_mapper" output="screen" respawn="true">
-      <param name="min_height" value="0.15"/>
-      <param name="max_height" value="1.0"/>
+      <param name="min_height" value="0.35"/>
+      <param name="max_height" value="1.3"/>
       <param name="range_min" value="0.2"/>
       <param name="target_frame" value="base_stabilized"/>
       <param name="map_publish_period" value="1"/>

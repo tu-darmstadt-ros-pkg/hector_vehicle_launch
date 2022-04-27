@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<launch> 
+  <node name="esdf_server" pkg="voxblox_ros" type="esdf_server" output="screen" clear_params="true" respawn="true">
+    <param name="world_frame" value="world"/>
+    <param name="publish_esdf_map" value="true" />
+    <param name="update_mesh_every_n_sec" value="1.0" />
+    <param name="update_esdf_every_n_sec" value="1.0" />
+
+
+
+    <param name="min_time_between_msgs_sec" value="0.0" />
+    <param name="verbose" value="false" />
+    <param name="color_mode" value="normals" /> <!-- normals, color -->
+    <param name="method" value="simple" /> <!-- simple, fast, merged -->
+    <param name="use_const_weight" value="true" />
+
+    <param name="tsdf_voxel_size" value="0.025" />
+    <param name="tsdf_voxels_per_side" value="16" />
+    <param name="voxel_carving_enabled" value="false" />
+    <param name="truncation_distance" value="0.4" />
+
+<!--     <param name="publish_pointclouds_on_update" value="true"/> -->
+<!--     <param name="publish_pointclouds" value="true"/> -->
+    <param name="publish_slices" value="false" />
+
+    <remap from="pointcloud" to="/scan_matched_points2"/>
+  </node>
+</launch>

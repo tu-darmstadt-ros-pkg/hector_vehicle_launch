@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="base_topic"/>
+  <arg name="in_base_topic" default="$(arg base_topic)"/>
+  <arg name="out_base_topic" default="$(arg base_topic)"/>
+
+
+  <!-- Republish compressed cloud -->
+  <node pkg="image_transport" type="republish" name="$(anon compress_camera)" args="compressed in:=$(arg in_base_topic) raw out:=$(arg out_base_topic)" output="screen" respawn="true"/>
+
+</launch>

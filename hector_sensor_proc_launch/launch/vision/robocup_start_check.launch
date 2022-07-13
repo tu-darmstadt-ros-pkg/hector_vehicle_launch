@@ -36,7 +36,7 @@
     <param name="min_match_count" value="60" />
     <param name="image_projection_raycast" value="false" />
 
-    <param name="model_folder" value="$(find hector_hazmat_detection_py)/templates/rcgo21_startcheck" />
+    <param name="model_folder" value="$(find hector_hazmat_detection_py)/templates/rc22_startcheck" />
   </node>
 
   <!-- QR code detection -->

@@ -175,44 +175,80 @@
     <remap from="~camera_info" to="/$(arg camera_name)/birdseye/camera_info" />
   </node>-->
 
-  <!-- Navigation equirectangular (low res) -->
+  <!-- Cylinder projection -->
 <!--   <node pkg="image_projection" type="periodic_image_projection_node" name="$(arg camera_name)_equirectangular_projection" output="screen"> -->
-  <node pkg="nodelet" type="nodelet" name="$(arg camera_name)_equirectangular_projection" args="load image_projection/PeriodicImageProjectionNodelet $(arg camera_name)_nodelet_manager" output="screen" respawn="true">
+  <node pkg="nodelet" type="nodelet" name="$(arg camera_name)_cylinder_projection" args="load image_projection/PeriodicImageProjectionNodelet $(arg camera_name)_nodelet_manager" output="screen" respawn="true">
     <rosparam file="$(find hector_sensor_proc_launch)/config/vision/$(arg camera_name)_cameras.yaml" command="load"/>
-    
+
     <param name="update_rate" value="5" />
-    
+
     <param name="base_frame" value="$(arg camera_name)_center_link" />
     <rosparam param="pose">[0, 0, 0, 0, 0, 3.141592]</rosparam>
-    
+
     <param name="projection_type" value="image_projection_plugins::MercatorProjection" />
     <rosparam param="projection_parameters">
-      image_width: 643
-      image_height: 512
+      image_width: 1028
+      image_height: 388
       cylinder_radius: 1.0
-      vertical_fov: 136
     </rosparam>
-    
-    <remap from="~projection" to="/$(arg camera_name)/equirectangular" />
+
+    <remap from="~projection" to="/$(arg camera_name)/cylinder" />
   </node>
-  
-  <!-- Detection equirectangular (high res) -->
-  <node pkg="nodelet" type="nodelet" name="$(arg camera_name)_equirectangular_low_fov" args="load image_projection/PeriodicImageProjectionNodelet $(arg camera_name)_nodelet_manager" output="screen" respawn="true">
+
+  <!-- Cylinder projection for detection (high res) -->
+  <node pkg="nodelet" type="nodelet" name="$(arg camera_name)_cylinder_low_fov" args="load image_projection/PeriodicImageProjectionNodelet $(arg camera_name)_nodelet_manager" output="screen" respawn="true">
     <rosparam file="$(find hector_sensor_proc_launch)/config/vision/$(arg camera_name)_cameras.yaml" command="load"/>
-    
+
     <param name="update_rate" value="1" />
-    
+
     <param name="base_frame" value="$(arg camera_name)_center_link" />
     <rosparam param="pose">[0, 0, 0, 0, 0, 3.141592]</rosparam>
-    
+
     <param name="projection_type" value="image_projection_plugins::MercatorProjection" />
     <rosparam param="projection_parameters">
       image_width: 3210
       image_height: 768
       cylinder_radius: 1.0
-      vertical_fov: 73
     </rosparam>
-        
-    <remap from="~projection" to="/$(arg camera_name)/equirectangular_low_fov" />
+
+    <remap from="~projection" to="/$(arg camera_name)/cylinder_low_fov" />
   </node>
+
+  <!-- (Full) Equirectangular projection -->
+  <node pkg="nodelet" type="nodelet" name="$(arg camera_name)_equirectangular_projection" args="load image_projection/PeriodicImageProjectionNodelet $(arg camera_name)_nodelet_manager" output="screen" respawn="true">
+    <rosparam file="$(find hector_sensor_proc_launch)/config/vision/$(arg camera_name)_cameras.yaml" command="load"/>
+
+    <param name="update_rate" value="5" />
+
+    <param name="base_frame" value="$(arg camera_name)_center_link" />
+    <rosparam param="pose">[0, 0, 0, 0, 0, 3.141592]</rosparam>
+
+    <param name="projection_type" value="image_projection_plugins::EquirectangularProjection" />
+    <rosparam param="projection_parameters">
+      image_width: 1028
+      image_height: 512
+      cylinder_radius: 1.0
+    </rosparam>
+
+    <remap from="~projection" to="/$(arg camera_name)/equirectangular" />
+  </node>
+
+  <!-- Equirectangular projection for detection (high res) -->
+<!--  <node pkg="nodelet" type="nodelet" name="$(arg camera_name)_equirectangular_low_fov" args="load image_projection/PeriodicImageProjectionNodelet $(arg camera_name)_nodelet_manager" output="screen" respawn="true">
+    <rosparam file="$(find hector_sensor_proc_launch)/config/vision/$(arg camera_name)_cameras.yaml" command="load"/>
+
+    <param name="update_rate" value="1" />
+
+    <param name="base_frame" value="$(arg camera_name)_center_link" />
+    <rosparam param="pose">[0, 0, 0, 0, 0, 3.141592]</rosparam>
+
+    <param name="projection_type" value="image_projection_plugins::EquirectangularProjection" />
+    <rosparam param="projection_parameters">
+      image_width: 3210
+      image_height: 768
+      cylinder_radius: 1.0
+    </rosparam>
+
+    <remap from="~projection" to="/$(arg camera_name)/equirectangular_low_fov" />
+  </node>-->
 </launch>

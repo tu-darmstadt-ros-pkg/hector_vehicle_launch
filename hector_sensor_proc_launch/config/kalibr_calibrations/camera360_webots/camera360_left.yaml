@@ -1,0 +1,10 @@
+camera_name: cam_left
+resolution: [1504, 1504]
+#frame_id: camera360_left_optical_frame
+#camera_ns: /camera360/left
+#rostopic: /camera360/left/image_raw # currently not used
+camera_model: omni
+distortion_model: radtan
+distortion_coeffs: [0.0, 0.0, 0.0, 0.0]
+intrinsics: [0.9997, 752, 752, 752.5, 752.5]
+mask_path: $(find hector_sensor_proc_launch)/config/kalibr_calibrations/camera360_webots/camera360_left_mask.png

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch> 
+  <node name="esdf_server" pkg="voxblox_ros" type="voxfield_server" output="screen" clear_params="true" respawn="true">
+    <rosparam file="$(find hector_sensor_proc_launch)/config/voxfield_rgbd_config.yaml"/>
+
+    <remap from="pointcloud" to="/front_rgbd_cam/depth/color/points_throttle_1hz"/>
+  </node>
+
+   <!-- Throttle RGBD for voxblox (lazy) -->
+  <node pkg="nodelet" type="nodelet" name="front_rgbd_cam_depth_throttle_more" output="screen" respawn="true" args="load hector_nodelet_topic_tools/NodeletThrottlePointcloud /front_rgbd_cam/front_rgbd_cam_nodelet_manager">
+    <param name="update_rate" value="1"/>
+    <remap from="/front_rgbd_cam/topic_in" to="/front_rgbd_cam/depth/color/points"/>
+    <remap from="/front_rgbd_cam/topic_out" to="/front_rgbd_cam/depth/color/points_throttle_1hz"/>
+  </node>
+</launch>

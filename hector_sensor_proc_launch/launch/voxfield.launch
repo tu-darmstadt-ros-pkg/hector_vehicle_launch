@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch> 
+  <node name="esdf_server" pkg="voxblox_ros" type="voxfield_server" output="screen" clear_params="true" respawn="true">
+    <rosparam file="$(find hector_sensor_proc_launch)/config/voxfield_config.yaml"/>
+
+    <remap from="pointcloud" to="/scan_matched_points2"/>
+  </node>
+</launch>

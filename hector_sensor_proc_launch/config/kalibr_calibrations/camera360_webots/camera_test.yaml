@@ -1,0 +1,13 @@
+cam0:
+ camera_name: cam_left
+ resolution: [1504, 1504]
+ #frame_id: camera360_left_optical_frame
+ rostopic: /camera360/left/image_raw # currently not used
+ camera_model: omni
+ #intrinsics: [0.9997242362229155, 751.6106968589281, 751.5034043879458, 752.1881103582226,
+ #  751.5421786621118]
+ intrinsics: [0.5988378763438408, 752.5, 752.5, 752.5, 752.5]
+ distortion_model: radtan
+ distortion_coeffs: [0, 0, 0, 0]
+ mask_path: $(find hector_sensor_proc_launch)/config/kalibr_calibrations/camera360_gazebo/camera360_left_mask.png
+ cam_overlaps: []

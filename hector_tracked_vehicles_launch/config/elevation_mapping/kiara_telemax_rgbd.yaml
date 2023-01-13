@@ -1,0 +1,13 @@
+input_sources:
+  front_rgbd: # A name to identify the input source
+    type: pointcloud # Supported types: pointcloud
+    topic: /front_rgbd_cam/depth/color/points_throttle_cropped
+    queue_size: 1
+    publish_on_update: false # Wether to publish the elevation map after a callback from this source.
+    sensor_processor/cutoff_min_depth: 1.0
+  back_rgbd: # A name to identify the input source
+    type: pointcloud # Supported types: pointcloud
+    topic: /back_rgbd_cam/depth/color/points_throttle_cropped
+    queue_size: 1
+    publish_on_update: false # Wether to publish the elevation map after a callback from this source.
+    sensor_processor/cutoff_min_depth: 0.8

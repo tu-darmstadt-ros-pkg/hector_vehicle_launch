@@ -1,0 +1,13 @@
+cameras:
+  - '/camera360_semantic/right'
+  - '/camera360_semantic/left'
+
+/camera360_semantic:
+    right:
+      image_topic: segmentation_image
+      camera_info_topic: camera_info_not_used
+      extended_camera_info_topic: extended_camera_info
+    left:
+      image_topic: segmentation_image
+      camera_info_topic: camera_info_not_used
+      extended_camera_info_topic: extended_camera_info

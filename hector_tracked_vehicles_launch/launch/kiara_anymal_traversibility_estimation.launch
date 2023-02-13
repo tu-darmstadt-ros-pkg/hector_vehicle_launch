@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<launch>
+  <arg name="static_obstacle_map" default="$(optenv STATIC_OBSTACLE_MAP false)"/>
+  <include file="$(find hector_tracked_vehicles_launch)/launch/kiara_anymal_elevation_mapping.launch"/>
+    
+  <env name="ROSCONSOLE_CONFIG_FILE" value="$(find traversability_estimation)/config/rosconsole.conf"/>
+  
+  <node pkg="traversability_estimation" type="traversability_estimation_node" name="traversability_estimation" output="screen">
+    <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/jasmine_robot.yaml"/>
+    <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/kiara_telemax_footprint_parameter.yaml"/>
+    <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/kiara_telemax_filter_parameter.yaml"/>
+<!--    <param name="elevation_map/path_to_bag" value="$(find traversability_estimation)/data/map.bag"/>-->
+  </node>
+</launch>
+
+

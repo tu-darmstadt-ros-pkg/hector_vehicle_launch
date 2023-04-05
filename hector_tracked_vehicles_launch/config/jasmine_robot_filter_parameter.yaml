@@ -37,9 +37,7 @@ traversability_map_filters:
     type: traversabilityFilters/FuseFilter
     params:
       map_type: traversability
-      max_allowed_step_depth: 0.1
-      sample_distance_cells: 10
-      critical_cell_number: 3         
+      layers: ["traversability_slope", "traversability_step", "traversability_negative_step", "traversability_roughness"]
   #- name: weightedSumFilter
   #  type: gridMapFilters/MathExpressionFilter
   #  params:

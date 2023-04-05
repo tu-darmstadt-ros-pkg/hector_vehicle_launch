@@ -49,6 +49,8 @@
   <run_depend>xacro</run_depend>
   <run_depend>robot_localization</run_depend>
   <run_depend>pcl_ros</run_depend>
+  <run_depend>compressed_image_transport</run_depend>
+  <run_depend>compressed_depth_image_transport</run_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

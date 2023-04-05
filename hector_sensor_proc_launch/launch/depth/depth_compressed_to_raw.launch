@@ -6,6 +6,6 @@
 
 
   <!-- Republish compressed cloud -->
-  <node pkg="image_transport" type="republish" name="$(anon compress_depth)" args="compressedDepth in:=$(arg in_base_topic) raw out:=$(arg out_base_topic)" output="screen" respawn="true"/>
+  <node pkg="image_transport" type="republish" name="$(anon decompress_depth)" args="compressedDepth in:=$(arg in_base_topic) raw out:=$(arg out_base_topic)" output="screen" respawn="true"/>
 
 </launch>

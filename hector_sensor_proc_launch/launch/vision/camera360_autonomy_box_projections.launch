@@ -55,7 +55,7 @@
   <!-- Vision cams -->
   <!-- front vision -->
   <node pkg="nodelet" type="nodelet" name="$(arg camera_name)_pinhole_vision_front" args="load image_projection/PeriodicImageProjectionNodelet $(arg camera_name)_nodelet_manager" output="screen" respawn="true">
-    <rosparam file="$(find hector_sensor_proc_launch)/config/vision/$(arg camera_name)_cameras.yaml" command="load"/>
+    <rosparam file="$(find hector_sensor_proc_launch)/config/vision/$(arg camera_name)_cameras_full_robot_mask.yaml" command="load"/>
     
     <param name="update_rate" value="10" />
     <param name="always_recompute_mapping" value="false"/>
@@ -67,8 +67,8 @@
     
     <param name="projection_type" value="image_projection_plugins::PinholeProjection" />
     <rosparam param="projection_parameters">
-      image_width: 1024
-      image_height: 1024
+      image_width: 550
+      image_height: 550
       horizontal_fov: 100
       focal_length: 1
     </rosparam>
@@ -79,7 +79,7 @@
 
   <!-- left vision -->
   <node pkg="nodelet" type="nodelet" name="$(arg camera_name)_pinhole_vision_left" args="load image_projection/PeriodicImageProjectionNodelet $(arg camera_name)_nodelet_manager" output="screen" respawn="true">
-    <rosparam file="$(find hector_sensor_proc_launch)/config/vision/$(arg camera_name)_cameras.yaml" command="load"/>
+    <rosparam file="$(find hector_sensor_proc_launch)/config/vision/$(arg camera_name)_cameras_full_robot_mask.yaml" command="load"/>
     
     <param name="update_rate" value="10" />
     <param name="always_recompute_mapping" value="false"/>
@@ -91,8 +91,8 @@
     
     <param name="projection_type" value="image_projection_plugins::PinholeProjection" />
     <rosparam param="projection_parameters">
-      image_width: 1024
-      image_height: 1024
+      image_width: 550
+      image_height: 550
       horizontal_fov: 100
       focal_length: 1
     </rosparam>
@@ -103,7 +103,7 @@
 
   <!-- back vision -->
   <node pkg="nodelet" type="nodelet" name="$(arg camera_name)_pinhole_vision_back" args="load image_projection/PeriodicImageProjectionNodelet $(arg camera_name)_nodelet_manager" output="screen" respawn="true">
-    <rosparam file="$(find hector_sensor_proc_launch)/config/vision/$(arg camera_name)_cameras.yaml" command="load"/>
+    <rosparam file="$(find hector_sensor_proc_launch)/config/vision/$(arg camera_name)_cameras_full_robot_mask.yaml" command="load"/>
     
     <param name="update_rate" value="10" />
     <param name="always_recompute_mapping" value="false"/>
@@ -115,8 +115,8 @@
     
     <param name="projection_type" value="image_projection_plugins::PinholeProjection" />
     <rosparam param="projection_parameters">
-      image_width: 1024
-      image_height: 1024
+      image_width: 550
+      image_height: 550
       horizontal_fov: 100
       focal_length: 1
     </rosparam>
@@ -127,7 +127,7 @@
 
   <!-- right vision -->
   <node pkg="nodelet" type="nodelet" name="$(arg camera_name)_pinhole_vision_right" args="load image_projection/PeriodicImageProjectionNodelet $(arg camera_name)_nodelet_manager" output="screen" respawn="true">
-    <rosparam file="$(find hector_sensor_proc_launch)/config/vision/$(arg camera_name)_cameras.yaml" command="load"/>
+    <rosparam file="$(find hector_sensor_proc_launch)/config/vision/$(arg camera_name)_cameras_full_robot_mask.yaml" command="load"/>
     
     <param name="update_rate" value="10" />
     <param name="always_recompute_mapping" value="false"/>
@@ -139,8 +139,8 @@
     
     <param name="projection_type" value="image_projection_plugins::PinholeProjection" />
     <rosparam param="projection_parameters">
-      image_width: 1024
-      image_height: 1024
+      image_width: 550
+      image_height: 550
       horizontal_fov: 100
       focal_length: 1
     </rosparam>

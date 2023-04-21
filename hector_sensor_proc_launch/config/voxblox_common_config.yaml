@@ -1,0 +1,4 @@
+world_frame: world
+tsdf_voxel_size: 0.05
+tsdf_voxels_per_side: 16
+verbose: false

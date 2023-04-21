@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="update_rate" default="1"/>
+
+  <node name="esdf_server" pkg="voxblox_ros" type="esdf_server" output="screen" clear_params="true" respawn="true">
+    <rosparam file="$(find hector_sensor_proc_launch)/config/voxblox_common_config.yaml" command="load" />
+
+    <param name="publish_esdf_map" value="true" />
+    <param name="update_mesh_every_n_sec" value="$(arg update_rate)" /> <!-- compute and publish mesh -->
+    <param name="update_esdf_every_n_sec" value="$(arg update_rate)" /> <!-- compute esdf -->
+    <param name="publish_map_every_n_sec" value="$(arg update_rate)" /> <!-- publish esdf -->
+
+    <param name="min_time_between_msgs_sec" value="0.0" />
+    <param name="verbose" value="false" />
+    <param name="color_mode" value="normals" /> <!-- normals, color -->
+
+    <param name="method" value="fast" /> <!-- simple, fast, merged -->
+<!--     <param name="max_integration_time_s" value="3" /> -->
+    <param name="start_voxel_subsampling_factor" value="1" />
+
+    <param name="use_const_weight" value="false" />
+
+    <param name="voxel_carving_enabled" value="true" />
+    <param name="truncation_distance" value="0.4" />
+
+    <param name="min_ray_length_m" value="0.9" /> <!-- filter out flippers -->
+
+    <param name="publish_slices" value="false" />
+
+    <param name="pointcloud_queue_size" value="20"/>
+    <remap from="pointcloud" to="/depth_combined"/>
+  </node>
+
+    <!-- Throttle RGBD for voxblox (lazy) -->
+  <node pkg="nodelet" type="nodelet" name="front_rgbd_cam_depth_throttle_more" output="screen" respawn="true" args="load hector_nodelet_topic_tools/NodeletThrottlePointcloud /front_rgbd_cam/front_rgbd_cam_nodelet_manager">
+    <param name="update_rate" value="$(arg update_rate)"/>
+    <remap from="/front_rgbd_cam/topic_in" to="/front_rgbd_cam/depth/color/points"/>
+    <remap from="/front_rgbd_cam/topic_out" to="/front_rgbd_cam/depth/color/points_throttle_1hz"/>
+  </node>
+
+  <node pkg="nodelet" type="nodelet" name="back_rgbd_cam_depth_throttle_more" output="screen" respawn="true" args="load hector_nodelet_topic_tools/NodeletThrottlePointcloud /back_rgbd_cam/back_rgbd_cam_nodelet_manager">
+    <param name="update_rate" value="$(arg update_rate)"/>
+    <remap from="/back_rgbd_cam/topic_in" to="/back_rgbd_cam/depth/color/points"/>
+    <remap from="/back_rgbd_cam/topic_out" to="/back_rgbd_cam/depth/color/points_throttle_1hz"/>
+  </node>
+
+  <!-- Relay RGBD cams to common topic -->
+  <node name="front_depth_relay" pkg="topic_tools" type="relay" args="/front_rgbd_cam/depth/color/points_throttle_1hz /depth_combined">
+    <param name="lazy" value="true"/>
+  </node>
+
+  <node name="back_depth_relay" pkg="topic_tools" type="relay" args="/back_rgbd_cam/depth/color/points_throttle_1hz /depth_combined">
+    <param name="lazy" value="true"/>
+  </node>
+</launch>

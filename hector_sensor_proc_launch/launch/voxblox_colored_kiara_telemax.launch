@@ -6,10 +6,10 @@
   <node name="tsdf_server" pkg="voxblox_ros" type="tsdf_server" respawn="true" output="screen">
     <param name="world_frame" value="world"/>
     <param name="publish_tsdf_map" value="false"/>
-    <param name="update_mesh_every_n_sec" value="2.0" />
+    <param name="update_mesh_every_n_sec" value="1.0" />
     
     <param name="publish_tsdf_info" value="false" />
-    <param name="min_time_between_msgs_sec" value="2.0" />
+    <param name="min_time_between_msgs_sec" value="1.0" />
     <param name="verbose" value="false" />
     <param name="color_mode" value="color" /> <!-- normals, color -->
     <param name="method" value="fast" /> <!-- simple, fast, merged -->

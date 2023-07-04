@@ -9,7 +9,7 @@
     <param name="map_file_path" type="string" value="$(arg log_folder)/maps" />
     <param name="map_file_base_name" type="string" value="RoboCup-HectorDarmstadt" />
     <param name="geotiff_save_period" type="double" value="45" />
-    <param name="robot_default_name" type="string" value="Asterix" />
+    <param name="robot_default_name" type="string" value="$(optenv DEFAULT_ROBOT_TYPE asterix)" />
 
     <param name="plugins" type="string" value="hector_geotiff_plugins/TrajectoryMapWriter hector_worldmodel_geotiff_plugins/GenericMapWriter" />
 <!--    <param name="VictimMapWriter/draw_all_objects" value="false" />

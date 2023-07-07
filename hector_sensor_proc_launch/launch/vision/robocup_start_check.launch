@@ -39,7 +39,7 @@
   </node>-->
 
   <!-- QR code detection -->
-  <!--<node name="qrcode_detection_$(arg name)" pkg="nodelet" type="nodelet" args="load hector_qrcode_detection/qrcode_detection $(arg manager)" respawn="true">
+  <node name="qrcode_detection_$(arg name)" pkg="nodelet" type="nodelet" args="load hector_qrcode_detection/qrcode_detection $(arg manager)" respawn="true">
     <remap from="$(arg manager_ns)/image" to="$(arg image_topic)" />
     <remap from="$(arg manager_ns)/image_percept" to="/worldmodel/image_percept" />
     <remap from="$(arg manager_ns)/perception/image_percept" to="/detection_$(arg name)/visual_detection" />
@@ -47,5 +47,5 @@
     <param name="enabled" value="false" />
     <remap from="$(arg manager_ns)/enabled_status" to="/startup_check_$(arg name)/qrcode_detection/enabled_status" />
     <remap from="$(arg manager_ns)/enabled" to="/startup_check_$(arg name)/enabled" />
-  </node>-->
+  </node>
 </launch>

@@ -14,16 +14,15 @@
   </node>
 
   <!-- Motion detection -->
-  <!-- not needed for rc2022 -->
-<!--  <node pkg="nodelet" type="nodelet" name="motion_detection_nodelet_$(arg name)" args="load hector_motion_detection/MotionDetectionNodelet $(arg manager)" output="screen" respawn="true">
+  <node pkg="nodelet" type="nodelet" name="motion_detection_nodelet_$(arg name)" args="load hector_motion_detection/MotionDetectionNodelet $(arg manager)" output="screen" respawn="true">
     <param name="enabled" value="false" />
-    <rosparam file="$(find hector_motion_detection)/config/moving_feathers.yaml" command="load"/>
+    <rosparam file="$(find hector_motion_detection)/config/moving_dots.yaml" command="load"/>
 
     <remap from="~image" to="$(arg image_topic)" />
     <remap from="~enabled_status" to="/startup_check_$(arg name)/motion_detection/enabled_status" />
     <remap from="~enabled" to="/startup_check_$(arg name)/enabled" />
     <remap from="~detection/image_detection" to="/detection_$(arg name)/visual_detection" />
-  </node>-->
+  </node>
 
   <!-- Hazmat detection -->
 <!--  <node name="hazmat_detection_$(arg name)" pkg="hector_hazmat_detection_py" type="hazmat_detection_node.py" output="screen" respawn="true">

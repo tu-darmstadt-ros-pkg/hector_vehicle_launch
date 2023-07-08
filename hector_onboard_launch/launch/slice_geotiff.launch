@@ -21,7 +21,7 @@ Geotiff for it.
   
   <arg name="log_folder" default="$(eval optenv('HECTOR_LOG_FOLDER', find('robot_onboard_logging')))"/>
   <arg name="map_file_path" default="$(arg log_folder)/maps"/>
-  <arg name="map_file_base_name" default="RoboCup2021-HectorDarmstadt-Prelim-UpperLevel" />
+  <arg name="map_file_base_name" default="RoboCup20-HectorDarmstadt-UpperLevel" />
   <arg name="robot_default_name" default="$(optenv DEFAULT_ROBOT_TYPE asterix)" />
 
 

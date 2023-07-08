@@ -5,9 +5,9 @@
 
 
   <node pkg="hector_geotiff" type="geotiff_node" name="hector_geotiff_node" output="screen" respawn="true" launch-prefix="nice -n 15">
-    <!--<remap from="map" to="/grid_map_2d_mapper/map" /> use_topic must be false-->  
-    <remap from="map" to="/worldmodel_main/grid_map_low_level" />
-    <param name="use_map_topic" type="bool" value="true"/>
+    <remap from="map" to="/grid_map_2d_mapper/map" />
+    <!--<remap from="map" to="/worldmodel_main/grid_map_low_level" />use_topic must be true-->
+    <param name="use_map_topic" type="bool" value="false"/>
     <param name="map_file_path" type="string" value="$(arg log_folder)/maps" />
     <param name="map_file_base_name" type="string" value="RoboCup-HectorDarmstadt" />
     <param name="geotiff_save_period" type="double" value="45" />

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<!--
+Generates a 2D map from a point cloud height slice and saves
+Geotiff for it.
+-->
+
+<launch> 
+  
+  <!--
+  Sets map topic as well as the node name.
+  Can be used to instantiate multiple writers with differents
+  settings in parallel
+  -->
+  <arg name="topic_name" default="/worldmodel_main/grid_map_upper_mid_level" />
+  <arg name="map_name" default="map_upper_level" />
+
+  
+  <arg name="log_folder" default="$(eval optenv('HECTOR_LOG_FOLDER', find('robot_onboard_logging')))"/>
+  <arg name="map_file_path" default="$(arg log_folder)/maps"/>
+  <arg name="map_file_base_name" default="RoboCup2023-HectorDarmstadt-Prelim-UpperLevel" />
+  <arg name="robot_default_name" default="$(optenv DEFAULT_ROBOT_TYPE asterix)" />
+
+
+  <node pkg="hector_geotiff" type="geotiff_node" name="hector_geotiff_$(arg map_name)" output="screen" launch-prefix="nice -n 15" respawn="true">
+    <remap from="map" to="$(arg topic_name)" />
+    <param name="map_file_path" type="string" value="$(arg map_file_path)" />
+    <param name="use_map_topic" type="bool" value="true"/>
+    <param name="map_file_base_name" type="string" value="$(arg map_file_base_name)" />
+    <param name="robot_default_name" type="string" value="$(arg robot_default_name)" />
+    <param name="geotiff_save_period" type="double" value="45" />
+    <param name="plugins" type="string" value="hector_geotiff_plugins/TrajectoryMapWriter" />
+  </node>
+</launch>
+

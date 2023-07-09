@@ -59,7 +59,7 @@ Geotiff for it.
     <param name="map_file_base_name" type="string" value="$(arg map_file_base_name)" />
     <param name="robot_default_name" type="string" value="$(arg robot_default_name)" />
     <param name="geotiff_save_period" type="double" value="45" />
-    <param name="plugins" type="string" value="hector_geotiff_plugins/TrajectoryMapWriter" />
+    <param name="plugins" type="string" value="hector_geotiff_plugins/TrajectoryMapWriter hector_worldmodel_geotiff_plugins/GenericMapWriter" />
   </node>
 </launch>
 

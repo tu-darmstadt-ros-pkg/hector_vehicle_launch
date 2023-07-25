@@ -8,5 +8,5 @@ distortion_model: radtan
 distortion_coeffs: [0.0, 0.0, 0.0, 0.0]
 #distortion_coeffs: [-0.21035031, 0.25912067, 0.00047916, -0.00002277] #[0.0, 0.0, 0.0, 0.0]
 #intrinsics: [1.57108608, 1237.02428302, 1234.83876399, 751.46355466, 750.25554958] #[0.9997, 752, 752, 752.5, 752.5]
-intrinsics: [1.57, 1200.0, 1200.0, 752.5, 752.5]
+intrinsics: [1.570796, 1215.0, 1215.0, 752.5, 752.5]
 mask_path: $(find hector_sensor_proc_launch)/config/kalibr_calibrations/camera360_webots/camera360_left_mask.png

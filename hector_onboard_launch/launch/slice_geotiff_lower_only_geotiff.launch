@@ -12,16 +12,16 @@ Geotiff for it.
   Can be used to instantiate multiple writers with differents
   settings in parallel
   -->
-  <arg name="map_name" default="map_upper_level" />
+  <arg name="map_name" default="map_lower_level" />
     
   <arg name="cloud_target_frame" default="base_stabilized" />
   <arg name="cloud_topic" default="/scan_matched_points2" />
-  <arg name="min_height" default="1.65"/>    
-  <arg name="max_height" default="1.9"/>
+  <arg name="min_height" default="0.8"/>    
+  <arg name="max_height" default="1.2"/>
   
   <arg name="log_folder" default="$(eval optenv('HECTOR_LOG_FOLDER', find('robot_onboard_logging')))"/>
   <arg name="map_file_path" default="$(arg log_folder)/maps"/>
-  <arg name="map_file_base_name" default="RoboCup23-HectorDarmstadt-UpperLevel" />
+  <arg name="map_file_base_name" default="RoboCup23-HectorDarmstadt-LowerLevel" />
   <arg name="robot_default_name" default="$(optenv DEFAULT_ROBOT_TYPE asterix)" />
 
 
@@ -38,12 +38,12 @@ Geotiff for it.
   <node name="grid_map_2d_$(arg map_name)" type="grid_map_2d_mapper_node" pkg="grid_map_2d_mapper" output="screen" launch-prefix="nice -n 15" respawn="true">
     <param name="min_height" value="-100"/>    
     <param name="max_height" value="100"/>
-    <param name="range_min" value="0.05"/>
+    <param name="range_min" value="0.2"/>
     <param name="target_frame" value="$(arg cloud_target_frame)"/>
     <param name="downsample_cloud" value="true"/>      
     <param name="angle_increment" value="0.01"/>     
     <param name="probability_free" value="0.45"/>
-    <param name="probability_occupied" value="0.88"/> 
+    <param name="probability_occupied" value="0.8"/> 
     <remap from="~/map" to="$(arg map_name)"/>
     <remap from="/map" to="$(arg map_name)" />
     <remap from="/map_throttled" to="$(arg map_name)_throttled" />
@@ -59,7 +59,7 @@ Geotiff for it.
     <param name="map_file_base_name" type="string" value="$(arg map_file_base_name)" />
     <param name="robot_default_name" type="string" value="$(arg robot_default_name)" />
     <param name="geotiff_save_period" type="double" value="45" />
-    <param name="plugins" type="string" value="hector_geotiff_plugins/TrajectoryMapWriter" />
+    <param name="plugins" type="string" value="hector_geotiff_plugins/TrajectoryMapWriter hector_worldmodel_geotiff_plugins/GenericMapWriter" />
   </node>
 </launch>
 

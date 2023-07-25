@@ -2,7 +2,7 @@
 
 <launch>
   <arg name="fuse_rgbd" default="$(optenv HECTOR_ELEVATION_MAPPING_FUSE_RGBD false)"/>
-  <arg name="filter_limit_max" default="1.0"/>
+  <arg name="filter_limit_max" default="0.8"/>
   
   <!-- Throttle RGBD for elevation mapping (lazy) -->
   <node pkg="nodelet" type="nodelet" name="front_rgbd_cam_depth_throttle" output="screen" respawn="false" args="load hector_nodelet_topic_tools/NodeletThrottlePointcloud /front_rgbd_cam/front_rgbd_cam_nodelet_manager">
@@ -31,7 +31,7 @@
         <param name="filter_field_name" value="z"/>
         <param name="filter_limit_min" value="-1"/>
         <param name="filter_limit_max" value="$(arg filter_limit_max)"/>
-        <param name="input_frame" value="base_stabilized"/>
+        <param name="input_frame" value="base_link"/>
         <remap from="~input" to="/scan_matched_points2"/>
         <remap from="~output" to="/scan_matched_points2_cropped"/>
     </node>
@@ -39,17 +39,17 @@
         <param name="filter_field_name" value="z"/>
         <param name="filter_limit_min" value="-1"/>
         <param name="filter_limit_max" value="$(arg filter_limit_max)"/>
-        <param name="input_frame" value="base_stabilized"/>
-        <remap from="~input" to="/front_rgbd_cam/depth/color/points_throttle"/>
-        <remap from="~output" to="/front_rgbd_cam/depth/color/points_throttle_cropped"/>
+        <param name="input_frame" value="base_link"/>
+        <remap from="~input" to="/front_rgbd_cam/depth/color/points_throttle_filtered"/>
+        <remap from="~output" to="/front_rgbd_cam/depth/color/points_throttle_filtered_cropped"/>
     </node>
     <node pkg="nodelet" type="nodelet" name="scan_z_filter_back" output="screen" respawn="false" args="standalone pcl/PassThrough" if ="$(arg fuse_rgbd)">
         <param name="filter_field_name" value="z"/>
         <param name="filter_limit_min" value="-1"/>
         <param name="filter_limit_max" value="$(arg filter_limit_max)"/>
-        <param name="input_frame" value="base_stabilized"/>
-        <remap from="~input" to="/back_rgbd_cam/depth/color/points_throttle"/>
-        <remap from="~output" to="/back_rgbd_cam/depth/color/points_throttle_cropped"/>
+        <param name="input_frame" value="base_link"/>
+        <remap from="~input" to="/back_rgbd_cam/depth/color/points_throttle_filtered"/>
+        <remap from="~output" to="/back_rgbd_cam/depth/color/points_throttle_filtered_cropped"/>
     </node>
 
     <node pkg="pose_to_pose_with_covariance" type="pose_to_pose_with_covariance" name="pose_to_pose_with_covariance" output="screen" respawn="false">

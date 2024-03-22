@@ -1,14 +1,15 @@
 <?xml version="1.0"?>
 <launch>
   <arg name="update_rate" default="1"/>
+  <arg name="duration" value="$(eval 1.0 / arg('update_rate'))"/>
 
   <node name="esdf_server" pkg="voxblox_ros" type="esdf_server" output="screen" clear_params="true" respawn="true">
     <rosparam file="$(find hector_sensor_proc_launch)/config/voxblox_common_config.yaml" command="load" />
 
     <param name="publish_esdf_map" value="true" />
-    <param name="update_mesh_every_n_sec" value="$(arg update_rate)" /> <!-- compute and publish mesh -->
-    <param name="update_esdf_every_n_sec" value="$(arg update_rate)" /> <!-- compute esdf -->
-    <param name="publish_map_every_n_sec" value="$(arg update_rate)" /> <!-- publish esdf -->
+    <param name="update_mesh_every_n_sec" value="$(arg duration)" /> <!-- compute and publish mesh -->
+    <param name="update_esdf_every_n_sec" value="$(arg duration)" /> <!-- compute esdf -->
+    <param name="publish_map_every_n_sec" value="$(arg duration)" /> <!-- publish esdf -->
 
     <param name="min_time_between_msgs_sec" value="0.0" />
     <param name="verbose" value="false" />

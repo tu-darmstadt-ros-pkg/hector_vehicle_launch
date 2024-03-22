@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <launch>
   <arg name="update_rate" default="1"/>
+  <arg name="cloud_topic" default="/depth_combined"/>
   <arg name="duration" value="$(eval 1.0 / arg('update_rate'))"/>
 
   <node name="esdf_server" pkg="voxblox_ros" type="esdf_server" output="screen" clear_params="true" respawn="true">
@@ -29,7 +30,7 @@
     <param name="publish_slices" value="false" />
 
     <param name="pointcloud_queue_size" value="20"/>
-    <remap from="pointcloud" to="/depth_combined"/>
+    <remap from="pointcloud" to="$(arg cloud_topic)"/>
   </node>
 
     <!-- Throttle RGBD for voxblox (lazy) -->

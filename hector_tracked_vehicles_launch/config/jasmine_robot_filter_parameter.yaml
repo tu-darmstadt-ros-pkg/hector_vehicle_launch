@@ -43,7 +43,7 @@ traversability_map_filters:
   #  params:
   #    output_layer: traversability
   #    expression:  (1.0/2.0) * (((1.0 / 3.0) * (traversability_slope + traversability_step + traversability_roughness)) + traversability_negative_step * 0.25)
-  - name: deletionFilter
-    type: gridMapFilters/DeletionFilter
-    params:
-      layers: [surface_normal_x, surface_normal_y, surface_normal_z]
+  #- name: deletionFilter
+  #  type: gridMapFilters/DeletionFilter
+  #  params:
+  #    layers: [surface_normal_x, surface_normal_y, surface_normal_z]

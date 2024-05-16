@@ -7,13 +7,13 @@
   <!-- Throttle RGBD for elevation mapping (lazy) -->
   <node pkg="nodelet" type="nodelet" name="front_rgbd_cam_depth_throttle" output="screen" respawn="true" args="load hector_nodelet_topic_tools/NodeletThrottlePointcloud /front_rgbd_cam/front_rgbd_cam_nodelet_manager">
     <param name="update_rate" value="2"/>
-    <remap from="/front_rgbd_cam/topic_in" to="/front_rgbd_cam/depth/color/points"/>
+    <remap from="/front_rgbd_cam/topic_in" to="/front_rgbd_cam/depth/filtered_point_cloud"/>
     <remap from="/front_rgbd_cam/topic_out" to="/front_rgbd_cam/depth/color/points_throttle"/>
   </node>
 
   <node pkg="nodelet" type="nodelet" name="back_rgbd_cam_depth_throttle" output="screen" respawn="true" args="load hector_nodelet_topic_tools/NodeletThrottlePointcloud /back_rgbd_cam/back_rgbd_cam_nodelet_manager">
     <param name="update_rate" value="2"/>
-    <remap from="/back_rgbd_cam/topic_in" to="/back_rgbd_cam/depth/color/points"/>
+    <remap from="/back_rgbd_cam/topic_in" to="/back_rgbd_cam/depth/filtered_point_cloud"/>
     <remap from="/back_rgbd_cam/topic_out" to="/back_rgbd_cam/depth/color/points_throttle"/>
   </node>
 
@@ -52,7 +52,7 @@
       <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/elevation_mapping/map_range_global.yaml" />
       <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/sensor_processors/velodyne_VLP-16.yaml" ns="input_sources/lidar"/>
 
-      <rosparam if="$(arg fuse_rgbd)" command="load" file="$(find hector_tracked_vehicles_launch)/config/elevation_mapping/jasmine_robot_rgbd.yaml" />
+      <rosparam if="$(arg fuse_rgbd)" command="load" file="$(find hector_tracked_vehicles_launch)/config/elevation_mapping/jasmine_robot_rgbd_depth_self_filter.yaml" />
       <rosparam if="$(arg fuse_rgbd)" command="load" file="$(find hector_tracked_vehicles_launch)/config/sensor_processors/realsense_d435.yaml" ns="input_sources/front_rgbd"/>
       <rosparam if="$(arg fuse_rgbd)" command="load" file="$(find hector_tracked_vehicles_launch)/config/sensor_processors/realsense_d435.yaml" ns="input_sources/back_rgbd"/>
     </node>

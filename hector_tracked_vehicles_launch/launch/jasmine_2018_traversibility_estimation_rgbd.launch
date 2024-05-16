@@ -10,14 +10,14 @@
     <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/jasmine_robot_rgbd.yaml"/>
     <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/jasmine_robot_footprint_parameter.yaml"/>
     <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/jasmine_robot_filter_parameter.yaml"/>
-<!--    <param name="elevation_map/path_to_bag" value="$(find traversability_estimation)/data/map.bag"/>-->
+<!--<param name="elevation_map/path_to_bag" value="$(find traversability_estimation)/data/map.bag"/>-->
   </node>
   
-  <!--
+<!--
   <node pkg="ethz_grid_map_proc" type="ethz_grid_map_proc_node" name="ethz_grid_map_proc" output="screen">
-   <param name="unknown_space_to_free" value="false"/>
-   <param name="enable_obstacle_map" value="true"/>
-   <param name="enable_traversability_map" value="false"/>
+    <param name="unknown_space_to_free" value="false"/>
+    <param name="enable_obstacle_map" value="true"/>
+    <param name="enable_traversability_map" value="false"/>
   </node>
 
   <group unless="$(arg static_obstacle_map)">
@@ -30,6 +30,5 @@
       <remap from="/map" to="/obstacle_map" />
       <remap from="/map_throttled" to="/obstacle_map_throttled" />
     </node>
-  </group>
-  -->
+  </group>-->
 </launch>

@@ -25,7 +25,7 @@
     <param name="voxel_carving_enabled" value="true" />
     <param name="truncation_distance" value="0.4" />
 
-    <param name="min_ray_length_m" value="0.9" /> <!-- filter out flippers -->
+    <param name="min_ray_length_m" value="0.0" />
 
     <param name="publish_slices" value="false" />
 
@@ -46,12 +46,43 @@
     <remap from="/back_rgbd_cam/topic_out" to="/back_rgbd_cam/depth/color/points_throttle_1hz"/>
   </node>
 
+  <!-- Crop Box to filter out flippers-->
+  <node pkg="nodelet" type="nodelet" name="front_rgbd_cam_depth_range_cutoff" output="screen" respawn="true" args="load pcl/CropBox /front_rgbd_cam/front_rgbd_cam_nodelet_manager">
+    <param name="min_x" value="-0.65"/>
+    <param name="max_x" value="0.65"/>
+    <param name="min_y" value="-0.3"/>
+    <param name="max_y" value="0.3"/>
+    <param name="min_z" value="-0.3"/>
+    <param name="max_z" value="0.7"/>
+    <param name="keep_organized" value="false"/>
+    <param name="negative" value="true"/>
+    <param name="input_frame" value="base_link"/>
+    <param name="output_frame" value="front_rgbd_cam_depth_optical_frame"/>
+    <remap from="~input" to="/front_rgbd_cam/depth/color/points_throttle_1hz"/>
+    <remap from="~output" to="/front_rgbd_cam/depth/color/points_throttle_1hz_cropped"/>
+  </node>
+
+  <node pkg="nodelet" type="nodelet" name="back_rgbd_cam_depth_range_cutoff" output="screen" respawn="true" args="load pcl/CropBox /back_rgbd_cam/back_rgbd_cam_nodelet_manager">
+    <param name="min_x" value="-0.65"/>
+    <param name="max_x" value="0.65"/>
+    <param name="min_y" value="-0.3"/>
+    <param name="max_y" value="0.3"/>
+    <param name="min_z" value="-0.3"/>
+    <param name="max_z" value="0.7"/>
+    <param name="keep_organized" value="false"/>
+    <param name="negative" value="true"/>
+    <param name="input_frame" value="base_link"/>
+    <param name="output_frame" value="back_rgbd_cam_depth_optical_frame"/>
+    <remap from="~input" to="/back_rgbd_cam/depth/color/points_throttle_1hz"/>
+    <remap from="~output" to="/back_rgbd_cam/depth/color/points_throttle_1hz_cropped"/>
+  </node>
+
   <!-- Relay RGBD cams to common topic -->
-  <node name="front_depth_relay" pkg="topic_tools" type="relay" args="/front_rgbd_cam/depth/color/points_throttle_1hz /depth_combined">
+  <node name="front_depth_relay" pkg="topic_tools" type="relay" args="/front_rgbd_cam/depth/color/points_throttle_1hz_cropped /depth_combined">
     <param name="lazy" value="true"/>
   </node>
 
-  <node name="back_depth_relay" pkg="topic_tools" type="relay" args="/back_rgbd_cam/depth/color/points_throttle_1hz /depth_combined">
+  <node name="back_depth_relay" pkg="topic_tools" type="relay" args="/back_rgbd_cam/depth/color/points_throttle_1hz_cropped /depth_combined">
     <param name="lazy" value="true"/>
   </node>
 </launch>

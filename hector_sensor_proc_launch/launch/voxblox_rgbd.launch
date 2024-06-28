@@ -54,4 +54,14 @@
   <node name="back_depth_relay" pkg="topic_tools" type="relay" args="/back_rgbd_cam/depth/color/points_throttle_1hz /depth_combined">
     <param name="lazy" value="true"/>
   </node>
+
+  <!-- Publish ground plane -->
+  <node name="publish_ground_plane" pkg="rosservice" type="rosservice" output="screen" args="call --wait /esdf_server/add_ground_plane '{
+        header: {seq: 0, stamp: {secs: 0, nsecs: 0}, frame_id: 'base_link'},
+        min_x: -0.7,
+        max_x: 0.7,
+        min_y: -0.4,
+        max_y: 0.4,
+        z: -0.062
+        }'"/>
 </launch>

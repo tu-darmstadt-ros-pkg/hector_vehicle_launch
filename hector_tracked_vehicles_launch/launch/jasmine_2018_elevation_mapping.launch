@@ -5,27 +5,41 @@
   <arg name="filter_limit_max" default="1.0"/>
   <arg name="use_depth_self_filter" default="false"/>
 
-  <!-- Set the incoming point cloud topics based on use_depth_self_filter -->
-  <param name="front_point_cloud" value="/front_rgbd_cam/depth/color/points" unless="$(arg use_depth_self_filter)"/>
-  <param name="front_point_cloud" value="/front_rgbd_cam/depth/filtered_point_cloud" if="$(arg use_depth_self_filter)"/>
-  <param name="back_point_cloud" value="/back_rgbd_cam/depth/color/points" unless="$(arg use_depth_self_filter)"/>
-  <param name="back_point_cloud" value="/back_rgbd_cam/depth/filtered_point_cloud" if="$(arg use_depth_self_filter)"/>
-  <!-- Set the used elevation mapping config based on use_depth_self_filter -->
-  <param name="elevation_mapping_config" value="$(find hector_tracked_vehicles_launch)/config/elevation_mapping/jasmine_robot_rgbd.yaml" unless="$(arg use_depth_self_filter)"/>
-  <param name="elevation_mapping_config" value="$(find hector_tracked_vehicles_launch)/config/elevation_mapping/jasmine_robot_rgbd_depth_self_filter.yaml" if="$(arg use_depth_self_filter)"/>
+  <!-- Group for when use_depth_self_filter is false -->
+  <group unless="$(arg use_depth_self_filter)">
+    <param name="elevation_mapping_config" value="$(find hector_tracked_vehicles_launch)/config/elevation_mapping/jasmine_robot_rgbd.yaml"/>
 
-  <!-- Throttle RGBD for elevation mapping (lazy) -->
-  <node pkg="nodelet" type="nodelet" name="front_rgbd_cam_depth_throttle" output="screen" respawn="true" args="load hector_nodelet_topic_tools/NodeletThrottlePointcloud /front_rgbd_cam/front_rgbd_cam_nodelet_manager">
-    <param name="update_rate" value="2"/>
-    <remap from="/front_rgbd_cam/topic_in" to="$(param front_point_cloud)"/>
-    <remap from="/front_rgbd_cam/topic_out" to="/front_rgbd_cam/depth/color/points_throttle"/>
-  </node>
-  
-  <node pkg="nodelet" type="nodelet" name="back_rgbd_cam_depth_throttle" output="screen" respawn="true" args="load hector_nodelet_topic_tools/NodeletThrottlePointcloud /back_rgbd_cam/back_rgbd_cam_nodelet_manager">
-    <param name="update_rate" value="2"/>
-    <remap from="/back_rgbd_cam/topic_in" to="$(param back_point_cloud)"/>
-    <remap from="/back_rgbd_cam/topic_out" to="/back_rgbd_cam/depth/color/points_throttle"/>
-  </node>
+    <!-- Throttle RGBD for elevation mapping (lazy) -->
+    <node pkg="nodelet" type="nodelet" name="front_rgbd_cam_depth_throttle" output="screen" respawn="true" args="load hector_nodelet_topic_tools/NodeletThrottlePointcloud /front_rgbd_cam/front_rgbd_cam_nodelet_manager">
+      <param name="update_rate" value="2"/>
+      <remap from="/front_rgbd_cam/topic_in" to="/front_rgbd_cam/depth/color/points"/>
+      <remap from="/front_rgbd_cam/topic_out" to="/front_rgbd_cam/depth/color/points_throttle"/>
+    </node>
+
+    <node pkg="nodelet" type="nodelet" name="back_rgbd_cam_depth_throttle" output="screen" respawn="true" args="load hector_nodelet_topic_tools/NodeletThrottlePointcloud /back_rgbd_cam/back_rgbd_cam_nodelet_manager">
+      <param name="update_rate" value="2"/>
+      <remap from="/back_rgbd_cam/topic_in" to="/back_rgbd_cam/depth/color/points"/>
+      <remap from="/back_rgbd_cam/topic_out" to="/back_rgbd_cam/depth/color/points_throttle"/>
+    </node>
+  </group>
+
+  <!-- Group for when use_depth_self_filter is true -->
+  <group if="$(arg use_depth_self_filter)">
+    <param name="elevation_mapping_config" value="$(find hector_tracked_vehicles_launch)/config/elevation_mapping/jasmine_robot_rgbd_depth_self_filter.yaml"/>
+
+    <!-- Throttle RGBD for elevation mapping (lazy) -->
+    <node pkg="nodelet" type="nodelet" name="front_rgbd_cam_depth_throttle" output="screen" respawn="true" args="load hector_nodelet_topic_tools/NodeletThrottlePointcloud /front_rgbd_cam/front_rgbd_cam_nodelet_manager">
+      <param name="update_rate" value="2"/>
+      <remap from="/front_rgbd_cam/topic_in" to="/front_rgbd_cam/depth/filtered_point_cloud"/>
+      <remap from="/front_rgbd_cam/topic_out" to="/front_rgbd_cam/depth/color/points_throttle"/>
+    </node>
+
+    <node pkg="nodelet" type="nodelet" name="back_rgbd_cam_depth_throttle" output="screen" respawn="true" args="load hector_nodelet_topic_tools/NodeletThrottlePointcloud /back_rgbd_cam/back_rgbd_cam_nodelet_manager">
+      <param name="update_rate" value="2"/>
+      <remap from="/back_rgbd_cam/topic_in" to="/back_rgbd_cam/depth/filtered_point_cloud"/>
+      <remap from="/back_rgbd_cam/topic_out" to="/back_rgbd_cam/depth/color/points_throttle"/>
+    </node>
+  </group>
 
   <!-- Crop points by height -->
   <node pkg="nodelet" type="nodelet" name="scan_z_filter" output="screen" respawn="true" args="standalone pcl/PassThrough" >

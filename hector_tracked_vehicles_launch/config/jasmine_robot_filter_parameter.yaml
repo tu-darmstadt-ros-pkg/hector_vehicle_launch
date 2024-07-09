@@ -16,10 +16,10 @@ traversability_map_filters:
     type: traversabilityFilters/StepFilter
     params:
       map_type: traversability_step
-      critical_value: 0.5
+      critical_value: 0.3
       first_window_radius: 0.1
       second_window_radius: 0.1
-      critical_cell_number: 4
+      critical_cell_number: 2
   - name: negativeStepFilter
     type: traversabilityFilters/NegativeStepFilter
     params:

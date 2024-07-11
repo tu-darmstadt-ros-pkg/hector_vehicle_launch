@@ -75,6 +75,12 @@
     <rosparam if="$(arg fuse_rgbd)" command="load" file="$(find hector_tracked_vehicles_launch)/config/sensor_processors/realsense_d435.yaml" ns="input_sources/back_rgbd"/>
   </node>
 
+
+
+
+
+
+    
 <!--    <node pkg="vigir_laserscan_to_pointcloud" type="laserscan_to_pointcloud_node" name="front_repub" respawn="true" output="screen">
       <param name="min_range" value="0" />
       <param name="use_high_fidelity_projection" value="true" />

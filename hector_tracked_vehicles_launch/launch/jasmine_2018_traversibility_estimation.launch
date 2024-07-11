@@ -15,6 +15,4 @@
     <rosparam command="load" file="$(find hector_tracked_vehicles_launch)/config/jasmine_robot_filter_parameter.yaml"/>
 <!--    <param name="elevation_map/path_to_bag" value="$(find traversability_estimation)/data/map.bag"/>-->
   </node>
-  <node pkg="narrow_passage_detection" type="narrow_passage_detection_node" name="narrow_passage_detection_node" output="screen" respawn="true"/>
-  <node pkg="narrow_passage_controller" type="narrow_passage_controller_node" name="narrow_passage_controller_node" output="screen" respawn="true"/>
 </launch>

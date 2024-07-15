@@ -1,8 +1,12 @@
 <?xml version="1.0"?>
 
 <launch>
-  <include file="$(find hector_tracked_vehicles_launch)/launch/jasmine_2018_elevation_mapping.launch"/>
-    
+  <arg name="use_depth_self_filter" default="false"/>
+
+  <include file="$(find hector_tracked_vehicles_launch)/launch/jasmine_2018_elevation_mapping.launch">
+    <arg name="use_depth_self_filter" value="$(arg use_depth_self_filter)"/>
+  </include>
+
   <env name="ROSCONSOLE_CONFIG_FILE" value="$(find traversability_estimation)/config/rosconsole.conf"/>
 
   <node pkg="traversability_estimation" type="traversability_estimation_node" name="traversability_estimation" output="screen" clear_params="true">

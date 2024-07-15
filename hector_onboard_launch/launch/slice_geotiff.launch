@@ -5,61 +5,71 @@ Generates a 2D map from a point cloud height slice and saves
 Geotiff for it.
 -->
 
-<launch> 
-  
+<launch>
   <!--
   Sets map topic and service names as well as both node names.
-  Can be used to instantiate multiple writers with differents
+  Can be used to instantiate multiple writers with different
   settings in parallel
   -->
-  <arg name="map_name" default="map_upper_level" />
-    
-  <arg name="cloud_target_frame" default="base_stabilized" />
-  <arg name="cloud_topic" default="/scan_matched_points2" />
-  <arg name="min_height" default="1.65"/>    
+  <arg name="map_name" default="map_upper_level"/>
+
+  <arg name="min_height" default="1.65"/>
   <arg name="max_height" default="1.9"/>
-  
+  <arg name="input_frame" default="world"/>
+  <arg name="cloud_topic" default="/scan_matched_points2"/>
+
+  <arg name="range_min" default="0.05"/>
+  <arg name="cloud_target_frame" default="base_stabilized"/>
+  <arg name="downsample_cloud" default="true"/>
+  <arg name="angle_increment" default="0.01"/>
+  <arg name="probability_free" default="0.45"/>
+  <arg name="probability_occupied" default="0.88"/>
+
   <arg name="log_folder" default="$(eval optenv('HECTOR_LOG_FOLDER', find('robot_onboard_logging')))"/>
   <arg name="map_file_path" default="$(arg log_folder)/maps"/>
-  <arg name="map_file_base_name" default="RoboCup23-HectorDarmstadt-UpperLevel" />
-  <arg name="robot_default_name" default="$(optenv DEFAULT_ROBOT_TYPE asterix)" />
+  <arg name="map_file_base_name" default="RoboCup24-HectorDarmstadt-UpperLevel"/>
+  <arg name="robot_default_name" default="$(optenv DEFAULT_ROBOT_TYPE asterix)"/>
+  <arg name="geotiff_save_period" default="45"/>
+  <arg name="plugins" default="hector_geotiff_plugins/TrajectoryMapWriter"/>
 
 
-  <node pkg="nodelet" type="nodelet" name="scan_z_filter_$(arg map_name)" output="screen" respawn="false" args="standalone pcl/PassThrough">
+  <node pkg="nodelet" type="nodelet" name="scan_z_filter_$(arg map_name)" output="screen" respawn="false"
+        args="standalone pcl/PassThrough">
     <param name="filter_field_name" value="z"/>
     <param name="filter_limit_min" value="$(arg min_height)"/>
     <param name="filter_limit_max" value="$(arg max_height)"/>
-    <param name="input_frame" value="world"/>
+    <param name="input_frame" value="$(arg input_frame)"/>
     <remap from="~input" to="$(arg cloud_topic)"/>
     <remap from="~output" to="/cloud_map_$(arg map_name)"/>
   </node>
- 
-  
-  <node name="grid_map_2d_$(arg map_name)" type="grid_map_2d_mapper_node" pkg="grid_map_2d_mapper" output="screen" launch-prefix="nice -n 15" respawn="true">
-    <param name="min_height" value="-100"/>    
+
+
+  <node name="grid_map_2d_$(arg map_name)" type="grid_map_2d_mapper_node" pkg="grid_map_2d_mapper" output="screen"
+        launch-prefix="nice -n 15" respawn="true">
+    <param name="min_height" value="-100"/>
     <param name="max_height" value="100"/>
-    <param name="range_min" value="0.05"/>
+    <param name="range_min" value="$(arg range_min)"/>
     <param name="target_frame" value="$(arg cloud_target_frame)"/>
-    <param name="downsample_cloud" value="true"/>      
-    <param name="angle_increment" value="0.01"/>     
-    <param name="probability_free" value="0.45"/>
-    <param name="probability_occupied" value="0.88"/> 
+    <param name="downsample_cloud" value="$(arg downsample_cloud)"/>
+    <param name="angle_increment" value="$(arg angle_increment)"/>
+    <param name="probability_free" value="$(arg probability_free)"/>
+    <param name="probability_occupied" value="$(arg probability_occupied)"/>
     <remap from="~/map" to="$(arg map_name)"/>
-    <remap from="/map" to="$(arg map_name)" />
-    <remap from="/map_throttled" to="$(arg map_name)_throttled" />
-    <remap from="/debug_map" to="$(arg map_name)_debug_map" />
-    <remap from="/scan_matched_points2" to="/cloud_map_$(arg map_name)" />
-    <remap from="scan" to="$(arg map_name)_scan" />
+    <remap from="/map" to="$(arg map_name)"/>
+    <remap from="/map_throttled" to="$(arg map_name)_throttled"/>
+    <remap from="/debug_map" to="$(arg map_name)_debug_map"/>
+    <remap from="/scan_matched_points2" to="/cloud_map_$(arg map_name)"/>
+    <remap from="scan" to="$(arg map_name)_scan"/>
   </node>
 
 
-  <node pkg="hector_geotiff" type="geotiff_node" name="hector_geotiff_$(arg map_name)" output="screen" launch-prefix="nice -n 15" respawn="true">
-    <remap from="map" to="$(arg map_name)" />
-    <param name="map_file_path" type="string" value="$(arg map_file_path)" />
-    <param name="map_file_base_name" type="string" value="$(arg map_file_base_name)" />
-    <param name="robot_default_name" type="string" value="$(arg robot_default_name)" />
-    <param name="geotiff_save_period" type="double" value="45" />
-    <param name="plugins" type="string" value="hector_geotiff_plugins/TrajectoryMapWriter" />
+  <node pkg="hector_geotiff" type="geotiff_node" name="hector_geotiff_$(arg map_name)" output="screen"
+        launch-prefix="nice -n 15" respawn="true">
+    <remap from="map" to="$(arg map_name)"/>
+    <param name="map_file_path" type="string" value="$(arg map_file_path)"/>
+    <param name="map_file_base_name" type="string" value="$(arg map_file_base_name)"/>
+    <param name="robot_default_name" type="string" value="$(arg robot_default_name)"/>
+    <param name="geotiff_save_period" type="double" value="$(arg geotiff_save_period)"/>
+    <param name="plugins" type="string" value="$(arg plugins)"/>
   </node>
 </launch>
-
